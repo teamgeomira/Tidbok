@@ -424,6 +424,28 @@
       top: 0;
       width: 100%;
     }
+	#project-dropdown {
+	  scrollbar-width: thin;
+	  scrollbar-color: var(--primary) #e5e7eb;
+	}
+
+	#project-dropdown::-webkit-scrollbar {
+	  width: 8px;
+	}
+
+	#project-dropdown::-webkit-scrollbar-track {
+	  background: #f1f1f1;
+	  border-radius: 4px;
+	}
+
+	#project-dropdown::-webkit-scrollbar-thumb {
+	  background: var(--primary);
+	  border-radius: 4px;
+	}
+
+	#project-dropdown::-webkit-scrollbar-thumb:hover {
+	  background: var(--primary-dark);
+	}	
   } 
   </style>
 </head>
@@ -521,7 +543,7 @@
     <header class="bg-white shadow-sm">
       <div class="container mx-auto px-4 py-4 flex justify-between items-center">
         <h1 class="text-2xl font-bold text-gray-800">
-          <i class="fas fa-clock mr-2 text-blue-500"></i> TimeBook Team Geomira A.B.
+          <i class="fas fa-clock mr-2 text-blue-500"></i> TimeBook Team Gg
         </h1>
         
         <div class="flex items-center space-x-4">
@@ -652,17 +674,33 @@
           <input type="date" id="entry-date" class="form-control" required>
         </div>
         
-        <div class="form-group">
-          <div class="flex justify-between items-center mb-2">
-          <label for="project" class="form-label mb-0" data-i18n="project">Projekt</label>
-          <button id="manage-projects" type="button" class="text-gray-500 hover:text-gray-700">
-            <i class="fas fa-cog"></i>
-          </button>
-          </div>
-          <select id="project" class="form-control" required>
-          <option value="" data-i18n="select_project">Välj ett projekt</option>
-          </select>
-        </div>
+		<div class="form-group">
+		  <div class="flex justify-between items-center mb-2">
+			<label for="project-input" class="form-label mb-0" data-i18n="project">Projekt</label>
+			<button id="manage-projects" type="button" class="text-gray-500 hover:text-gray-700">
+			  <i class="fas fa-cog"></i>
+			</button>
+		  </div>
+		  <div class="relative">
+			<!-- Campo visible para búsqueda -->
+			<input type="text" 
+				   id="project-input" 
+				   class="form-control pr-8" 
+				   placeholder="🔍 Skriv för att söka..." 
+				   required
+				   autocomplete="off">
+			<!-- Ícono de desplegable -->
+			<div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+			  <i class="fas fa-chevron-down text-gray-400"></i>
+			</div>
+			<!-- Dropdown personalizado con scroll -->
+			<div id="project-dropdown" class="absolute z-50 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg hidden max-h-60 overflow-y-auto">
+			  <!-- Las opciones se insertarán aquí dinámicamente -->
+			</div>
+			<!-- Campo oculto para guardar el ID real -->
+			<input type="hidden" id="project" name="project" required>
+		  </div>
+		</div>
         
         <div class="form-group">
           <label for="break-time" class="form-label" data-i18n="break_time">Rasttid (minuter)</label>
@@ -2722,105 +2760,187 @@
       }, 3000);
     }
 
-    // Load projects from state
-    function loadProjects() {
-      const projectSelect = document.getElementById('project');
-      const editProjectSelect = document.getElementById('edit-project');
-      const projectsList = document.getElementById('projects-list');
-      const projectFilter = document.getElementById('project-filter');
-      const exportProject = document.getElementById('export-project');
-      
-      // Clear existing options/items
-      projectSelect.innerHTML = '';
-      editProjectSelect.innerHTML = '';
-      projectsList.innerHTML = '';
-      projectFilter.innerHTML = '';
-      exportProject.innerHTML = '';
-      
-      // Add default option
-      const defaultOption = document.createElement('option');
-      defaultOption.value = '';
-      defaultOption.textContent = translations[state.currentLanguage]['select_project'];
-      projectSelect.appendChild(defaultOption);
-      
-      const editDefaultOption = document.createElement('option');
-      editDefaultOption.value = '';
-      editDefaultOption.textContent = translations[state.currentLanguage]['select_project'];
-      editProjectSelect.appendChild(editDefaultOption);
-      
-      // Add all projects option to filters
-      const allProjectsOption = document.createElement('option');
-      allProjectsOption.value = 'all';
-      allProjectsOption.textContent = translations[state.currentLanguage]['all_projects'];
-      projectFilter.appendChild(allProjectsOption);
-      exportProject.appendChild(allProjectsOption.cloneNode(true));
-      
-      // Add projects
-      Object.entries(state.projects).forEach(([id, project]) => {
-        // Add to select
-        const option = document.createElement('option');
-        option.value = id;
-        option.textContent = `${project.code} - ${project.name}`;
-        projectSelect.appendChild(option);
-        
-        // Add to edit select
-        const editOption = option.cloneNode(true);
-        editProjectSelect.appendChild(editOption);
-        
-        // Add to project filter
-        const filterOption = option.cloneNode(true);
-        projectFilter.appendChild(filterOption);
-        
-        // Add to export project filter
-        const exportOption = option.cloneNode(true);
-        exportProject.appendChild(exportOption);
-        
-        // Add to projects list (con clase project-item)
-        const projectItem = document.createElement('div');
-        projectItem.className = 'project-item flex justify-between items-center p-2 border-b';
-        projectItem.setAttribute('data-id', id);
-        projectItem.innerHTML = `
-          <div>
-            <span class="font-medium">${project.name}</span>
-            <span class="text-sm text-gray-500 ml-2">${project.code}</span>
-          </div>
-          <div>
-            <button class="text-gray-500 hover:text-gray-700 mr-2 edit-project" data-id="${id}">
-              <i class="fas fa-pencil-alt"></i>
-            </button>
-            <button class="text-red-500 hover:text-red-700 delete-project" data-id="${id}">
-              <i class="fas fa-trash"></i>
-            </button>
-          </div>
-        `;
-        projectsList.appendChild(projectItem);
-      });
-      
-      // Add event listeners to edit/delete buttons
-      document.querySelectorAll('.edit-project').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const projectId = btn.dataset.id;
-          const project = state.projects[projectId];
-          if (project) {
-            if (state.projectFormDirty && !confirm(translations[state.currentLanguage]['confirm_exit'])) return;
-            state.editingProjectId = projectId;
-            document.getElementById('new-project-name').value = project.name;
-            document.getElementById('new-project-code').value = project.code;
-            state.projectFormDirty = false;
-            switchToAddProjectTab();
-          }
-        });
-      });
-      
-      document.querySelectorAll('.delete-project').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const projectId = btn.dataset.id;
-          if (confirm(translations[state.currentLanguage]['confirm_delete'])) {
-            database.ref(`users/${state.user.uid}/projects/${projectId}`).remove();
-          }
-        });
-      });
-    }
+	function loadProjects() {
+	  const editProjectSelect = document.getElementById('edit-project');
+	  const projectsList = document.getElementById('projects-list');
+	  const projectFilter = document.getElementById('project-filter');
+	  const exportProject = document.getElementById('export-project');
+	  const projectInput = document.getElementById('project-input');
+	  const projectDropdown = document.getElementById('project-dropdown');
+	  const projectHidden = document.getElementById('project');
+
+	  // Limpiar
+	  editProjectSelect.innerHTML = '';
+	  projectsList.innerHTML = '';
+	  projectFilter.innerHTML = '';
+	  exportProject.innerHTML = '';
+	  if (projectDropdown) projectDropdown.innerHTML = '';
+
+	  // Opción por defecto para selects (editar, filtrar, exportar)
+	  const defaultOption = document.createElement('option');
+	  defaultOption.value = '';
+	  defaultOption.textContent = translations[state.currentLanguage]['select_project'];
+	  editProjectSelect.appendChild(defaultOption);
+
+	  // Opción "Todos los proyectos" para filtros
+	  const allProjectsOption = document.createElement('option');
+	  allProjectsOption.value = 'all';
+	  allProjectsOption.textContent = translations[state.currentLanguage]['all_projects'];
+	  projectFilter.appendChild(allProjectsOption);
+	  exportProject.appendChild(allProjectsOption.cloneNode(true));
+
+	  // Mapa para relacionar texto mostrado con ID
+	  const optionMap = {};
+
+	  // Añadir cada proyecto
+	  Object.entries(state.projects).forEach(([id, project]) => {
+		const displayText = `${project.code} - ${project.name}`;
+		optionMap[displayText] = id;
+
+		// Para selects de edición, filtro y exportación
+		const option = document.createElement('option');
+		option.value = id;
+		option.textContent = displayText;
+		editProjectSelect.appendChild(option.cloneNode(true));
+		projectFilter.appendChild(option.cloneNode(true));
+		exportProject.appendChild(option.cloneNode(true));
+
+		// Para el dropdown personalizado
+		if (projectDropdown) {
+		  const dropdownItem = document.createElement('div');
+		  dropdownItem.className = 'px-4 py-2 hover:bg-gray-100 cursor-pointer border-b border-gray-100 last:border-b-0';
+		  dropdownItem.textContent = displayText;
+		  dropdownItem.setAttribute('data-value', displayText);
+		  dropdownItem.setAttribute('data-id', id);
+		  
+		  dropdownItem.addEventListener('click', function() {
+			projectInput.value = displayText;
+			projectHidden.value = id;
+			projectDropdown.classList.add('hidden');
+			projectInput.setCustomValidity('');
+		  });
+		  
+		  projectDropdown.appendChild(dropdownItem);
+		}
+
+		// Para la lista visible en el modal
+		const projectItem = document.createElement('div');
+		projectItem.className = 'project-item flex justify-between items-center p-2 border-b';
+		projectItem.setAttribute('data-id', id);
+		projectItem.innerHTML = `
+		  <div>
+			<span class="font-medium">${project.name}</span>
+			<span class="text-sm text-gray-500 ml-2">${project.code}</span>
+		  </div>
+		  <div>
+			<button class="text-gray-500 hover:text-gray-700 mr-2 edit-project" data-id="${id}">
+			  <i class="fas fa-pencil-alt"></i>
+			</button>
+			<button class="text-red-500 hover:text-red-700 delete-project" data-id="${id}">
+			  <i class="fas fa-trash"></i>
+			</button>
+		  </div>
+		`;
+		projectsList.appendChild(projectItem);
+	  });
+
+	  // Guardar el mapa en el estado
+	  state.projectOptionMap = optionMap;
+
+	  // Eventos para el input de búsqueda
+	  if (projectInput && projectDropdown) {
+		// Mostrar/ocultar dropdown
+		projectInput.addEventListener('focus', () => {
+		  filterDropdownOptions(projectInput.value);
+		  projectDropdown.classList.remove('hidden');
+		});
+
+		projectInput.addEventListener('input', function(e) {
+		  const searchText = e.target.value;
+		  filterDropdownOptions(searchText);
+		  
+		  // Si el texto coincide exactamente con una opción, establecer el ID oculto
+		  const exactMatch = state.projectOptionMap[searchText];
+		  if (exactMatch) {
+			projectHidden.value = exactMatch;
+			projectInput.setCustomValidity('');
+		  } else {
+			projectHidden.value = '';
+		  }
+		});
+
+		projectInput.addEventListener('blur', function() {
+		  // Pequeño retraso para permitir clic en dropdown
+		  setTimeout(() => {
+			if (!projectDropdown.matches(':hover')) {
+			  projectDropdown.classList.add('hidden');
+			}
+		  }, 200);
+		});
+
+		// Cerrar dropdown al hacer clic fuera
+		document.addEventListener('click', function(e) {
+		  if (!projectInput.contains(e.target) && !projectDropdown.contains(e.target)) {
+			projectDropdown.classList.add('hidden');
+		  }
+		});
+
+		// Función para filtrar opciones del dropdown
+		function filterDropdownOptions(searchText) {
+		  const items = projectDropdown.querySelectorAll('div[data-value]');
+		  const lowerSearch = searchText.toLowerCase();
+		  let hasVisible = false;
+		  
+		  items.forEach(item => {
+			const text = item.getAttribute('data-value').toLowerCase();
+			if (text.includes(lowerSearch)) {
+			  item.style.display = 'block';
+			  hasVisible = true;
+			} else {
+			  item.style.display = 'none';
+			}
+		  });
+		  
+		  // Mostrar mensaje si no hay resultados
+		  let noResultsMsg = projectDropdown.querySelector('.no-results');
+		  if (!hasVisible) {
+			if (!noResultsMsg) {
+			  noResultsMsg = document.createElement('div');
+			  noResultsMsg.className = 'no-results px-4 py-2 text-gray-500 text-center';
+			  noResultsMsg.textContent = 'Inga projekt matchar sökningen';
+			  projectDropdown.appendChild(noResultsMsg);
+			}
+		  } else if (noResultsMsg) {
+			noResultsMsg.remove();
+		  }
+		}
+	  }
+
+	  // Event listeners para editar/eliminar
+	  document.querySelectorAll('.edit-project').forEach(btn => {
+		btn.addEventListener('click', () => {
+		  const projectId = btn.dataset.id;
+		  const project = state.projects[projectId];
+		  if (project) {
+			if (state.projectFormDirty && !confirm(translations[state.currentLanguage]['confirm_exit'])) return;
+			state.editingProjectId = projectId;
+			document.getElementById('new-project-name').value = project.name;
+			document.getElementById('new-project-code').value = project.code;
+			state.projectFormDirty = false;
+			switchToAddProjectTab();
+		  }
+		});
+	  });
+
+	  document.querySelectorAll('.delete-project').forEach(btn => {
+		btn.addEventListener('click', () => {
+		  const projectId = btn.dataset.id;
+		  if (confirm(translations[state.currentLanguage]['confirm_delete'])) {
+			database.ref(`users/${state.user.uid}/projects/${projectId}`).remove();
+		  }
+		});
+	  });
+	}
 
     // Handle time entry submission
     function handleTimeEntrySubmit(e) {

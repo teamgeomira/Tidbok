@@ -3932,23 +3932,40 @@
         return true;
       });
       
-      // Sort records
-      exportRecords.sort((a, b) => {
-        let aValue, bValue;
-        
-        if (sortBy === 'date') {
-          aValue = new Date(a[1].date);
-          bValue = new Date(b[1].date);
-        } else {
-          aValue = state.projects[a[1].projectId]?.name || '';
-          bValue = state.projects[b[1].projectId]?.name || '';
-        }
-        
-        if (order === 'asc') {
-          return aValue > bValue ? 1 : -1;
-        } else {
-          return aValue < bValue ? 1 : -1;
-        }
+		// Sort records - Improved version
+		exportRecords.sort((a, b) => {
+		  const recordA = a[1];
+		  const recordB = b[1];
+		  let comparison = 0;
+
+		  if (sortBy === 'date') {
+			// 1. Comparar por FECHA primero
+			const dateA = new Date(recordA.date);
+			const dateB = new Date(recordB.date);
+
+			if (dateA > dateB) comparison = 1;
+			else if (dateA < dateB) comparison = -1;
+			else {
+			  // 2. Si la fecha es la MISMA, comparar por HORA DE INICIO (startTime)
+			  if (recordA.startTime > recordB.startTime) comparison = 1;
+			  else if (recordA.startTime < recordB.startTime) comparison = -1;
+			  else comparison = 0; // Si son exactamente iguales (misma fecha y hora)
+			}
+		  } else {
+			// Si se ordena por proyecto, solo comparamos por proyecto
+			const projectA = state.projects[recordA.projectId]?.name || '';
+			const projectB = state.projects[recordB.projectId]?.name || '';
+			if (projectA > projectB) comparison = 1;
+			else if (projectA < projectB) comparison = -1;
+			else comparison = 0;
+		  }
+
+		  // Aplicar el orden (ascendente o descendente)
+		  if (order === 'asc') {
+			return comparison;
+		  } else {
+			return comparison * -1; // Invertir el resultado para orden descendente
+		  }
       });
       
       if (state.exportType === 'pdf') {
@@ -4887,6 +4904,3 @@
   <!-- 🔼 FIN DEL CÓDIGO MEJORADO 🔼 -->
 </body>
 </html>
-
-
-

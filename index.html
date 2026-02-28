@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>TimeBook Pro - Tidrapporteringssystem</title>
-	
-	<link rel="icon" href="favicon.png" type="image/png">
-	
+  <title>TimeBook TG - Tidrapporteringssystem</title>
+  
+  <link rel="icon" href="favicon.png" type="image/png">
+  
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
@@ -378,53 +378,53 @@
       transition: max-height 0.3s ease;
     }
 
-	.settings-panel.open {
-	  max-height: 500px;
-	}
+  .settings-panel.open {
+    max-height: 500px;
+  }
 
-	.suggestion-box div:hover { 
-	  background: #eef; 
-	}
-	
-		.case-buttons {
-		margin-top: 5px;
-		display: flex;
-		gap: 5px;
-	}
+  .suggestion-box div:hover { 
+    background: #eef; 
+  }
+  
+    .case-buttons {
+    margin-top: 5px;
+    display: flex;
+    gap: 5px;
+  }
 
-	.case-buttons button {
-		padding: 2px 6px;
-		border: 1px solid #ccc;
-		border-radius: 3px;
-		background: #f5f5f5;
-		cursor: pointer;
-		font-size: 10px;
-		transition: all 0.2s;
-	}
+  .case-buttons button {
+    padding: 2px 6px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background: #f5f5f5;
+    cursor: pointer;
+    font-size: 10px;
+    transition: all 0.2s;
+  }
 
-	.case-buttons button:hover {
-		background: #e0e0e0;
-		border-color: #999;
-	}
+  .case-buttons button:hover {
+    background: #e0e0e0;
+    border-color: #999;
+  }
 
-	.case-buttons button:active {
-		background: #d0d0d0;
-	}
-	@media print {
-	  body * {
-		visibility: hidden;
-	  }
-	  #print-container,
-	  #print-container * {
-		visibility: visible;
-	  }
-	  #print-container {
-		position: absolute;
-		left: 0;
-		top: 0;
-		width: 100%;
-	  }
-	}	
+  .case-buttons button:active {
+    background: #d0d0d0;
+  }
+  @media print {
+    body * {
+      visibility: hidden;
+    }
+    #print-container,
+    #print-container * {
+      visibility: visible;
+    }
+    #print-container {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+    }
+  } 
   </style>
 </head>
 <body class="min-h-screen">
@@ -450,7 +450,7 @@
     <div class="card auth-card">
       <div class="text-center mb-6">
         <h1 class="text-2xl font-bold text-gray-800">
-          <i class="fas fa-clock mr-2 text-blue-500"></i> TimeBook Pro
+          <i class="fas fa-clock mr-2 text-blue-500"></i> TimeBook TG
         </h1>
         <p class="text-gray-600 mt-2" data-i18n="sync_description">Realtidssynkronisering - Åtkomst från vilken enhet som helst</p>
       </div>
@@ -521,7 +521,7 @@
     <header class="bg-white shadow-sm">
       <div class="container mx-auto px-4 py-4 flex justify-between items-center">
         <h1 class="text-2xl font-bold text-gray-800">
-          <i class="fas fa-clock mr-2 text-blue-500"></i> TimeBook Pro
+          <i class="fas fa-clock mr-2 text-blue-500"></i> TimeBook Team Geomira A.B.
         </h1>
         
         <div class="flex items-center space-x-4">
@@ -557,13 +557,13 @@
                 <span class="language-flag flag-th"></span>
                 <span data-i18n="language_thai">ไทย</span>
               </a>
-			  </div>
-			</div>
-			<a href="https://teamgeomira.github.io/Franvarorapport/" target="_blank" class="flex items-center btn-outline text-sm">
+        </div>
+      </div>
+      <a href="https://teamgeomira.github.io/Franvarorapport/" target="_blank" class="flex items-center btn-outline text-sm">
   <i class="fas fa-school mr-1"></i>
   <span>SkolaRaport</span>
 </a>
-			<a href="https://teamgeomira.github.io/Korjournal/" target="_blank" class="flex items-center btn-outline text-sm ml-2">
+      <a href="https://teamgeomira.github.io/Korjournal/" target="_blank" class="flex items-center btn-outline text-sm ml-2">
     <i class="fas fa-book-medical mr-1"></i>
     <span>Korjournal</span>
   </a>
@@ -612,7 +612,7 @@
           <div class="form-group">
             <label for="company-name" class="form-label" data-i18n="company_name">Företagsnamn (valfritt)</label>
             <input type="text" id="company-name" class="form-control" placeholder="Exempel AB">
-          </div>		
+          </div>    
           <div class="form-group">
             <label for="company-address" class="form-label" data-i18n="company_address">Adress</label>
             <input type="text" id="company-address" class="form-control" placeholder="Köpmangatan 5, plan 10">
@@ -637,102 +637,102 @@
     </div>
     
     <!-- Main Content -->
-	<main class="container mx-auto px-4 py-8">
-	  <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
-		<!-- Left Column (3/4) -->
-		<div class="lg:col-span-3 space-y-6">
-		  <!-- Time Entry Form Card - Ahora más ancho -->
-		  <div class="card p-6">
-			<h2 class="text-xl font-semibold mb-6" data-i18n="register_hours">Registrera timmar</h2>
-			
-			<form id="time-entry-form">
-			  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-				<div class="form-group">
-				  <label for="entry-date" class="form-label" data-i18n="date">Datum</label>
-				  <input type="date" id="entry-date" class="form-control" required>
-				</div>
-				
-				<div class="form-group">
-				  <div class="flex justify-between items-center mb-2">
-					<label for="project" class="form-label mb-0" data-i18n="project">Projekt</label>
-					<button id="manage-projects" type="button" class="text-gray-500 hover:text-gray-700">
-					  <i class="fas fa-cog"></i>
-					</button>
-				  </div>
-				  <select id="project" class="form-control" required>
-					<option value="" data-i18n="select_project">Välj ett projekt</option>
-				  </select>
-				</div>
-				
-				<div class="form-group">
-				  <label for="break-time" class="form-label" data-i18n="break_time">Rasttid (minuter)</label>
-				  <select id="break-time" class="form-control" required>
-					<option value="0" data-i18n="break_0">0 minuter</option>
-					<option value="30" data-i18n="break_30">En halvtimme</option>
-					<option value="60" selected data-i18n="break_60">1 timme</option>
-					<option value="120" data-i18n="break_120">2 timmar</option>
-				  </select>
-				</div>
-			  </div>
-			  
-			  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-				<div class="form-group">
-				  <label for="start-time" class="form-label" data-i18n="start_time">Starttid</label>
-				  <input type="time" id="start-time" class="form-control" required value="06:30">
-				</div>
-				
-				<div class="form-group">
-				  <label for="end-time" class="form-label" data-i18n="end_time">Sluttid</label>
-				  <input type="time" id="end-time" class="form-control" required value="16:00">
-				</div>
-			  </div>
-			  
-			<div class="mt-4">
-			  <div class="form-group">
-				<label for="notes" class="form-label" data-i18n="notes">Anteckningar</label>
-				<textarea id="notes" class="form-control" rows="3" spellcheck="true" lang="sv" 
-						  style="resize: both; width: 100%; max-width: 100%;"></textarea>
-				<div id="suggestions" style="margin-top: 5px; color: blue;"></div>
-			  </div>
-			</div>
+  <main class="container mx-auto px-4 py-8">
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+    <!-- Left Column (3/4) -->
+    <div class="lg:col-span-3 space-y-6">
+      <!-- Time Entry Form Card - Ahora más ancho -->
+      <div class="card p-6">
+      <h2 class="text-xl font-semibold mb-6" data-i18n="register_hours">Registrera timmar</h2>
+      
+      <form id="time-entry-form">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="form-group">
+          <label for="entry-date" class="form-label" data-i18n="date">Datum</label>
+          <input type="date" id="entry-date" class="form-control" required>
+        </div>
+        
+        <div class="form-group">
+          <div class="flex justify-between items-center mb-2">
+          <label for="project" class="form-label mb-0" data-i18n="project">Projekt</label>
+          <button id="manage-projects" type="button" class="text-gray-500 hover:text-gray-700">
+            <i class="fas fa-cog"></i>
+          </button>
+          </div>
+          <select id="project" class="form-control" required>
+          <option value="" data-i18n="select_project">Välj ett projekt</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="break-time" class="form-label" data-i18n="break_time">Rasttid (minuter)</label>
+          <select id="break-time" class="form-control" required>
+          <option value="0" data-i18n="break_0">0 minuter</option>
+          <option value="30" data-i18n="break_30">En halvtimme</option>
+          <option value="60" selected data-i18n="break_60">1 timme</option>
+          <option value="120" data-i18n="break_120">2 timmar</option>
+          </select>
+        </div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+        <div class="form-group">
+          <label for="start-time" class="form-label" data-i18n="start_time">Starttid</label>
+          <input type="time" id="start-time" class="form-control" required value="06:30">
+        </div>
+        
+        <div class="form-group">
+          <label for="end-time" class="form-label" data-i18n="end_time">Sluttid</label>
+          <input type="time" id="end-time" class="form-control" required value="16:00">
+        </div>
+        </div>
+        
+      <div class="mt-4">
+        <div class="form-group">
+        <label for="notes" class="form-label" data-i18n="notes">Anteckningar</label>
+        <textarea id="notes" class="form-control" rows="3" spellcheck="true" lang="sv" 
+              style="resize: both; width: 100%; max-width: 100%;"></textarea>
+        <div id="suggestions" style="margin-top: 5px; color: blue;"></div>
+        </div>
+      </div>
 
-			<script>
-			  // Cargar diccionario sueco
-			  var dictionary = new Typo("sv_SE", null, null, { dictionaryPath: "https://cdn.jsdelivr.net/npm/typo-js@1.2.1/dictionaries" });
+      <script>
+        // Cargar diccionario sueco
+        var dictionary = new Typo("sv_SE", null, null, { dictionaryPath: "https://cdn.jsdelivr.net/npm/typo-js@1.2.1/dictionaries" });
 
-			  const textarea = document.getElementById("notes");
-			  const suggestionsDiv = document.getElementById("suggestions");
+        const textarea = document.getElementById("notes");
+        const suggestionsDiv = document.getElementById("suggestions");
 
-			  textarea.addEventListener("input", function() {
-				const words = textarea.value.split(/\s+/);
-				const lastWord = words[words.length - 1];
+        textarea.addEventListener("input", function() {
+        const words = textarea.value.split(/\s+/);
+        const lastWord = words[words.length - 1];
 
-				if (lastWord && !dictionary.check(lastWord)) {
-				  const suggestions = dictionary.suggest(lastWord, 5); // máximo 5 sugerencias
-				  if (suggestions.length > 0) {
-					suggestionsDiv.innerHTML = "Sugerencias: " + suggestions.join(", ");
-				  } else {
-					suggestionsDiv.innerHTML = "Inga förslag hittades";
-				  }
-				} else {
-				  suggestionsDiv.innerHTML = "";
-				}
-			  });
-			</script>
-			  
-			  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-				<div class="form-group">
-				  <label for="coworkers" class="form-label" data-i18n="coworkers">Kollegor</label>
-				  <input type="text" id="coworkers" class="form-control" data-i18n-placeholder="coworkers_placeholder" placeholder="Anna, Erik, etc.">
-				</div>
-			  </div>
-			  
-			  <div class="flex justify-between mt-6">
-				<button type="button" id="reset-form" class="btn-outline" data-i18n="cancel">Avbryt</button>
-				<button type="submit" id="save-record-btn" class="btn-primary" data-i18n="save_record">Spara post</button>
-			  </div>
-			</form>
-		  </div>
+        if (lastWord && !dictionary.check(lastWord)) {
+          const suggestions = dictionary.suggest(lastWord, 5); // máximo 5 sugerencias
+          if (suggestions.length > 0) {
+          suggestionsDiv.innerHTML = "Sugerencias: " + suggestions.join(", ");
+          } else {
+          suggestionsDiv.innerHTML = "Inga förslag hittades";
+          }
+        } else {
+          suggestionsDiv.innerHTML = "";
+        }
+        });
+      </script>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+        <div class="form-group">
+          <label for="coworkers" class="form-label" data-i18n="coworkers">Kollegor</label>
+          <input type="text" id="coworkers" class="form-control" data-i18n-placeholder="coworkers_placeholder" placeholder="Anna, Erik, etc.">
+        </div>
+        </div>
+        
+        <div class="flex justify-between mt-6">
+        <button type="button" id="reset-form" class="btn-outline" data-i18n="cancel">Avbryt</button>
+        <button type="submit" id="save-record-btn" class="btn-primary" data-i18n="save_record">Spara post</button>
+        </div>
+      </form>
+      </div>
           
           <!-- Records History -->
           <div class="card">
@@ -783,20 +783,20 @@
           <div class="card p-4">
             <h3 class="text-lg font-semibold mb-4" data-i18n="export">Exportera</h3>
             
-			<div class="flex flex-wrap gap-2">
-			  <button id="export-pdf-btn" class="btn-primary text-sm">
-				<i class="fas fa-file-pdf mr-1"></i> <span data-i18n="export_pdf">Exportera PDF</span>
-			  </button>
-			  
-			  <button id="export-word-btn" class="btn-outline text-sm">
-				<i class="fas fa-file-word mr-1"></i> <span data-i18n="export_word">Exportera Word</span>
-			  </button>
+      <div class="flex flex-wrap gap-2">
+        <button id="export-pdf-btn" class="btn-primary text-sm">
+        <i class="fas fa-file-pdf mr-1"></i> <span data-i18n="export_pdf">Exportera PDF</span>
+        </button>
+        
+        <button id="export-word-btn" class="btn-outline text-sm">
+        <i class="fas fa-file-word mr-1"></i> <span data-i18n="export_word">Exportera Word</span>
+        </button>
 
-			  <!-- BOTÓN DE IMPRESIÓN - NUEVO -->
-			  <button id="print-report-btn" class="btn-outline text-sm">
-				<i class="fas fa-print mr-1"></i> <span data-i18n="print_report">Visa på skärmen</span>
-			  </button>
-			</div>
+        <!-- BOTÓN DE IMPRESIÓN - NUEVO -->
+        <button id="print-report-btn" class="btn-outline text-sm">
+        <i class="fas fa-print mr-1"></i> <span data-i18n="print_report">Visa på skärmen</span>
+        </button>
+      </div>
           </div>
         </div>
         
@@ -842,50 +842,50 @@
             </div>
           </div>
           
-			<!-- Visual Statistics (collapsible) -->
-			<div class="card">
-			  <div class="p-4 border-b flex justify-between items-center cursor-pointer" id="toggle-visual">
-				<h3 class="text-lg font-semibold" data-i18n="visual_statistics">Visuell statistik</h3>
-				<i class="fas fa-chevron-down transition-transform duration-300" id="visual-icon"></i>
-			  </div>
+      <!-- Visual Statistics (collapsible) -->
+      <div class="card">
+        <div class="p-4 border-b flex justify-between items-center cursor-pointer" id="toggle-visual">
+        <h3 class="text-lg font-semibold" data-i18n="visual_statistics">Visuell statistik</h3>
+        <i class="fas fa-chevron-down transition-transform duration-300" id="visual-icon"></i>
+        </div>
 
-			  <div id="visual-content" class="p-4 hidden">
-				<div class="mb-6">
-				  <div class="flex justify-between items-center mb-3">
-					<h4 class="font-medium" data-i18n="hours_per_week">Timmar per vecka</h4>
-					<div class="flex gap-2">
-					  <button class="text-sm px-3 py-1 rounded bg-gray-200 hover:bg-gray-300 view-toggle active"
-							  data-view="monthly" data-i18n="monthly">Månadsvis</button>
-					  <button class="text-sm px-3 py-1 rounded bg-gray-200 hover:bg-gray-300 view-toggle"
-							  data-view="quarterly" data-i18n="quarterly">Kvartalsvis</button>
-					</div>
-				  </div>
-				  <div class="h-64">
-					<canvas id="weekly-chart"></canvas>
-				  </div>
-				</div>
-				
-				<div>
-				  <h4 class="font-medium mb-3" data-i18n="project_distribution">Projektfördelning</h4>
-				  <div class="h-64">
-					<canvas id="project-chart"></canvas>
-				  </div>
-				</div>
-			  </div>
-			</div>
+        <div id="visual-content" class="p-4 hidden">
+        <div class="mb-6">
+          <div class="flex justify-between items-center mb-3">
+          <h4 class="font-medium" data-i18n="hours_per_week">Timmar per vecka</h4>
+          <div class="flex gap-2">
+            <button class="text-sm px-3 py-1 rounded bg-gray-200 hover:bg-gray-300 view-toggle active"
+                data-view="monthly" data-i18n="monthly">Månadsvis</button>
+            <button class="text-sm px-3 py-1 rounded bg-gray-200 hover:bg-gray-300 view-toggle"
+                data-view="quarterly" data-i18n="quarterly">Kvartalsvis</button>
+          </div>
+          </div>
+          <div class="h-64">
+          <canvas id="weekly-chart"></canvas>
+          </div>
+        </div>
+        
+        <div>
+          <h4 class="font-medium mb-3" data-i18n="project_distribution">Projektfördelning</h4>
+          <div class="h-64">
+          <canvas id="project-chart"></canvas>
+          </div>
+        </div>
+        </div>
+      </div>
 
-			<script>
-			document.addEventListener("DOMContentLoaded", () => {
-			  const toggleBtn = document.getElementById("toggle-visual");
-			  const content = document.getElementById("visual-content");
-			  const icon = document.getElementById("visual-icon");
+      <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const toggleBtn = document.getElementById("toggle-visual");
+        const content = document.getElementById("visual-content");
+        const icon = document.getElementById("visual-icon");
 
-			  toggleBtn.addEventListener("click", () => {
-				content.classList.toggle("hidden");
-				icon.classList.toggle("rotate-180");
-			  });
-			});
-			</script>
+        toggleBtn.addEventListener("click", () => {
+        content.classList.toggle("hidden");
+        icon.classList.toggle("rotate-180");
+        });
+      });
+      </script>
 
           
           <!-- Hours Summary Table -->
@@ -897,97 +897,97 @@
               </button>
             </div>
             
-			<div id="summary-content" class="p-4 hidden">
-			  <div class="overflow-x-auto">
-				<table class="w-full" id="resumenHoras">
-				  <thead>
-					<tr class="bg-gray-50 border-b">
-					  <th class="py-2 px-3 text-left" data-i18n="date">Datum</th>
-					  <th class="py-2 px-3 text-left" data-i18n="week">Vecka</th>
-					  <th class="py-2 px-3 text-left" data-i18n="project">Projekt</th>
-					  <th class="py-2 px-3 text-right" data-i18n="worked_hours">Arbetade timmar</th>
-					  <th class="py-2 px-3 text-right" data-i18n="break">Rast</th>
-					</tr>
-				  </thead>
-				  <tbody>
-				  </tbody>
-				  <tfoot>
-					<tr class="font-semibold">
-					  <td colspan="3" class="py-2 px-3 text-right" data-i18n="total">Totalt:</td>
-					  <td class="py-2 px-3 text-right" id="total-mes">0</td>
-					  <td class="py-2 px-3"></td>
-					</tr>
-				  </tfoot>
-				</table>
-			  </div>
-			</div>
+      <div id="summary-content" class="p-4 hidden">
+        <div class="overflow-x-auto">
+        <table class="w-full" id="resumenHoras">
+          <thead>
+          <tr class="bg-gray-50 border-b">
+            <th class="py-2 px-3 text-left" data-i18n="date">Datum</th>
+            <th class="py-2 px-3 text-left" data-i18n="week">Vecka</th>
+            <th class="py-2 px-3 text-left" data-i18n="project">Projekt</th>
+            <th class="py-2 px-3 text-right" data-i18n="worked_hours">Arbetade timmar</th>
+            <th class="py-2 px-3 text-right" data-i18n="break">Rast</th>
+          </tr>
+          </thead>
+          <tbody>
+          </tbody>
+          <tfoot>
+          <tr class="font-semibold">
+            <td colspan="3" class="py-2 px-3 text-right" data-i18n="total">Totalt:</td>
+            <td class="py-2 px-3 text-right" id="total-mes">0</td>
+            <td class="py-2 px-3"></td>
+          </tr>
+          </tfoot>
+        </table>
+        </div>
+      </div>
 
-			<script>
-			function parseDate(s) {
-			  const meses = {
-				"jan.": "Jan",
-				"feb.": "Feb",
-				"mar.": "Mar",
-				"apr.": "Apr",
-				"maj": "May",
-				"jun.": "Jun",
-				"jul.": "Jul",
-				"aug.": "Aug",
-				"sep.": "Sep",
-				"okt.": "Oct",
-				"nov.": "Nov",
-				"dec.": "Dec"
-			  };
-			  // Tomar siempre los últimos 3 elementos
-			  const partes = s.trim().split(" ");
-			  const day = partes[partes.length - 3];
-			  const month = meses[partes[partes.length - 2]];
-			  const year = partes[partes.length - 1];
-			  return new Date(`${day} ${month} ${year}`);
-			}
-
-
-			// 🔹 Aquí metes tus registros
-			const registros = [
-			  { date: "fre 1 aug. 2025", week: 31, project: "4108282 - Sickla skola Utemiljö.", hours: 6.00, break: "30 min" },
-			  { date: "mån 11 aug. 2025", week: 33, project: "41004034 - Sickla skola hus C.", hours: 2.00, break: "0 min" },
-			  { date: "ons 13 aug. 2025", week: 33, project: "3 - Brasvägen förskola", hours: 5.50, break: "30 min" },
-			  { date: "tors 11 sep. 2025", week: 37, project: "8 - Oxelösund kaj 8", hours: 7.50, break: "60 min" },
-			  { date: "fre 12 sep. 2025", week: 37, project: "4108282 - Sickla skola Utemiljö.", hours: 6.00, break: "30 min" }
-			  // ... agrega todos los demás registros aquí
-			];
-
-			// 🔹 Ordenar: primero fecha descendente, luego proyecto alfabético
-			registros.sort((a, b) => {
-			  const dateDiff = parseDate(b.date) - parseDate(a.date); // fecha descendente
-			  if (dateDiff !== 0) return dateDiff;
-			  return a.project.localeCompare(b.project); // si es mismo día → ordenar por proyecto
-			});
+      <script>
+      function parseDate(s) {
+        const meses = {
+        "jan.": "Jan",
+        "feb.": "Feb",
+        "mar.": "Mar",
+        "apr.": "Apr",
+        "maj": "May",
+        "jun.": "Jun",
+        "jul.": "Jul",
+        "aug.": "Aug",
+        "sep.": "Sep",
+        "okt.": "Oct",
+        "nov.": "Nov",
+        "dec.": "Dec"
+        };
+        // Tomar siempre los últimos 3 elementos
+        const partes = s.trim().split(" ");
+        const day = partes[partes.length - 3];
+        const month = meses[partes[partes.length - 2]];
+        const year = partes[partes.length - 1];
+        return new Date(`${day} ${month} ${year}`);
+      }
 
 
-			// 🔹 Pintar en tabla
-			const tbody = document.querySelector("#resumenHoras tbody");
-			tbody.innerHTML = "";
+      // 🔹 Aquí metes tus registros
+      const registros = [
+        { date: "fre 1 aug. 2025", week: 31, project: "4108282 - Sickla skola Utemiljö.", hours: 6.00, break: "30 min" },
+        { date: "mån 11 aug. 2025", week: 33, project: "41004034 - Sickla skola hus C.", hours: 2.00, break: "0 min" },
+        { date: "ons 13 aug. 2025", week: 33, project: "3 - Brasvägen förskola", hours: 5.50, break: "30 min" },
+        { date: "tors 11 sep. 2025", week: 37, project: "8 - Oxelösund kaj 8", hours: 7.50, break: "60 min" },
+        { date: "fre 12 sep. 2025", week: 37, project: "4108282 - Sickla skola Utemiljö.", hours: 6.00, break: "30 min" }
+        // ... agrega todos los demás registros aquí
+      ];
 
-			let totalHoras = 0;
+      // 🔹 Ordenar: primero fecha descendente, luego proyecto alfabético
+      registros.sort((a, b) => {
+        const dateDiff = parseDate(b.date) - parseDate(a.date); // fecha descendente
+        if (dateDiff !== 0) return dateDiff;
+        return a.project.localeCompare(b.project); // si es mismo día → ordenar por proyecto
+      });
 
-			registros.forEach(reg => {
-			  const tr = document.createElement("tr");
-			  tr.innerHTML = `
-				<td class="py-2 px-3">${reg.date}</td>
-				<td class="py-2 px-3">${reg.week}</td>
-				<td class="py-2 px-3">${reg.project}</td>
-				<td class="py-2 px-3 text-right">${reg.hours.toFixed(2)}</td>
-				<td class="py-2 px-3 text-right">${reg.break}</td>
-			  `;
-			  tbody.appendChild(tr);
 
-			  totalHoras += reg.hours;
-			});
+      // 🔹 Pintar en tabla
+      const tbody = document.querySelector("#resumenHoras tbody");
+      tbody.innerHTML = "";
 
-			// 🔹 Mostrar total en el <tfoot>
-			document.querySelector("#total-mes").textContent = totalHoras.toFixed(2);
-			</script>
+      let totalHoras = 0;
+
+      registros.forEach(reg => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+        <td class="py-2 px-3">${reg.date}</td>
+        <td class="py-2 px-3">${reg.week}</td>
+        <td class="py-2 px-3">${reg.project}</td>
+        <td class="py-2 px-3 text-right">${reg.hours.toFixed(2)}</td>
+        <td class="py-2 px-3 text-right">${reg.break}</td>
+        `;
+        tbody.appendChild(tr);
+
+        totalHoras += reg.hours;
+      });
+
+      // 🔹 Mostrar total en el <tfoot>
+      document.querySelector("#total-mes").textContent = totalHoras.toFixed(2);
+      </script>
 
                     </tr>
                   </tfoot>
@@ -999,8 +999,8 @@
       </div>
     </main>
     
-    <!-- Project Management Modal -->
-    <div id="project-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
+    <!-- Project Management Modal (MEJORADO) -->
+    <div id="project-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50" data-backdrop="static">
       <div class="bg-white rounded-lg max-w-lg w-full max-h-[90vh] overflow-y-auto">
         <div class="p-4 border-b flex justify-between items-center">
           <h3 class="text-xl font-semibold" data-i18n="project_management">Projekthantering</h3>
@@ -1018,7 +1018,11 @@
           
           <!-- View Projects Tab -->
           <div id="view-projects-content">
-            <div id="projects-list" class="space-y-2">
+            <!-- NUEVO: Buscador de proyectos -->
+            <div class="mb-3">
+              <input type="text" id="project-search" class="form-control" data-i18n-placeholder="project_search_placeholder" placeholder="🔍 Sök projekt (kod/namn)...">
+            </div>
+            <div id="projects-list" class="space-y-2 max-h-60 overflow-y-auto pr-1">
             </div>
           </div>
           
@@ -1035,7 +1039,10 @@
                 <input type="text" id="new-project-code" class="form-control" required>
               </div>
               
-              <button type="submit" id="add-project-btn" class="btn-primary w-full mt-4" data-i18n="add_project">Lägg till projekt</button>
+              <div class="flex justify-between mt-4">
+                <button type="button" id="cancel-add-project" class="btn-outline" data-i18n="cancel">Avbryt</button>
+                <button type="submit" id="add-project-btn" class="btn-primary" data-i18n="save">Spara</button>
+              </div>
             </form>
           </div>
         </div>
@@ -1078,193 +1085,193 @@
       </div>
     </div>
     
-	<!-- Edit Record Modal -->
-	<div id="edit-record-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
-	  <div class="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-		<div class="p-4 border-b flex justify-between items-center">
-		  <h3 class="text-xl font-semibold" data-i18n="edit_record">Redigera post</h3>
-		  <button id="close-edit-record-modal" class="text-gray-500 hover:text-gray-700">
-			<i class="fas fa-times"></i>
-		  </button>
-		</div>
-		
-		<div class="p-6">
-		  <form id="edit-record-form">
-			<input type="hidden" id="edit-record-id">
-			
-			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-			  <div class="form-group">
-				<label for="edit-entry-date" class="form-label" data-i18n="date">Datum</label>
-				<input type="date" id="edit-entry-date" class="form-control" required>
-			  </div>
-			  
-			  <div class="form-group">
-				<label for="edit-project" class="form-label" data-i18n="project">Projekt</label>
-				<select id="edit-project" class="form-control" required>
-				  <option value="" data-i18n="select_project">Välj ett projekt</option>
-				</select>
-			  </div>
-			  
-			  <div class="form-group">
-				<label for="edit-start-time" class="form-label" data-i18n="start_time">Starttid</label>
-				<input type="time" id="edit-start-time" class="form-control" required>
-			  </div>
-			  
-			  <div class="form-group">
-				<label for="edit-end-time" class="form-label" data-i18n="end_time">Sluttid</label>
-				<input type="time" id="edit-end-time" class="form-control" required>
-			  </div>
-			</div>
-			
-			<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-			  <div class="form-group">
-				<label for="edit-break-time" class="form-label" data-i18n="break_time">Rasttid (minuter)</label>
-				<select id="edit-break-time" class="form-control" required>
-				  <option value="0" data-i18n="break_0">0 minuter</option>
-				  <option value="30" data-i18n="break_30">En halvtimme</option>
-				  <option value="60" selected data-i18n="break_60">1 timme</option>
-				  <option value="120" data-i18n="break_120">2 timmar</option>
-				</select>
-			  </div>
-			  
-			  <div class="form-group">
-				<label for="edit-coworkers" class="form-label" data-i18n="coworkers">Kollegor</label>
-				<input type="text" id="edit-coworkers" class="form-control" placeholder="Anna, Erik, etc.">
-			  </div>
-			</div>
-			
-			<div class="form-group mb-6">
-			  <label for="edit-notes" class="form-label" data-i18n="notes">Anteckningar</label>
-			  <textarea id="edit-notes" class="form-control" rows="4" spellcheck="true" lang="sv" 
-						style="resize: vertical; min-height: 120px;"></textarea>
-			</div>
-			
-			<div class="flex justify-between items-center pt-4 border-t">
-			  <button type="button" id="delete-record" class="text-red-500 hover:text-red-700 flex items-center">
-				<i class="fas fa-trash mr-2"></i> 
-				<span data-i18n="delete">Radera</span>
-			  </button>
-			  
-			  <div class="flex space-x-3">
-				<button type="button" id="cancel-edit-record" class="btn-outline px-4 py-2" data-i18n="cancel">Avbryt</button>
-				<button type="submit" class="btn-primary px-4 py-2" data-i18n="save">Spara</button>
-			  </div>
-			</div>
-		  </form>
-		</div>
-	  </div>
-	</div>
+  <!-- Edit Record Modal -->
+  <div id="edit-record-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
+    <div class="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+    <div class="p-4 border-b flex justify-between items-center">
+      <h3 class="text-xl font-semibold" data-i18n="edit_record">Redigera post</h3>
+      <button id="close-edit-record-modal" class="text-gray-500 hover:text-gray-700">
+      <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <div class="p-6">
+      <form id="edit-record-form">
+      <input type="hidden" id="edit-record-id">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+        <div class="form-group">
+        <label for="edit-entry-date" class="form-label" data-i18n="date">Datum</label>
+        <input type="date" id="edit-entry-date" class="form-control" required>
+        </div>
+        
+        <div class="form-group">
+        <label for="edit-project" class="form-label" data-i18n="project">Projekt</label>
+        <select id="edit-project" class="form-control" required>
+          <option value="" data-i18n="select_project">Välj ett projekt</option>
+        </select>
+        </div>
+        
+        <div class="form-group">
+        <label for="edit-start-time" class="form-label" data-i18n="start_time">Starttid</label>
+        <input type="time" id="edit-start-time" class="form-control" required>
+        </div>
+        
+        <div class="form-group">
+        <label for="edit-end-time" class="form-label" data-i18n="end_time">Sluttid</label>
+        <input type="time" id="edit-end-time" class="form-control" required>
+        </div>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="form-group">
+        <label for="edit-break-time" class="form-label" data-i18n="break_time">Rasttid (minuter)</label>
+        <select id="edit-break-time" class="form-control" required>
+          <option value="0" data-i18n="break_0">0 minuter</option>
+          <option value="30" data-i18n="break_30">En halvtimme</option>
+          <option value="60" selected data-i18n="break_60">1 timme</option>
+          <option value="120" data-i18n="break_120">2 timmar</option>
+        </select>
+        </div>
+        
+        <div class="form-group">
+        <label for="edit-coworkers" class="form-label" data-i18n="coworkers">Kollegor</label>
+        <input type="text" id="edit-coworkers" class="form-control" placeholder="Anna, Erik, etc.">
+        </div>
+      </div>
+      
+      <div class="form-group mb-6">
+        <label for="edit-notes" class="form-label" data-i18n="notes">Anteckningar</label>
+        <textarea id="edit-notes" class="form-control" rows="4" spellcheck="true" lang="sv" 
+              style="resize: vertical; min-height: 120px;"></textarea>
+      </div>
+      
+      <div class="flex justify-between items-center pt-4 border-t">
+        <button type="button" id="delete-record" class="text-red-500 hover:text-red-700 flex items-center">
+        <i class="fas fa-trash mr-2"></i> 
+        <span data-i18n="delete">Radera</span>
+        </button>
+        
+        <div class="flex space-x-3">
+        <button type="button" id="cancel-edit-record" class="btn-outline px-4 py-2" data-i18n="cancel">Avbryt</button>
+        <button type="submit" class="btn-primary px-4 py-2" data-i18n="save">Spara</button>
+        </div>
+      </div>
+      </form>
+    </div>
+    </div>
+  </div>
 
     
-	<!-- Export Modal -->
-	<div id="export-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
-	  <div class="bg-white rounded-lg max-w-lg w-full">
-		<div class="p-4 border-b flex justify-between items-center">
-		  <h3 class="text-xl font-semibold" id="export-modal-title">Exportera till PDF</h3>
-		  <button id="close-export-modal" class="text-gray-500 hover:text-gray-700">
-			<i class="fas fa-times"></i>
-		  </button>
-		</div>
-		
-		<div class="p-4">
-		  <form id="export-form">
-			<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-			  <div class="form-group">
-				<label for="export-start-date" class="form-label" data-i18n="start_date">Startdatum</label>
-				<input type="date" id="export-start-date" class="form-control" required>
-			  </div>
-			  
-			  <div class="form-group">
-				<label for="export-end-date" class="form-label" data-i18n="end_date">Slutdatum</label>
-				<input type="date" id="export-end-date" class="form-control" required>
-			  </div>
-			</div>
-			
-			<div class="form-group mb-4">
-			  <label for="export-project" class="form-label" data-i18n="project">Projekt</label>
-			  <select id="export-project" class="form-control">
-				<option value="all" data-i18n="all_projects">Alla projekt</option>
-			  </select>
-			</div>
-			
-			<div class="form-group mb-4">
-			  <label for="export-sort-by" class="form-label" data-i18n="sort_by">Sortera efter</label>
-			  <select id="export-sort-by" class="form-control">
-				<option value="date" data-i18n="date">Datum</option>
-				<option value="project" data-i18n="project">Projekt</option>
-			  </select>
-			</div>
-			
-			<div class="form-group mb-4">
-			  <label for="export-order" class="form-label" data-i18n="order">Ordning</label>
-			  <select id="export-order" class="form-control">
-				<option value="asc" data-i18n="ascending">Stigande</option>
-				<option value="desc" data-i18n="descending">Fallande</option>
-			  </select>
-			</div>
-			
-			<div class="flex justify-between mt-6">
-			  <button type="button" id="cancel-export" class="btn-outline" data-i18n="cancel">Avbryt</button>
-			  <button type="submit" class="btn-primary" data-i18n="generate_report">Generera rapport</button>
-			</div>
-		  </form>
-		</div>
-	  </div>
-	</div>
+  <!-- Export Modal -->
+  <div id="export-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
+    <div class="bg-white rounded-lg max-w-lg w-full">
+    <div class="p-4 border-b flex justify-between items-center">
+      <h3 class="text-xl font-semibold" id="export-modal-title">Exportera till PDF</h3>
+      <button id="close-export-modal" class="text-gray-500 hover:text-gray-700">
+      <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <div class="p-4">
+      <form id="export-form">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+        <div class="form-group">
+        <label for="export-start-date" class="form-label" data-i18n="start_date">Startdatum</label>
+        <input type="date" id="export-start-date" class="form-control" required>
+        </div>
+        
+        <div class="form-group">
+        <label for="export-end-date" class="form-label" data-i18n="end_date">Slutdatum</label>
+        <input type="date" id="export-end-date" class="form-control" required>
+        </div>
+      </div>
+      
+      <div class="form-group mb-4">
+        <label for="export-project" class="form-label" data-i18n="project">Projekt</label>
+        <select id="export-project" class="form-control">
+        <option value="all" data-i18n="all_projects">Alla projekt</option>
+        </select>
+      </div>
+      
+      <div class="form-group mb-4">
+        <label for="export-sort-by" class="form-label" data-i18n="sort_by">Sortera efter</label>
+        <select id="export-sort-by" class="form-control">
+        <option value="date" data-i18n="date">Datum</option>
+        <option value="project" data-i18n="project">Projekt</option>
+        </select>
+      </div>
+      
+      <div class="form-group mb-4">
+        <label for="export-order" class="form-label" data-i18n="order">Ordning</label>
+        <select id="export-order" class="form-control">
+        <option value="asc" data-i18n="ascending">Stigande</option>
+        <option value="desc" data-i18n="descending">Fallande</option>
+        </select>
+      </div>
+      
+      <div class="flex justify-between mt-6">
+        <button type="button" id="cancel-export" class="btn-outline" data-i18n="cancel">Avbryt</button>
+        <button type="submit" class="btn-primary" data-i18n="generate_report">Generera rapport</button>
+      </div>
+      </form>
+    </div>
+    </div>
+  </div>
 
-	<!-- Print Modal -->
-	<div id="print-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
-	  <div class="bg-white rounded-lg max-w-lg w-full">
-		<div class="p-4 border-b flex justify-between items-center">
-		  <h3 class="text-xl font-semibold" data-i18n="print_report">Visa på skärmen</h3>
-		  <button id="close-print-modal" class="text-gray-500 hover:text-gray-700">
-			<i class="fas fa-times"></i>
-		  </button>
-		</div>
-		
-		<div class="p-4">
-		  <form id="print-form">
-			<div class="form-group mb-4">
-			  <label class="flex items-center">
-				<input type="checkbox" id="print-current-month" class="mr-2">
-				<span data-i18n="current_month">Aktuell månad</span>
-			  </label>
-			</div>
-			
-			<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4" id="print-date-filters">
-			  <div class="form-group">
-				<label for="print-year" class="form-label" data-i18n="year">År</label>
-				<select id="print-year" class="form-control">
-				</select>
-			  </div>
-			  
-			  <div class="form-group">
-				<label for="print-month" class="form-label" data-i18n="month">Månad</label>
-				<select id="print-month" class="form-control">
-				  <option value="1" data-i18n="january">Januari</option>
-				  <option value="2" data-i18n="february">Februari</option>
-				  <option value="3" data-i18n="march">Mars</option>
-				  <option value="4" data-i18n="april">April</option>
-				  <option value="5" data-i18n="may">Maj</option>
-				  <option value="6" data-i18n="june">Juni</option>
-				  <option value="7" data-i18n="july">Juli</option>
-				  <option value="8" data-i18n="august">Augusti</option>
-				  <option value="9" data-i18n="september">September</option>
-				  <option value="10" data-i18n="october">Oktober</option>
-				  <option value="11" data-i18n="november">November</option>
-				  <option value="12" data-i18n="december">December</option>
-				</select>
-			  </div>
-			</div>
-			
-			<div class="flex justify-between mt-6">
-			  <button type="button" id="cancel-print" class="btn-outline" data-i18n="cancel">Avbryt</button>
-			  <button type="submit" class="btn-primary" data-i18n="print">Visa</button>
-			</div>
-		  </form>
-		</div>
-	  </div>
-	</div>
+  <!-- Print Modal -->
+  <div id="print-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
+    <div class="bg-white rounded-lg max-w-lg w-full">
+    <div class="p-4 border-b flex justify-between items-center">
+      <h3 class="text-xl font-semibold" data-i18n="print_report">Visa på skärmen</h3>
+      <button id="close-print-modal" class="text-gray-500 hover:text-gray-700">
+      <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <div class="p-4">
+      <form id="print-form">
+      <div class="form-group mb-4">
+        <label class="flex items-center">
+        <input type="checkbox" id="print-current-month" class="mr-2">
+        <span data-i18n="current_month">Aktuell månad</span>
+        </label>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4" id="print-date-filters">
+        <div class="form-group">
+        <label for="print-year" class="form-label" data-i18n="year">År</label>
+        <select id="print-year" class="form-control">
+        </select>
+        </div>
+        
+        <div class="form-group">
+        <label for="print-month" class="form-label" data-i18n="month">Månad</label>
+        <select id="print-month" class="form-control">
+          <option value="1" data-i18n="january">Januari</option>
+          <option value="2" data-i18n="february">Februari</option>
+          <option value="3" data-i18n="march">Mars</option>
+          <option value="4" data-i18n="april">April</option>
+          <option value="5" data-i18n="may">Maj</option>
+          <option value="6" data-i18n="june">Juni</option>
+          <option value="7" data-i18n="july">Juli</option>
+          <option value="8" data-i18n="august">Augusti</option>
+          <option value="9" data-i18n="september">September</option>
+          <option value="10" data-i18n="october">Oktober</option>
+          <option value="11" data-i18n="november">November</option>
+          <option value="12" data-i18n="december">December</option>
+        </select>
+        </div>
+      </div>
+      
+      <div class="flex justify-between mt-6">
+        <button type="button" id="cancel-print" class="btn-outline" data-i18n="cancel">Avbryt</button>
+        <button type="submit" class="btn-primary" data-i18n="print">Visa</button>
+      </div>
+      </form>
+    </div>
+    </div>
+  </div>
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
@@ -1303,29 +1310,29 @@
       companySettings: {},
       recordsLimit: 10,
       recordsOffset: 0,
-      displayedRecords: []
+      displayedRecords: [],
+      editingProjectId: null,
+      projectFormDirty: false
     };
 
-	// 🔹 Forgot Password ("Glömt lösenord?")
-	  document.getElementById("forgot-password").addEventListener("click", async (e) => {
-		e.preventDefault();
-		const email = document.getElementById("login-email").value.trim();
-
-		if (!email) {
-		  alert("⚠️ Ange din e-postadress först / Ingresa tu correo electrónico primero.");
-		  return;
-		}
-
-		try {
-		  await auth.sendPasswordResetEmail(email);
-		  alert("📧 Ett återställningsmejl har skickats / Se ha enviado un correo para restablecer la contraseña.");
-		} catch (error) {
-		  console.error("Password reset error:", error);
-		  alert("❌ Kunde inte skicka mejlet: " + error.message);
-		}
-	  });
-	  
-	// Translation dictionary
+    // 🔹 Forgot Password
+    document.getElementById("forgot-password").addEventListener("click", async (e) => {
+      e.preventDefault();
+      const email = document.getElementById("login-email").value.trim();
+      if (!email) {
+        alert("⚠️ Ange din e-postadress först / Ingresa tu correo electrónico primero.");
+        return;
+      }
+      try {
+        await auth.sendPasswordResetEmail(email);
+        alert("📧 Ett återställningsmejl har skickats / Se ha enviado un correo para restablecer la contraseña.");
+      } catch (error) {
+        console.error("Password reset error:", error);
+        alert("❌ Kunde inte skicka mejlet: " + error.message);
+      }
+    });
+    
+    // Translation dictionary (completo con nuevas claves)
     const translations = {
       'sv': {
         'app-title': 'TimeBook Pro',
@@ -1420,6 +1427,7 @@
         'record_updated': 'Post uppdaterad',
         'record_deleted': 'Post raderad',
         'project_added': 'Projekt tillagt',
+        'project_updated': 'Projekt uppdaterat',
         'profile_updated': 'Profil uppdaterad',
         'settings_updated': 'Inställningar sparade',
         'required_fields': 'Vänligen fyll i alla obligatoriska fält',
@@ -1437,23 +1445,25 @@
         'language_russian': 'Русский',
         'language_polish': 'Polski',
         'language_thai': 'ไทย',
-        'by_author': 'av Vinny',  'print_report': 'Visa på skärmen',
-		'current_month': 'Aktuell månad',
-		'print': 'Visa',
-		'january': 'Januari',
-		'february': 'Februari',
-		'march': 'Mars',
-		'april': 'April',
-		'may': 'Maj',
-		'june': 'Juni',
-		'july': 'Juli',
-		'august': 'Augusti',
-		'september': 'September',
-		'october': 'Oktober',
-		'november': 'November',
-		'december': 'December',
-        'subject_to_translation': 'Vissa delar kan vara föremål för översättning'
-		
+        'by_author': 'av Vinny',
+        'print_report': 'Visa på skärmen',
+        'current_month': 'Aktuell månad',
+        'print': 'Visa',
+        'january': 'Januari',
+        'february': 'Februari',
+        'march': 'Mars',
+        'april': 'April',
+        'may': 'Maj',
+        'june': 'Juni',
+        'july': 'Juli',
+        'august': 'Augusti',
+        'september': 'September',
+        'october': 'Oktober',
+        'november': 'November',
+        'december': 'December',
+        'subject_to_translation': 'Vissa delar kan vara föremål för översättning',
+        'project_search_placeholder': 'Sök projekt (kod/namn)',
+        'confirm_exit': 'Det finns osparade ändringar. Vill du ändå stänga?'
       },
       'es': {
         'app-title': 'TimeBook Pro',
@@ -1548,6 +1558,7 @@
         'record_updated': 'Registro actualizado',
         'record_deleted': 'Registro eliminado',
         'project_added': 'Proyecto añadido',
+        'project_updated': 'Proyecto actualizado',
         'profile_updated': 'Perfil actualizado',
         'settings_updated': 'Configuración guardada',
         'required_fields': 'Por favor completa todos los campos obligatorios',
@@ -1566,22 +1577,24 @@
         'language_polish': 'Polski',
         'language_thai': 'ไทย',
         'by_author': 'por Vinny',
-		'print_report': 'Visa reporte',
-		'current_month': 'Mes actual',
-		'print': 'Visa',
-		'january': 'Enero',
-		'february': 'Febrero',
-		'march': 'Marzo',
-		'april': 'Abril',
-		'may': 'Mayo',
-		'june': 'Junio',
-		'july': 'Julio',
-		'august': 'Agosto',
-		'september': 'Septiembre',
-		'october': 'Octubre',
-		'november': 'Noviembre',
-		'december': 'Diciembre',
-        'subject_to_translation': 'Algunas partes pueden estar sujetas a traducción'
+        'print_report': 'Visa reporte',
+        'current_month': 'Mes actual',
+        'print': 'Visa',
+        'january': 'Enero',
+        'february': 'Febrero',
+        'march': 'Marzo',
+        'april': 'Abril',
+        'may': 'Mayo',
+        'june': 'Junio',
+        'july': 'Julio',
+        'august': 'Agosto',
+        'september': 'Septiembre',
+        'october': 'Octubre',
+        'november': 'Noviembre',
+        'december': 'Diciembre',
+        'subject_to_translation': 'Algunas partes pueden estar sujetas a traducción',
+        'project_search_placeholder': 'Buscar proyecto (código/nombre)',
+        'confirm_exit': 'Hay cambios sin guardar. ¿Seguro que quieres cerrar?'
       },
       'en': {
         'app-title': 'TimeBook Pro',
@@ -1676,6 +1689,7 @@
         'record_updated': 'Record updated',
         'record_deleted': 'Record deleted',
         'project_added': 'Project added',
+        'project_updated': 'Project updated',
         'profile_updated': 'Profile updated',
         'settings_updated': 'Settings saved',
         'required_fields': 'Please fill in all required fields',
@@ -1694,22 +1708,24 @@
         'language_polish': 'Polski',
         'language_thai': 'ไทย',
         'by_author': 'by Vinny',
-		'print_report': 'Print report',
-		'current_month': 'Current month',
-		'print': 'Print',
-		'january': 'January',
-		'february': 'February',
-		'march': 'March',
-		'april': 'April',
-		'may': 'May',
-		'june': 'June',
-		'july': 'July',
-		'august': 'August',
-		'september': 'September',
-		'october': 'October',
-		'november': 'November',
-		'december': 'December',		
-        'subject_to_translation': 'Some parts may be subject to translation'
+        'print_report': 'Print report',
+        'current_month': 'Current month',
+        'print': 'Print',
+        'january': 'January',
+        'february': 'February',
+        'march': 'March',
+        'april': 'April',
+        'may': 'May',
+        'june': 'June',
+        'july': 'July',
+        'august': 'August',
+        'september': 'September',
+        'october': 'October',
+        'november': 'November',
+        'december': 'December',
+        'subject_to_translation': 'Some parts may be subject to translation',
+        'project_search_placeholder': 'Search project (code/name)',
+        'confirm_exit': 'You have unsaved changes. Do you really want to close?'
       },
       'ru': {
         'app-title': 'TimeBook Pro',
@@ -1804,6 +1820,7 @@
         'record_updated': 'Запись обновлена',
         'record_deleted': 'Запись удалена',
         'project_added': 'Проект добавлен',
+        'project_updated': 'Проект обновлен',
         'profile_updated': 'Профиль обновлен',
         'settings_updated': 'Настройки сохранены',
         'required_fields': 'Пожалуйста, заполните все обязательные поля',
@@ -1822,7 +1839,9 @@
         'language_polish': 'Polski',
         'language_thai': 'ไทย',
         'by_author': 'от Vinny',
-        'subject_to_translation': 'Некоторые части могут быть подвержены переводу'
+        'subject_to_translation': 'Некоторые части могут быть подвержены переводу',
+        'project_search_placeholder': 'Поиск проекта (код/название)',
+        'confirm_exit': 'Есть несохраненные изменения. Вы уверены, что хотите закрыть?'
       },
       'pl': {
         'app-title': 'TimeBook Pro',
@@ -1917,6 +1936,7 @@
         'record_updated': 'Wpis zaktualizowany',
         'record_deleted': 'Wpis usunięty',
         'project_added': 'Projekt dodany',
+        'project_updated': 'Projekt zaktualizowany',
         'profile_updated': 'Profil zaktualizowany',
         'settings_updated': 'Ustawienia zapisane',
         'required_fields': 'Proszę wypełnić wszystkie wymagane pola',
@@ -1935,7 +1955,9 @@
         'language_polish': 'Polski',
         'language_thai': 'ไทย',
         'by_author': 'przez Vinny',
-        'subject_to_translation': 'Niektóre części mogą podlegać tłumaczeniu'
+        'subject_to_translation': 'Niektóre części mogą podlegać tłumaczeniu',
+        'project_search_placeholder': 'Szukaj projektu (kod/nazwa)',
+        'confirm_exit': 'Masz niezapisane zmiany. Czy na pewno chcesz zamknąć?'
       },
       'th': {
         'app-title': 'TimeBook Pro',
@@ -2030,6 +2052,7 @@
         'record_updated': 'อัปเดตแล้ว',
         'record_deleted': 'ลบแล้ว',
         'project_added': 'เพิ่มโครงการแล้ว',
+        'project_updated': 'อัปเดตโครงการแล้ว',
         'profile_updated': 'อัปเดตโปรไฟล์แล้ว',
         'settings_updated': 'บันทึกการตั้งค่าแล้ว',
         'required_fields': 'กรุณากรอกข้อมูลในฟิลด์ที่จำเป็นทั้งหมด',
@@ -2048,18 +2071,15 @@
         'language_polish': 'Polski',
         'language_thai': 'ไทย',
         'by_author': 'โดย Vinny',
-        'subject_to_translation': 'บางส่วนอาจอยู่ภายใต้การแปล'
+        'subject_to_translation': 'บางส่วนอาจอยู่ภายใต้การแปล',
+        'project_search_placeholder': 'ค้นหาโครงการ (รหัส/ชื่อ)',
+        'confirm_exit': 'คุณมีการเปลี่ยนแปลงที่ยังไม่ได้บันทึก คุณแน่ใจหรือไม่ว่าต้องการปิด?'
       }
     };
 
     // Diccionario de idiomas para el corrector
     const langMap = {
-      sv: "sv", // Sueco
-      en: "en", // Inglés
-      es: "es",  // Español
-      ru: "ru",  // Русский
-      pl: "pl",  // Polish
-      th: "th"   // Tailandés
+      sv: "sv", en: "en", es: "es", ru: "ru", pl: "pl", th: "th"
     };
 
     // DOM ready
@@ -2077,87 +2097,52 @@
       changeLanguage(state.currentLanguage);
     }
 
-	// ---- Reemplaza tu función changeLanguage existente por esta ----
-	function changeLanguage(lang) {
-	  state.currentLanguage = lang;
-	  localStorage.setItem('language', lang);
-
-	  // 1) Actualiza cualquier elemento con data-i18n (texto)
-	  document.querySelectorAll('[data-i18n]').forEach(el => {
-		const key = el.getAttribute('data-i18n');
-		if (translations[lang] && translations[lang][key]) {
-		  // Si es <option>, usa textContent (compatibilidad)
-		  if (el.tagName.toLowerCase() === 'option') {
-			el.textContent = translations[lang][key];
-		  } else {
-			el.textContent = translations[lang][key];
-		  }
-		}
-	  });
-
-	  // 2) Actualiza placeholders
-	  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-		const key = el.getAttribute('data-i18n-placeholder');
-		if (translations[lang] && translations[lang][key]) {
-		  el.placeholder = translations[lang][key];
-		}
-	  });
-
-	  // 3) Actualiza el indicador de idioma (texto y bandera)
-	  const currentLangEl = document.getElementById('current-language');
-	  const currentFlagEl = document.getElementById('current-flag');
-	  if (currentLangEl) currentLangEl.textContent = lang.toUpperCase();
-	  if (currentFlagEl) currentFlagEl.className = `language-flag flag-${lang}`;
-
-	  // 4) Fuerza la reconstrucción de selects dinámicos de proyectos
-	  //    loadProjects() añade el option por defecto con la traducción actual,
-	  //    así evitamos inconsistencias entre elementos estáticos y dinámicos.
-	  if (typeof loadProjects === 'function') {
-		try {
-		  loadProjects();
-		} catch (err) {
-		  console.warn('loadProjects fallo al actualizar idioma:', err);
-		}
-	  }
-
-	  // 5) Actualiza charts/destrucción + reinit (ya tenías esto)
-	  if (state.weeklyChart) {
-		state.weeklyChart.destroy();
-		initWeeklyChart();
-	  }
-	  if (state.projectChart) {
-		state.projectChart.destroy();
-		initProjectChart();
-	  }
-
-	  // 6) Actualiza spellcheck/lang de textareas
-	  const newLang = langMap[lang] || "sv";
-	  document.querySelectorAll("textarea").forEach(el => {
-		el.setAttribute("lang", newLang);
-		el.setAttribute("spellcheck", "true");
-	  });
-	}
-	  
+    // Change language
+    function changeLanguage(lang) {
+      state.currentLanguage = lang;
+      localStorage.setItem('language', lang);
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+          if (el.tagName.toLowerCase() === 'option') {
+            el.textContent = translations[lang][key];
+          } else {
+            el.textContent = translations[lang][key];
+          }
+        }
+      });
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (translations[lang] && translations[lang][key]) {
+          el.placeholder = translations[lang][key];
+        }
+      });
+      const currentLangEl = document.getElementById('current-language');
+      const currentFlagEl = document.getElementById('current-flag');
+      if (currentLangEl) currentLangEl.textContent = lang.toUpperCase();
+      if (currentFlagEl) currentFlagEl.className = `language-flag flag-${lang}`;
+      if (typeof loadProjects === 'function') {
+        try { loadProjects(); } catch (err) { console.warn(err); }
+      }
+      if (state.weeklyChart) { state.weeklyChart.destroy(); initWeeklyChart(); }
+      if (state.projectChart) { state.projectChart.destroy(); initProjectChart(); }
+      const newLang = langMap[lang] || "sv";
+      document.querySelectorAll("textarea").forEach(el => {
+        el.setAttribute("lang", newLang);
+        el.setAttribute("spellcheck", "true");
+      });
+    }
 
     // Initialize application
     function initApp() {
-      // Check if user is logged in
       auth.onAuthStateChanged(user => {
         if (user) {
-          // User is signed in
-          state.user = {
-            uid: user.uid,
-            email: user.email,
-            displayName: user.displayName,
-            phone: user.phoneNumber
-          };
-          
+          state.user = { uid: user.uid, email: user.email, displayName: user.displayName, phone: user.phoneNumber };
           showApp();
           loadUserProfile();
           loadCompanySettings();
           setupRealtimeListeners();
         } else {
-          // No user is signed in
           showAuthScreen();
         }
       });
@@ -2178,7 +2163,6 @@
         tab.addEventListener('click', () => {
           document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
           tab.classList.add('active');
-          
           document.querySelectorAll('.auth-form').forEach(form => form.classList.remove('active'));
           document.getElementById(`${tab.dataset.tab}-form`).classList.add('active');
         });
@@ -2217,10 +2201,18 @@
       
       // Project management
       document.getElementById('manage-projects').addEventListener('click', openProjectModal);
-      document.getElementById('close-project-modal').addEventListener('click', closeProjectModal);
+      document.getElementById('close-project-modal').addEventListener('click', () => closeProjectModal(true));
       document.getElementById('projects-tab').addEventListener('click', switchToProjectsTab);
       document.getElementById('add-project-tab').addEventListener('click', switchToAddProjectTab);
       document.getElementById('add-project-form').addEventListener('submit', handleAddProject);
+      document.getElementById('cancel-add-project').addEventListener('click', () => {
+        if (state.projectFormDirty && !confirm(translations[state.currentLanguage]['confirm_exit'])) return;
+        resetProjectForm();
+        switchToProjectsTab();
+      });
+      document.getElementById('new-project-name').addEventListener('input', () => state.projectFormDirty = true);
+      document.getElementById('new-project-code').addEventListener('input', () => state.projectFormDirty = true);
+      document.getElementById('project-search').addEventListener('input', filterProjectsList);
       
       // User management
       document.getElementById('close-edit-user-modal').addEventListener('click', closeEditUserModal);
@@ -2239,12 +2231,13 @@
       document.getElementById('close-export-modal').addEventListener('click', closeExportModal);
       document.getElementById('cancel-export').addEventListener('click', closeExportModal);
       document.getElementById('export-form').addEventListener('submit', handleExport);
-	  // Print button
-	  document.getElementById('print-report-btn').addEventListener('click', openPrintModal);
-	  document.getElementById('close-print-modal').addEventListener('click', closePrintModal);
-	  document.getElementById('cancel-print').addEventListener('click', closePrintModal);
-	  document.getElementById('print-form').addEventListener('submit', handlePrint);
-	  document.getElementById('print-current-month').addEventListener('change', togglePrintDateFilters);
+      
+      // Print button
+      document.getElementById('print-report-btn').addEventListener('click', openPrintModal);
+      document.getElementById('close-print-modal').addEventListener('click', closePrintModal);
+      document.getElementById('cancel-print').addEventListener('click', closePrintModal);
+      document.getElementById('print-form').addEventListener('submit', handlePrint);
+      document.getElementById('print-current-month').addEventListener('change', togglePrintDateFilters);
       
       // Company settings
       document.getElementById('company-settings-form').addEventListener('submit', handleCompanySettings);
@@ -2255,6 +2248,54 @@
       // Chart view toggle
       document.querySelectorAll('.view-toggle').forEach(btn => {
         btn.addEventListener('click', toggleChartView);
+      });
+
+      // Cerrar modal al hacer clic fuera (backdrop) con confirmación si hay cambios
+      window.addEventListener('click', (e) => {
+        const modal = document.getElementById('project-modal');
+        if (e.target === modal) {
+          closeProjectModal(true);
+        }
+      });
+      // Cerrar con Escape
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !document.getElementById('project-modal').classList.contains('hidden')) {
+          closeProjectModal(true);
+        }
+      });
+    }
+
+    // Reset project form
+    function resetProjectForm() {
+      document.getElementById('new-project-name').value = '';
+      document.getElementById('new-project-code').value = '';
+      state.editingProjectId = null;
+      state.projectFormDirty = false;
+    }
+
+    // Close project modal with optional dirty check
+    function closeProjectModal(checkDirty = true) {
+      if (checkDirty && state.projectFormDirty) {
+        if (!confirm(translations[state.currentLanguage]['confirm_exit'])) return;
+      }
+      document.getElementById('project-modal').classList.add('hidden');
+      document.getElementById('project-modal').classList.remove('flex');
+      resetProjectForm();
+      switchToProjectsTab();
+    }
+
+    // Filter projects list based on search input
+    function filterProjectsList() {
+      const searchTerm = document.getElementById('project-search').value.toLowerCase();
+      const container = document.getElementById('projects-list');
+      const items = container.querySelectorAll('.project-item');
+      items.forEach(item => {
+        const text = item.textContent.toLowerCase();
+        if (text.includes(searchTerm)) {
+          item.style.display = 'flex';
+        } else {
+          item.style.display = 'none';
+        }
       });
     }
 
@@ -2434,7 +2475,7 @@
         .then(() => {
           // Add default company settings
           const defaultCompanySettings = {
-		    name: 'Exempel AB',
+            name: 'Exempel AB',
             address: 'Köpmangatan 5, plan 10',
             postal: '151 71 Södertälje',
             phone: '079-079 00 45',
@@ -2522,7 +2563,7 @@
 
     // Update company settings display
     function updateCompanySettingsDisplay() {
-	  document.getElementById('company-name').value = state.companySettings.name || '';
+      document.getElementById('company-name').value = state.companySettings.name || '';
       document.getElementById('company-address').value = state.companySettings.address || '';
       document.getElementById('company-postal').value = state.companySettings.postal || '';
       document.getElementById('company-phone').value = state.companySettings.phone || '';
@@ -2571,44 +2612,42 @@
       toggleUserDropdown();
     }
 
-	// Handle edit user - VERSIÓN CORREGIDA
-	function handleEditUser(e) {
-	  e.preventDefault();
-	  showLoading(true);
-	  updateSyncStatus('syncing');
-	  
-	  const firstName = document.getElementById('edit-first-name').value;
-	  const lastName = document.getElementById('edit-last-name').value;
-	  const phone = document.getElementById('edit-phone').value;
-	  
-	  // Update local state
-	  state.user.firstName = firstName;
-	  state.user.lastName = lastName;
-	  state.user.phone = phone;
-	  
-	  // Update Firebase user profile
-	  auth.currentUser.updateProfile({
-		displayName: `${firstName} ${lastName}`
-	  }).then(() => {
-		// ✅ CORRECCIÓN: Usar update() en lugar de set() para actualizar solo los campos específicos
-		const userUpdates = {
-		  firstName: firstName,
-		  lastName: lastName,
-		  phone: phone
-		  // ❌ NO incluir email aquí para no sobrescribir otros datos
-		};
-		
-		return database.ref(`users/${state.user.uid}`).update(userUpdates);
-	  }).then(() => {
-		updateUserInfo();
-		closeEditUserModal();
-		showLoading(false);
-		showAlert(translations[state.currentLanguage]['profile_updated'], 'success');
-	  }).catch(error => {
-		showLoading(false);
-		showAlert(translations[state.currentLanguage]['update_error'] + error.message, 'error');
-	  });
-	}
+    // Handle edit user
+    function handleEditUser(e) {
+      e.preventDefault();
+      showLoading(true);
+      updateSyncStatus('syncing');
+      
+      const firstName = document.getElementById('edit-first-name').value;
+      const lastName = document.getElementById('edit-last-name').value;
+      const phone = document.getElementById('edit-phone').value;
+      
+      // Update local state
+      state.user.firstName = firstName;
+      state.user.lastName = lastName;
+      state.user.phone = phone;
+      
+      // Update Firebase user profile
+      auth.currentUser.updateProfile({
+        displayName: `${firstName} ${lastName}`
+      }).then(() => {
+        const userUpdates = {
+          firstName: firstName,
+          lastName: lastName,
+          phone: phone
+        };
+        
+        return database.ref(`users/${state.user.uid}`).update(userUpdates);
+      }).then(() => {
+        updateUserInfo();
+        closeEditUserModal();
+        showLoading(false);
+        showAlert(translations[state.currentLanguage]['profile_updated'], 'success');
+      }).catch(error => {
+        showLoading(false);
+        showAlert(translations[state.currentLanguage]['update_error'] + error.message, 'error');
+      });
+    }
 
     // Handle company settings
     function handleCompanySettings(e) {
@@ -2618,7 +2657,7 @@
       
       const companySettings = {
         name: document.getElementById('company-name').value,
-		address: document.getElementById('company-address').value,
+        address: document.getElementById('company-address').value,
         postal: document.getElementById('company-postal').value,
         phone: document.getElementById('company-phone').value,
         orgnr: document.getElementById('company-orgnr').value
@@ -2736,9 +2775,10 @@
         const exportOption = option.cloneNode(true);
         exportProject.appendChild(exportOption);
         
-        // Add to projects list
+        // Add to projects list (con clase project-item)
         const projectItem = document.createElement('div');
-        projectItem.className = 'flex justify-between items-center p-2 border-b';
+        projectItem.className = 'project-item flex justify-between items-center p-2 border-b';
+        projectItem.setAttribute('data-id', id);
         projectItem.innerHTML = `
           <div>
             <span class="font-medium">${project.name}</span>
@@ -2761,10 +2801,12 @@
         btn.addEventListener('click', () => {
           const projectId = btn.dataset.id;
           const project = state.projects[projectId];
-          
           if (project) {
+            if (state.projectFormDirty && !confirm(translations[state.currentLanguage]['confirm_exit'])) return;
+            state.editingProjectId = projectId;
             document.getElementById('new-project-name').value = project.name;
             document.getElementById('new-project-code').value = project.code;
+            state.projectFormDirty = false;
             switchToAddProjectTab();
           }
         });
@@ -2773,7 +2815,9 @@
       document.querySelectorAll('.delete-project').forEach(btn => {
         btn.addEventListener('click', () => {
           const projectId = btn.dataset.id;
-          delete database.ref(`users/${state.user.uid}/projects/${projectId}`).remove();
+          if (confirm(translations[state.currentLanguage]['confirm_delete'])) {
+            database.ref(`users/${state.user.uid}/projects/${projectId}`).remove();
+          }
         });
       });
     }
@@ -2821,97 +2865,75 @@
         });
     }
 
-	  // Reset time entry form
-	  function resetTimeEntryForm() {
-		const form = document.getElementById('time-entry-form');
-		const dateInput = document.getElementById('entry-date');
+    // Reset time entry form
+    function resetTimeEntryForm() {
+      const form = document.getElementById('time-entry-form');
+      const dateInput = document.getElementById('entry-date');
 
-		if (!form) return;
-		form.reset();
+      if (!form) return;
+      form.reset();
 
-		// Set today's date (yyyy-mm-dd) and then apply suggested times
-		const today = new Date().toISOString().split('T')[0];
-		if (dateInput) dateInput.value = today;
+      // Set today's date (yyyy-mm-dd) and then apply suggested times
+      const today = new Date().toISOString().split('T')[0];
+      if (dateInput) dateInput.value = today;
 
-		// Apply suggested times/breaks for today
-		suggestTimesByDay();
-	  }
+      // Apply suggested times/breaks for today
+      suggestTimesByDay();
+    }
 
-	  /**
-	   * Suggest times & break based on a date.
-	   * Puede llamarse como manejador de evento: entryDate.addEventListener('change', suggestTimesByDay)
-	   * o directamente: suggestTimesByDay();
-	   */
-	  function suggestTimesByDay(e) {
-		// Determinar valor de fecha (soporta evento o llamada directa)
-		let dateValue = '';
-		if (e && e.target && typeof e.target.value !== 'undefined') {
-		  dateValue = e.target.value;
-		} else {
-		  const dateInput = document.getElementById('entry-date');
-		  dateValue = dateInput ? dateInput.value : '';
-		}
+    // Suggest times & break based on a date
+    function suggestTimesByDay(e) {
+      let dateValue = '';
+      if (e && e.target && typeof e.target.value !== 'undefined') {
+        dateValue = e.target.value;
+      } else {
+        const dateInput = document.getElementById('entry-date');
+        dateValue = dateInput ? dateInput.value : '';
+      }
 
-		if (!dateValue) return; // nada que hacer si no hay fecha
+      if (!dateValue) return;
 
-		// Normalizar la fecha para evitar problemas de zona horaria
-		const date = new Date(dateValue + 'T00:00:00');
-		const day = date.getDay(); // 0 = domingo, 1 = lunes, ..., 5 = viernes
+      const date = new Date(dateValue + 'T00:00:00');
+      const day = date.getDay();
 
-		const startInput = document.getElementById('start-time');
-		const endInput = document.getElementById('end-time');
-		const breakInput = document.getElementById('break-time');
+      const startInput = document.getElementById('start-time');
+      const endInput = document.getElementById('end-time');
+      const breakInput = document.getElementById('break-time');
 
-		// Valores por defecto seguros (si el input no existe, no hacemos nada)
-		// Mantengo el comportamiento original: Mon-Thu 06:30-16:00, Fri 06:30-13:00, Weekend 06:30-13:00
-		let startTime = '06:30';
-		let endTime   = '16:00';
-		let breakMinutes;
+      let startTime = '06:30';
+      let endTime   = '16:00';
+      let breakMinutes;
 
-		if (day >= 1 && day <= 4) {           // Lunes - Jueves
-		  startTime = '06:30';
-		  endTime   = '16:00';
-		  breakMinutes = '60';               // 1 timme
-		} else if (day === 5) {              // Viernes
-		  startTime = '06:30';
-		  endTime   = '13:00';
-		  breakMinutes = '30';               // 30 minuter (tu petición)
-		} else {                             // Fin de semana (comportamiento previo)
-		  startTime = '06:30';
-		  endTime   = '13:00';
-		  breakMinutes = '30';
-		}
+      if (day >= 1 && day <= 4) {
+        startTime = '06:30';
+        endTime   = '16:00';
+        breakMinutes = '60';
+      } else if (day === 5) {
+        startTime = '06:30';
+        endTime   = '13:00';
+        breakMinutes = '30';
+      } else {
+        startTime = '06:30';
+        endTime   = '13:00';
+        breakMinutes = '30';
+      }
 
-		if (startInput) startInput.value = startTime;
-		if (endInput)   endInput.value   = endTime;
+      if (startInput) startInput.value = startTime;
+      if (endInput)   endInput.value   = endTime;
 
-		// Establecer opción de break si existe; si no, no fallamos (y se mantiene el valor HTML)
-		if (breakInput && typeof breakMinutes !== 'undefined') {
-		  // Si la opción existe, la seleccionamos; si no, la creamos (evita romper select personalizados)
-		  const optionExists = !!breakInput.querySelector(`option[value="${breakMinutes}"]`);
-		  if (optionExists) {
-			breakInput.value = breakMinutes;
-		  } else {
-			// Crear una opción temporal clara (texto simple) y seleccionarla
-			const opt = document.createElement('option');
-			opt.value = breakMinutes;
-			// Texto legible: 30 -> "30 minuter" (no se internacionaliza aquí para simplicidad)
-			opt.textContent = `${breakMinutes} minuter`;
-			breakInput.appendChild(opt);
-			breakInput.value = breakMinutes;
-		  }
-		}
-	  }
-
-	  // Asegúrate de que el event listener exista sólo si el input está presente
-	  document.addEventListener('DOMContentLoaded', () => {
-		const dateInput = document.getElementById('entry-date');
-		if (dateInput) {
-		  dateInput.addEventListener('change', suggestTimesByDay);
-		}
-
-		// Si tu app llama resetTimeEntryForm() en otros lados (p. ej. al guardar), queda listo
-	  });
+      if (breakInput && typeof breakMinutes !== 'undefined') {
+        const optionExists = !!breakInput.querySelector(`option[value="${breakMinutes}"]`);
+        if (optionExists) {
+          breakInput.value = breakMinutes;
+        } else {
+          const opt = document.createElement('option');
+          opt.value = breakMinutes;
+          opt.textContent = `${breakMinutes} minuter`;
+          breakInput.appendChild(opt);
+          breakInput.value = breakMinutes;
+        }
+      }
+    }
 
     // Load and display records
     function loadRecords() {
@@ -3533,7 +3555,7 @@
       document.getElementById('month-hours').textContent = monthHours.toFixed(2);
     }
 
-    // Handle add project
+    // Handle add project (crear o actualizar)
     function handleAddProject(e) {
       e.preventDefault();
       updateSyncStatus('syncing');
@@ -3545,38 +3567,43 @@
         showAlert(translations[state.currentLanguage]['required_fields'], 'error');
         return;
       }
-      
-      const projectId = uuid.v4();
-      const newProject = {
-        name,
-        code
-      };
-      
-      // Save to Firebase
-      database.ref(`users/${state.user.uid}/projects/${projectId}`).set(newProject)
-        .then(() => {
-          // Reset form and switch to projects tab
-          document.getElementById('add-project-form').reset();
-          switchToProjectsTab();
-          
-          // Show success message
-          showAlert(translations[state.currentLanguage]['project_added'], 'success');
-        })
-        .catch(error => {
-          showAlert(translations[state.currentLanguage]['save_error'] + error.message, 'error');
-        });
+
+      if (state.editingProjectId) {
+        // Modo edición
+        const projectRef = database.ref(`users/${state.user.uid}/projects/${state.editingProjectId}`);
+        projectRef.update({ name, code })
+          .then(() => {
+            resetProjectForm();
+            switchToProjectsTab();
+            showAlert(translations[state.currentLanguage]['project_updated'], 'success');
+          })
+          .catch(error => {
+            showAlert(translations[state.currentLanguage]['update_error'] + error.message, 'error');
+          });
+      } else {
+        // Modo creación
+        const projectId = uuid.v4();
+        const newProject = { name, code };
+        database.ref(`users/${state.user.uid}/projects/${projectId}`).set(newProject)
+          .then(() => {
+            resetProjectForm();
+            switchToProjectsTab();
+            showAlert(translations[state.currentLanguage]['project_added'], 'success');
+          })
+          .catch(error => {
+            showAlert(translations[state.currentLanguage]['save_error'] + error.message, 'error');
+          });
+      }
     }
 
     // Open project management modal
     function openProjectModal() {
+      resetProjectForm();
       document.getElementById('project-modal').classList.remove('hidden');
       document.getElementById('project-modal').classList.add('flex');
-    }
-
-    // Close project management modal
-    function closeProjectModal() {
-      document.getElementById('project-modal').classList.add('hidden');
-      document.getElementById('project-modal').classList.remove('flex');
+      switchToProjectsTab();
+      document.getElementById('project-search').value = '';
+      filterProjectsList();
     }
 
     // Switch to projects tab
@@ -3717,38 +3744,38 @@
       }
     }
 
-	// Open export modal
-	function openExportModal(type) {
-	  state.exportType = type;
-	  const exportModal = document.getElementById('export-modal');
-	  const exportTitle = document.getElementById('export-modal-title');
-	  
-	  if (type === 'pdf') {
-		exportTitle.textContent = translations[state.currentLanguage]['export_pdf'];
-	  } else {
-		exportTitle.textContent = translations[state.currentLanguage]['export_word'];
-	  }
-	  
-	  // Obtener primer y último día del mes ANTERIOR
-	  const now = new Date();
-	  const firstDayLastMonth = new Date(now.getFullYear(), now.getMonth() - 1, 1);
-	  const lastDayLastMonth = new Date(now.getFullYear(), now.getMonth(), 0);
-	  
-	  // Formatear fechas como YYYY-MM-DD para input type="date"
-	  const formatDateForInput = (date) => {
-		const year = date.getFullYear();
-		const month = String(date.getMonth() + 1).padStart(2, '0');
-		const day = String(date.getDate()).padStart(2, '0');
-		return `${year}-${month}-${day}`;
-	  };
-	  
-	  // Establecer valores predeterminados del mes anterior
-	  document.getElementById('export-start-date').value = formatDateForInput(firstDayLastMonth);
-	  document.getElementById('export-end-date').value = formatDateForInput(lastDayLastMonth);
-	  
-	  exportModal.classList.remove('hidden');
-	  exportModal.classList.add('flex');
-	}
+    // Open export modal
+    function openExportModal(type) {
+      state.exportType = type;
+      const exportModal = document.getElementById('export-modal');
+      const exportTitle = document.getElementById('export-modal-title');
+      
+      if (type === 'pdf') {
+        exportTitle.textContent = translations[state.currentLanguage]['export_pdf'];
+      } else {
+        exportTitle.textContent = translations[state.currentLanguage]['export_word'];
+      }
+      
+      // Obtener primer y último día del mes ANTERIOR
+      const now = new Date();
+      const firstDayLastMonth = new Date(now.getFullYear(), now.getMonth() - 1, 1);
+      const lastDayLastMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+      
+      // Formatear fechas como YYYY-MM-DD para input type="date"
+      const formatDateForInput = (date) => {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+      };
+      
+      // Establecer valores predeterminados del mes anterior
+      document.getElementById('export-start-date').value = formatDateForInput(firstDayLastMonth);
+      document.getElementById('export-end-date').value = formatDateForInput(lastDayLastMonth);
+      
+      exportModal.classList.remove('hidden');
+      exportModal.classList.add('flex');
+    }
 
     // Close export modal
     function closeExportModal() {
@@ -3826,920 +3853,917 @@
       return days[date.getDay()];
     }
 
-	// Función exportToPDF mejorada - Versión profesional
-	async function exportToPDF(records, startDate, endDate) {
-	  showLoading(true);
-	  try {
-		const pdf = new jsPDF('p', 'mm', 'a4');
-		const pageWidth = pdf.internal.pageSize.getWidth();
-		const pageHeight = pdf.internal.pageSize.getHeight();
+    // Función exportToPDF mejorada - Versión profesional
+    async function exportToPDF(records, startDate, endDate) {
+      showLoading(true);
+      try {
+        const pdf = new jsPDF('p', 'mm', 'a4');
+        const pageWidth = pdf.internal.pageSize.getWidth();
+        const pageHeight = pdf.internal.pageSize.getHeight();
 
-		// Márgenes mejorados para diseño profesional
-		const margin = { left: 15, right: 15, top: 20, bottom: 25 };
-		let y = margin.top;
-		let currentPage = 1;
+        // Márgenes mejorados para diseño profesional
+        const margin = { left: 15, right: 15, top: 20, bottom: 25 };
+        let y = margin.top;
+        let currentPage = 1;
 
-		// ===== ENCABEZADO EMPRESA MEJORADO =====
-		pdf.setFont("helvetica", "bold");
-		pdf.setFontSize(12);
-		pdf.setTextColor(40, 40, 40);
-		pdf.text(state.companySettings.name || 'Exempel AB', margin.left, y);
-		
-		pdf.setFont("helvetica", "normal");
-		pdf.setFontSize(9);
-		pdf.setTextColor(100, 100, 100);
-		y += 4;
-		pdf.text(state.companySettings.address || 'Köpmangatan 5, plan 10', margin.left, y); y += 3.5;
-		pdf.text(state.companySettings.postal || '151 71 Södertälje', margin.left, y); y += 3.5;
-		pdf.text(`Tel: ${state.companySettings.phone || '079-079 00 45'}`, margin.left, y); y += 3.5;
-		pdf.text(`Org.nr: ${state.companySettings.orgnr || '559096-5983'}`, margin.left, y);
-		y += 8;
+        // ===== ENCABEZADO EMPRESA MEJORADO =====
+        pdf.setFont("helvetica", "bold");
+        pdf.setFontSize(12);
+        pdf.setTextColor(40, 40, 40);
+        pdf.text(state.companySettings.name || 'Exempel AB', margin.left, y);
+        
+        pdf.setFont("helvetica", "normal");
+        pdf.setFontSize(9);
+        pdf.setTextColor(100, 100, 100);
+        y += 4;
+        pdf.text(state.companySettings.address || 'Köpmangatan 5, plan 10', margin.left, y); y += 3.5;
+        pdf.text(state.companySettings.postal || '151 71 Södertälje', margin.left, y); y += 3.5;
+        pdf.text(`Tel: ${state.companySettings.phone || '079-079 00 45'}`, margin.left, y); y += 3.5;
+        pdf.text(`Org.nr: ${state.companySettings.orgnr || '559096-5983'}`, margin.left, y);
+        y += 8;
 
-		// Línea separadora
-		pdf.setDrawColor(200, 200, 200);
-		pdf.line(margin.left, y, pageWidth - margin.right, y);
-		y += 5;
+        // Línea separadora
+        pdf.setDrawColor(200, 200, 200);
+        pdf.line(margin.left, y, pageWidth - margin.right, y);
+        y += 5;
 
-		// ===== TÍTULO PRINCIPAL =====
-		pdf.setFont("helvetica", "bold");
-		pdf.setFontSize(16);
-		pdf.setTextColor(30, 64, 124); // Azul profesional
-		pdf.text("ARBETSRAPPORT", pageWidth / 2, y, { align: "center" });
-		y += 10;
+        // ===== TÍTULO PRINCIPAL =====
+        pdf.setFont("helvetica", "bold");
+        pdf.setFontSize(16);
+        pdf.setTextColor(30, 64, 124); // Azul profesional
+        pdf.text("ARBETSRAPPORT", pageWidth / 2, y, { align: "center" });
+        y += 10;
 
-		// ===== INFORMACIÓN DEL REPORTE =====
-		pdf.setFont("helvetica", "normal");
-		pdf.setFontSize(10);
-		pdf.setTextColor(60, 60, 60);
-		
-		const formattedStartDate = formatDateShort(startDate);
-		const formattedEndDate = formatDateShort(endDate);
-		
-		pdf.text(`Mätningsingenjör: ${state.user.firstName} ${state.user.lastName}`, margin.left, y); 
-		pdf.text(`Period: ${formattedStartDate} - ${formattedEndDate}`, pageWidth - margin.right, y, { align: "right" });
-		y += 7;
+        // ===== INFORMACIÓN DEL REPORTE =====
+        pdf.setFont("helvetica", "normal");
+        pdf.setFontSize(10);
+        pdf.setTextColor(60, 60, 60);
+        
+        const formattedStartDate = formatDateShort(startDate);
+        const formattedEndDate = formatDateShort(endDate);
+        
+        pdf.text(`Mätningsingenjör: ${state.user.firstName} ${state.user.lastName}`, margin.left, y); 
+        pdf.text(`Period: ${formattedStartDate} - ${formattedEndDate}`, pageWidth - margin.right, y, { align: "right" });
+        y += 7;
 
-		// ===== CONFIGURACIÓN DE TABLA PROFESIONAL =====
-		pdf.setFontSize(8);
-		const headers = ["Datum", "Dag", "Från", "Till", "Rast (h)", "Timmar", "Projekt", "Beskrivning"];
-		
-		// Anchos optimizados para mejor legibilidad
-		let colWidths = [22, 16, 12, 12, 14, 14, 32, 48];
-		
-		// Ajustar escala si es necesario
-		const availableWidth = pageWidth - margin.left - margin.right;
-		let tableWidth = colWidths.reduce((a, b) => a + b, 0);
-		if (tableWidth > availableWidth) {
-		  const scale = availableWidth / tableWidth;
-		  colWidths = colWidths.map(w => Math.floor(w * scale));
-		  tableWidth = availableWidth;
-		}
+        // ===== CONFIGURACIÓN DE TABLA PROFESIONAL =====
+        pdf.setFontSize(8);
+        const headers = ["Datum", "Dag", "Från", "Till", "Rast (h)", "Timmar", "Projekt", "Beskrivning"];
+        
+        // Anchos optimizados para mejor legibilidad
+        let colWidths = [22, 16, 12, 12, 14, 14, 32, 48];
+        
+        // Ajustar escala si es necesario
+        const availableWidth = pageWidth - margin.left - margin.right;
+        let tableWidth = colWidths.reduce((a, b) => a + b, 0);
+        if (tableWidth > availableWidth) {
+          const scale = availableWidth / tableWidth;
+          colWidths = colWidths.map(w => Math.floor(w * scale));
+          tableWidth = availableWidth;
+        }
 
-		const xStart = margin.left;
-		const lineHeight = 4;
-		const headerHeight = lineHeight + 3;
-		const cellPadding = 1.5;
+        const xStart = margin.left;
+        const lineHeight = 4;
+        const headerHeight = lineHeight + 3;
+        const cellPadding = 1.5;
 
-		// Función para dibujar encabezado de tabla (solo en primera página)
-		function drawTableHeader(currentY) {
-		  pdf.setFont("helvetica", "bold");
-		  pdf.setFontSize(8);
-		  pdf.setTextColor(255, 255, 255);
-		  
-		  let x = xStart;
-		  headers.forEach((h, i) => {
-			// Fondo azul para encabezados
-			pdf.setFillColor(30, 64, 124);
-			pdf.rect(x, currentY, colWidths[i], headerHeight, 'F');
-			
-			// Borde
-			pdf.setDrawColor(200, 200, 200);
-			pdf.rect(x, currentY, colWidths[i], headerHeight);
-			
-			// Texto centrado
-			const textWidth = pdf.getTextWidth(h);
-			const textX = x + (colWidths[i] - textWidth) / 2;
-			pdf.text(h, textX, currentY + lineHeight);
-			
-			x += colWidths[i];
-		  });
-		  
-		  pdf.setTextColor(0, 0, 0);
-		  return currentY + headerHeight;
-		}
+        // Función para dibujar encabezado de tabla (solo en primera página)
+        function drawTableHeader(currentY) {
+          pdf.setFont("helvetica", "bold");
+          pdf.setFontSize(8);
+          pdf.setTextColor(255, 255, 255);
+          
+          let x = xStart;
+          headers.forEach((h, i) => {
+            // Fondo azul para encabezados
+            pdf.setFillColor(30, 64, 124);
+            pdf.rect(x, currentY, colWidths[i], headerHeight, 'F');
+            
+            // Borde
+            pdf.setDrawColor(200, 200, 200);
+            pdf.rect(x, currentY, colWidths[i], headerHeight);
+            
+            // Texto centrado
+            const textWidth = pdf.getTextWidth(h);
+            const textX = x + (colWidths[i] - textWidth) / 2;
+            pdf.text(h, textX, currentY + lineHeight);
+            
+            x += colWidths[i];
+          });
+          
+          pdf.setTextColor(0, 0, 0);
+          return currentY + headerHeight;
+        }
 
-		// Dibujar encabezado solo en la primera página
-		y = drawTableHeader(y);
+        // Dibujar encabezado solo en la primera página
+        y = drawTableHeader(y);
 
-		// Configurar fuente para el contenido de la tabla
-		pdf.setFont("helvetica", "normal");
-		pdf.setFontSize(8);
-		pdf.setTextColor(40, 40, 40);
+        // Configurar fuente para el contenido de la tabla
+        pdf.setFont("helvetica", "normal");
+        pdf.setFontSize(8);
+        pdf.setTextColor(40, 40, 40);
 
-		let totalHours = 0;
+        let totalHours = 0;
 
-		// Función para crear nueva página
-		function addPageAndHeader() {
-		  pdf.addPage();
-		  currentPage++;
-		  y = margin.top;
-		  
-		  // Solo información básica en páginas subsiguientes (sin encabezado completo)
-		  pdf.setFont("helvetica", "bold");
-		  pdf.setFontSize(10);
-		  pdf.setTextColor(30, 64, 124);
-		  pdf.text("ARBETSRAPPORT - Fortsättning", pageWidth / 2, y, { align: "center" });
-		  y += 6;
-		  
-		  pdf.setFont("helvetica", "normal"); // ← RESET A NORMAL
-		  pdf.setFontSize(8);
-		  pdf.setTextColor(100, 100, 100);
-		  pdf.text(`Mätningsingenjör: ${state.user.firstName} ${state.user.lastName}`, margin.left, y);
-		  pdf.text(`Period: ${formattedStartDate} - ${formattedEndDate}`, pageWidth - margin.right, y, { align: "right" });
-		  y += 10;
-		  
-		  // Volver a dibujar encabezados de tabla
-		  y = drawTableHeader(y);
-		  
-		  // RESETEAR LA FUENTE A NORMAL DESPUÉS DE LOS ENCABEZADOS
-		  pdf.setFont("helvetica", "normal");
-		  pdf.setFontSize(8);
-		  pdf.setTextColor(40, 40, 40);
-		}
+        // Función para crear nueva página
+        function addPageAndHeader() {
+          pdf.addPage();
+          currentPage++;
+          y = margin.top;
+          
+          // Solo información básica en páginas subsiguientes (sin encabezado completo)
+          pdf.setFont("helvetica", "bold");
+          pdf.setFontSize(10);
+          pdf.setTextColor(30, 64, 124);
+          pdf.text("ARBETSRAPPORT - Fortsättning", pageWidth / 2, y, { align: "center" });
+          y += 6;
+          
+          pdf.setFont("helvetica", "normal"); // ← RESET A NORMAL
+          pdf.setFontSize(8);
+          pdf.setTextColor(100, 100, 100);
+          pdf.text(`Mätningsingenjör: ${state.user.firstName} ${state.user.lastName}`, margin.left, y);
+          pdf.text(`Period: ${formattedStartDate} - ${formattedEndDate}`, pageWidth - margin.right, y, { align: "right" });
+          y += 10;
+          
+          // Volver a dibujar encabezados de tabla
+          y = drawTableHeader(y);
+          
+          // RESETEAR LA FUENTE A NORMAL DESPUÉS DE LOS ENCABEZADOS
+          pdf.setFont("helvetica", "normal");
+          pdf.setFontSize(8);
+          pdf.setTextColor(40, 40, 40);
+        }
 
-		// Procesar cada registro
-		for (const [id, record] of records) {
-		  // Preparar datos de la fila
-		  const project = state.projects[record.projectId] || { name: "Okänd" };
-		  const dateStr = formatDateShort(record.date);
-		  const dayName = getSwedishDayName(new Date(record.date));
+        // Procesar cada registro
+        for (const [id, record] of records) {
+          // Preparar datos de la fila
+          const project = state.projects[record.projectId] || { name: "Okänd", code: "?" };
+          const dateStr = formatDateShort(record.date);
+          const dayName = getSwedishDayName(new Date(record.date));
 
-		  const [sh, sm] = record.startTime.split(":").map(Number);
-		  const [eh, em] = record.endTime.split(":").map(Number);
-		  const workedMinutes = (eh * 60 + em) - (sh * 60 + sm) - record.breakTime;
-		  const workedHours = workedMinutes / 60;
-		  totalHours += workedHours;
+          const [sh, sm] = record.startTime.split(":").map(Number);
+          const [eh, em] = record.endTime.split(":").map(Number);
+          const workedMinutes = (eh * 60 + em) - (sh * 60 + sm) - record.breakTime;
+          const workedHours = workedMinutes / 60;
+          totalHours += workedHours;
 
-		  const row = [
-			dateStr,
-			dayName,
-			record.startTime,
-			record.endTime,
-			(record.breakTime / 60).toFixed(2),
-			workedHours.toFixed(2),
-			project.name,
-			record.notes || ""
-		  ];
+          const row = [
+            dateStr,
+            dayName,
+            record.startTime,
+            record.endTime,
+            (record.breakTime / 60).toFixed(2),
+            workedHours.toFixed(2),
+            `${project.code} - ${project.name}`, // <-- MODIFICADO
+            record.notes || ""
+          ];
 
-		  // Calcular altura necesaria para cada celda
-		  const cellHeights = row.map((text, i) => {
-			const lines = pdf.splitTextToSize(String(text || ""), colWidths[i] - (cellPadding * 2));
-			return Math.max(lines.length * lineHeight, lineHeight);
-		  });
+          // Calcular altura necesaria para cada celda
+          const cellHeights = row.map((text, i) => {
+            const lines = pdf.splitTextToSize(String(text || ""), colWidths[i] - (cellPadding * 2));
+            return Math.max(lines.length * lineHeight, lineHeight);
+          });
 
-		  const rowHeight = Math.max(...cellHeights) + (cellPadding * 2);
+          const rowHeight = Math.max(...cellHeights) + (cellPadding * 2);
 
-		  // Verificar si necesitamos nueva página
-		  if (y + rowHeight > pageHeight - margin.bottom) {
-			addPageAndHeader();
-		  }
+          // Verificar si necesitamos nueva página
+          if (y + rowHeight > pageHeight - margin.bottom) {
+            addPageAndHeader();
+          }
 
-		  // Dibujar fila
-		  let x = xStart;
-		  
-		  for (let i = 0; i < row.length; i++) {
-			const cellText = String(row[i] || "");
-			const lines = pdf.splitTextToSize(cellText, colWidths[i] - (cellPadding * 2));
-			const cellHeight = rowHeight;
-			
-			// Fondo alternado para mejor legibilidad
-			if (records.indexOf([id, record]) % 2 === 0) {
-			  pdf.setFillColor(248, 249, 250);
-			  pdf.rect(x, y, colWidths[i], cellHeight, 'F');
-			}
-			
-			// Borde de celda
-			pdf.setDrawColor(220, 220, 220);
-			pdf.rect(x, y, colWidths[i], cellHeight);
-			
-			// Texto de la celda
-			pdf.setTextColor(40, 40, 40);
-			for (let j = 0; j < lines.length; j++) {
-			  const textY = y + cellPadding + 2.5 + (j * lineHeight);
-			  pdf.text(lines[j], x + cellPadding, textY, { 
-				maxWidth: colWidths[i] - (cellPadding * 2)
-			  });
-			}
-			
-			x += colWidths[i];
-		  }
-		  
-		  y += rowHeight;
-		}
+          // Dibujar fila
+          let x = xStart;
+          
+          for (let i = 0; i < row.length; i++) {
+            const cellText = String(row[i] || "");
+            const lines = pdf.splitTextToSize(cellText, colWidths[i] - (cellPadding * 2));
+            const cellHeight = rowHeight;
+            
+            // Fondo alternado para mejor legibilidad
+            if (records.indexOf([id, record]) % 2 === 0) {
+              pdf.setFillColor(248, 249, 250);
+              pdf.rect(x, y, colWidths[i], cellHeight, 'F');
+            }
+            
+            // Borde de celda
+            pdf.setDrawColor(220, 220, 220);
+            pdf.rect(x, y, colWidths[i], cellHeight);
+            
+            // Texto de la celda
+            pdf.setTextColor(40, 40, 40);
+            for (let j = 0; j < lines.length; j++) {
+              const textY = y + cellPadding + 2.5 + (j * lineHeight);
+              pdf.text(lines[j], x + cellPadding, textY, { 
+                maxWidth: colWidths[i] - (cellPadding * 2)
+              });
+            }
+            
+            x += colWidths[i];
+          }
+          
+          y += rowHeight;
+        }
 
-		// ===== SECCIÓN DE TOTALES =====
-		const totalSectionHeight = 12;
-		
-		// Nueva página si es necesario
-		if (y + totalSectionHeight > pageHeight - margin.bottom) {
-		  addPageAndHeader();
-		}
-		
-		y += 5;
-		
-		// Línea separadora
-		pdf.setDrawColor(200, 200, 200);
-		pdf.line(margin.left, y, pageWidth - margin.right, y);
-		y += 8;
-		
-		// Total de horas
-		pdf.setFont("helvetica", "bold");
-		pdf.setFontSize(11);
-		pdf.setTextColor(30, 64, 124);
-		
-		const totalText = `TOTALT ARBETADE TIMMAR: ${totalHours.toFixed(2)}`;
-		const totalTextWidth = pdf.getTextWidth(totalText);
-		const totalX = pageWidth - margin.right - totalTextWidth;
-		
-		pdf.text(totalText, totalX, y);
+        // ===== SECCIÓN DE TOTALES =====
+        const totalSectionHeight = 12;
+        
+        // Nueva página si es necesario
+        if (y + totalSectionHeight > pageHeight - margin.bottom) {
+          addPageAndHeader();
+        }
+        
+        y += 5;
+        
+        // Línea separadora
+        pdf.setDrawColor(200, 200, 200);
+        pdf.line(margin.left, y, pageWidth - margin.right, y);
+        y += 8;
+        
+        // Total de horas
+        pdf.setFont("helvetica", "bold");
+        pdf.setFontSize(11);
+        pdf.setTextColor(30, 64, 124);
+        
+        const totalText = `TOTALT ARBETADE TIMMAR: ${totalHours.toFixed(2)}`;
+        const totalTextWidth = pdf.getTextWidth(totalText);
+        const totalX = pageWidth - margin.right - totalTextWidth;
+        
+        pdf.text(totalText, totalX, y);
 
-		// ===== NUMERACIÓN DE TODAS LAS PÁGINAS =====
-		const totalPages = pdf.internal.getNumberOfPages();
-		
-		for (let i = 1; i <= totalPages; i++) {
-		  pdf.setPage(i);
-		  
-		  // Pie de página con numeración
-		  pdf.setFont("helvetica", "normal");
-		  pdf.setFontSize(8);
-		  pdf.setTextColor(120, 120, 120);
-		  
-		  const footerText = `Sida ${i} av ${totalPages}`;
-		  const footerY = pageHeight - 10;
-		  
-		  pdf.text(footerText, pageWidth / 2, footerY, { align: "center" });
-		}
+        // ===== NUMERACIÓN DE TODAS LAS PÁGINAS =====
+        const totalPages = pdf.internal.getNumberOfPages();
+        
+        for (let i = 1; i <= totalPages; i++) {
+          pdf.setPage(i);
+          
+          // Pie de página con numeración
+          pdf.setFont("helvetica", "normal");
+          pdf.setFontSize(8);
+          pdf.setTextColor(120, 120, 120);
+          
+          const footerText = `Sida ${i} av ${totalPages}`;
+          const footerY = pageHeight - 10;
+          
+          pdf.text(footerText, pageWidth / 2, footerY, { align: "center" });
+        }
 
-		// ===== GUARDAR PDF =====
-		const timestamp = new Date().toISOString().slice(0, 10).replace(/-/g, '');
-		const filename = `Arbetstrapport_${state.user.lastName}_${timestamp}.pdf`;
-		
-		pdf.save(filename);
-		showAlert(translations[state.currentLanguage]["export_success"], "success");
-		
-	  } catch (error) {
-		console.error("Error generating PDF:", error);
-		showAlert("Error generating PDF: " + error.message, "error");
-	  } finally {
-		showLoading(false);
-	  }
-	}
-
-	// Export to Word - Versión mejorada
-	function exportToWord(records, startDate, endDate) {
-	  showLoading(true);
-	  
-	  try {
-		// Create professional HTML content for Word export
-		let content = `
-		  <html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">
-		  <head>
-			<meta charset="utf-8">
-			<title>Arbetstrapport</title>
-			<style>
-			  body { 
-				font-family: Arial, sans-serif; 
-				margin: 0;
-				padding: 20px;
-				color: #333;
-			  }
-			  .header { 
-				margin-bottom: 20px;
-				padding-bottom: 15px;
-				border-bottom: 2px solid #1e4094;
-			  }
-			  .company-info {
-				margin-bottom: 10px;
-			  }
-			  .company-name {
-				font-size: 18px;
-				font-weight: bold;
-				color: #1e4094;
-				margin-bottom: 5px;
-			  }
-			  .company-details {
-				font-size: 11px;
-				color: #666;
-				line-height: 1.4;
-			  }
-			  .logo-container {
-				margin-bottom: 15px;
-			  }
-			  .logo {
-				max-width: 150px;
-				height: auto;
-			  }
-			  h1 { 
-				color: #1e4094; 
-				font-size: 24px;
-				text-align: center;
-				margin: 20px 0;
-			  }
-			  .report-info {
-				background-color: #f8f9fa;
-				padding: 15px;
-				margin: 20px 0;
-				border-radius: 5px;
-				font-size: 12px;
-			  }
-			  .report-info strong {
-				color: #1e4094;
-			  }
-			  table { 
-				border-collapse: collapse; 
-				width: 100%; 
-				font-size: 11px;
-				margin: 20px 0;
-			  }
-			  th { 
-				background-color: #1e4094; 
-				color: white;
-				padding: 10px 8px;
-				text-align: left;
-				font-weight: bold;
-				border: 1px solid #ddd;
-			  }
-			  td { 
-				border: 1px solid #ddd; 
-				padding: 8px;
-				text-align: left;
-				vertical-align: top;
-			  }
-			  tr:nth-child(even) {
-				background-color: #f8f9fa;
-			  }
-			  .total-section {
-				margin-top: 20px;
-				padding-top: 15px;
-				border-top: 2px solid #1e4094;
-				text-align: right;
-				font-weight: bold;
-				font-size: 12px;
-				color: #1e4094;
-			  }
-			  .footer {
-				margin-top: 30px;
-				text-align: center;
-				font-size: 10px;
-				color: #888;
-				font-style: italic;
-			  }
-			</style>
-		  </head>
-		  <body>
-			<div class="header">
-			  <div class="company-info">
-				<div class="company-name">${state.companySettings.name || 'Exempel AB'}</div>
-				<div class="company-details">
-				  ${state.companySettings.address || 'Köpmangatan 5, plan 10'}<br>
-				  ${state.companySettings.postal || '151 71 Södertälje'}<br>
-				  Tel: ${state.companySettings.phone || '079-079 00 45'}<br>
-				  Organisationsnummer: ${state.companySettings.orgnr || '559096-5983'}
-				</div>
-			  </div>
-		`;
-
-		// Agregar logo si está disponible (opcional)
-		// Para usar logo, necesitas tener la URL de la imagen en base64 o en un servidor
-		const logoUrl = state.companySettings.logoUrl || ''; // Aquí puedes guardar la URL del logo en companySettings
-		if (logoUrl) {
-		  content += `
-			<div class="logo-container">
-			  <img src="${logoUrl}" alt="Company Logo" class="logo">
-			</div>
-		  `;
-		}
-
-		content += `
-			</div>
-			
-			<h1>ARBETSRAPPORT</h1>
-			
-			<div class="report-info">
-			  <strong>Mätningsingenjör:</strong> ${state.user.firstName} ${state.user.lastName}<br>
-			  <strong>Period:</strong> ${formatDateShort(startDate)} - ${formatDateShort(endDate)}<br>
-			  <strong>Genereringsdatum:</strong> ${new Date().toLocaleDateString('sv-SE')}
-			</div>
-			
-			<table>
-			  <thead>
-				<tr>
-				  <th>Datum</th>
-				  <th>Dag</th>
-				  <th>Från</th>
-				  <th>Till</th>
-				  <th>Rast (h)</th>
-				  <th>Timmar</th>
-				  <th>Projekt</th>
-				  <th>Beskrivning</th>
-				</tr>
-			  </thead>
-			  <tbody>
-		`;
-		
-		let totalHours = 0;
-		
-		records.forEach(([id, record]) => {
-		  const project = state.projects[record.projectId] || { name: 'Okänd', code: '?' };
-		  const date = new Date(record.date);
-		  const dateStr = formatDateShort(record.date);
-		  const dayName = getSwedishDayName(date);
-		  
-		  // Calculate hours worked
-		  const [startHours, startMinutes] = record.startTime.split(':').map(Number);
-		  const [endHours, endMinutes] = record.endTime.split(':').map(Number);
-		  const startTotalMinutes = startHours * 60 + startMinutes;
-		  const endTotalMinutes = endHours * 60 + endMinutes;
-		  const workedMinutes = endTotalMinutes - startTotalMinutes - record.breakTime;
-		  const workedHours = workedMinutes / 60;
-		  
-		  totalHours += workedHours;
-		  
-		  content += `
-			<tr>
-			  <td>${dateStr}</td>
-			  <td>${dayName}</td>
-			  <td>${record.startTime}</td>
-			  <td>${record.endTime}</td>
-			  <td>${(record.breakTime / 60).toFixed(2)}</td>
-			  <td>${workedHours.toFixed(2)}</td>
-			  <td>${project.name}</td>
-			  <td>${record.notes || ''}</td>
-			</tr>
-		  `;
-		});
-		
-		content += `
-			  </tbody>
-			</table>
-			
-			<div class="total-section">
-			  TOTALT ARBETADE TIMMAR: ${totalHours.toFixed(2)}
-			</div>
-			
-			<div class="footer">
-			  Genererad automatiskt av TimeBook Pro
-			</div>
-		  </body>
-		  </html>
-		`;
-		
-		// Create Blob and download
-		const blob = new Blob([content], { type: 'application/msword' });
-		const link = document.createElement('a');
-		link.href = URL.createObjectURL(blob);
-		
-		// Nombre de archivo profesional
-		const timestamp = new Date().toISOString().slice(0, 10).replace(/-/g, '');
-		const filename = `Arbetstrapport_${state.user.lastName}_${timestamp}.doc`;
-		
-		link.download = filename;
-		document.body.appendChild(link);
-		link.click();
-		document.body.removeChild(link);
-		
-		showAlert(translations[state.currentLanguage]['export_success'], 'success');
-	  } catch (error) {
-		console.error('Error generating Word document:', error);
-		showAlert('Error generating Word document: ' + error.message, 'error');
-	  } finally {
-		showLoading(false);
-	  }
-	}
-// ========== FUNCIONES DE IMPRESIÓN ==========
-
-// Open print modal
-function openPrintModal() {
-  // Populate year filter
-  const yearSelect = document.getElementById('print-year');
-  yearSelect.innerHTML = '';
-  
-  // Get unique years from records
-  const years = new Set();
-  Object.values(state.records).forEach(record => {
-    const year = new Date(record.date).getFullYear();
-    years.add(year);
-  });
-  
-  // If no records, add current year
-  if (years.size === 0) {
-    years.add(new Date().getFullYear());
-  }
-  
-  // Sort years in descending order
-  const sortedYears = Array.from(years).sort((a, b) => b - a);
-  
-  // Add years to filter
-  sortedYears.forEach(year => {
-    const option = document.createElement('option');
-    option.value = year;
-    option.textContent = year;
-    yearSelect.appendChild(option);
-  });
-  
-  // Set current year and month by default
-  const now = new Date();
-  yearSelect.value = now.getFullYear();
-  document.getElementById('print-month').value = now.getMonth() + 1;
-  
-  // Show modal
-  document.getElementById('print-modal').classList.remove('hidden');
-  document.getElementById('print-modal').classList.add('flex');
-}
-
-// Close print modal
-function closePrintModal() {
-  document.getElementById('print-modal').classList.add('hidden');
-  document.getElementById('print-modal').classList.remove('flex');
-}
-
-// Toggle date filters based on current month checkbox
-function togglePrintDateFilters() {
-  const currentMonthCheckbox = document.getElementById('print-current-month');
-  const dateFilters = document.getElementById('print-date-filters');
-  
-  if (currentMonthCheckbox.checked) {
-    dateFilters.classList.add('hidden');
-  } else {
-    dateFilters.classList.remove('hidden');
-  }
-}
-
-// Handle print
-function handlePrint(e) {
-  e.preventDefault();
-  closePrintModal();
-  
-  const currentMonthCheckbox = document.getElementById('print-current-month');
-  let startDate, endDate;
-  
-  if (currentMonthCheckbox.checked) {
-    // Use current month
-    const now = new Date();
-    startDate = new Date(now.getFullYear(), now.getMonth(), 1);
-    endDate = new Date(now.getFullYear(), now.getMonth() + 1, 0);
-  } else {
-    // Use selected year and month
-    const year = parseInt(document.getElementById('print-year').value);
-    const month = parseInt(document.getElementById('print-month').value);
-    startDate = new Date(year, month - 1, 1);
-    endDate = new Date(year, month, 0);
-  }
-  
-  // Format dates as YYYY-MM-DD
-  const formatDateForFilter = (date) => {
-    return date.toISOString().split('T')[0];
-  };
-  
-  const startDateStr = formatDateForFilter(startDate);
-  const endDateStr = formatDateForFilter(endDate);
-  
-  // Filter records by date range
-  let printRecords = Object.entries(state.records).filter(([id, record]) => {
-    const recordDate = new Date(record.date);
-    return recordDate >= new Date(startDateStr) && recordDate <= new Date(endDateStr);
-  });
-  
-  // Sort records by date (oldest first)
-  printRecords.sort((a, b) => new Date(a[1].date) - new Date(b[1].date));
-  
-  // Generate print content
-  generatePrintContent(printRecords, startDateStr, endDateStr);
-}
-
-// Generate print content and open print dialog
-function generatePrintContent(records, startDate, endDate) {
-  // Create a temporary container for printing
-  const printContainer = document.createElement('div');
-  printContainer.id = 'print-container';
-  printContainer.style.padding = '20px';
-  printContainer.style.fontFamily = 'Arial, sans-serif';
-  printContainer.style.fontSize = '12px';
-  printContainer.style.backgroundColor = 'white';
-  
-  // Build content similar to PDF but simplified
-  let content = `
-    <div style="margin-bottom: 20px; border-bottom: 2px solid #1e4094; padding-bottom: 15px;">
-      <div style="font-size: 14px; font-weight: bold; color: #1e4094; margin-bottom: 5px;">
-        ${state.companySettings.name || 'Exempel AB'}
-      </div>
-      <div style="font-size: 10px; color: #666;">
-        ${state.companySettings.address || 'Köpmangatan 5, plan 10'}<br>
-        ${state.companySettings.postal || '151 71 Södertälje'} | Tel: ${state.companySettings.phone || '079-079 00 45'}<br>
-        Org.nr: ${state.companySettings.orgnr || '559096-5983'}
-      </div>
-    </div>
-    
-    <h1 style="color: #1e4094; text-align: center; font-size: 18px; margin: 15px 0;">
-      ARBETSRAPPORT
-    </h1>
-    
-    <div style="margin-bottom: 15px; font-size: 11px;">
-      <strong>Mätningsingenjör:</strong> ${state.user.firstName} ${state.user.lastName}<br>
-      <strong>Period:</strong> ${formatDateShort(startDate)} - ${formatDateShort(endDate)}<br>
-      <strong>Genereringsdatum:</strong> ${new Date().toLocaleDateString('sv-SE')}
-    </div>
-    
-    <table style="width: 100%; border-collapse: collapse; font-size: 10px;">
-      <thead>
-        <tr style="background-color: #1e4094; color: white;">
-          <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Datum</th>
-          <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Dag</th>
-          <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Från</th>
-          <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Till</th>
-          <th style="padding: 8px; border: 1px solid #ddd; text-align: right;">Rast (h)</th>
-          <th style="padding: 8px; border: 1px solid #ddd; text-align: right;">Timmar</th>
-          <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Projekt</th>
-          <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Beskrivning</th>
-        </tr>
-      </thead>
-      <tbody>
-  `;
-  
-  let totalHours = 0;
-  
-  records.forEach(([id, record]) => {
-    const project = state.projects[record.projectId] || { name: 'Okänd', code: '?' };
-    const date = new Date(record.date);
-    const dateStr = formatDateShort(record.date);
-    const dayName = getSwedishDayName(date);
-    
-    // Calculate hours worked
-    const [startHours, startMinutes] = record.startTime.split(':').map(Number);
-    const [endHours, endMinutes] = record.endTime.split(':').map(Number);
-    const startTotalMinutes = startHours * 60 + startMinutes;
-    const endTotalMinutes = endHours * 60 + endMinutes;
-    const workedMinutes = endTotalMinutes - startTotalMinutes - record.breakTime;
-    const workedHours = workedMinutes / 60;
-    
-    totalHours += workedHours;
-    
-    content += `
-      <tr>
-        <td style="padding: 6px; border: 1px solid #ddd;">${dateStr}</td>
-        <td style="padding: 6px; border: 1px solid #ddd;">${dayName}</td>
-        <td style="padding: 6px; border: 1px solid #ddd;">${record.startTime}</td>
-        <td style="padding: 6px; border: 1px solid #ddd;">${record.endTime}</td>
-        <td style="padding: 6px; border: 1px solid #ddd; text-align: right;">${(record.breakTime / 60).toFixed(2)}</td>
-        <td style="padding: 6px; border: 1px solid #ddd; text-align: right;">${workedHours.toFixed(2)}</td>
-        <td style="padding: 6px; border: 1px solid #ddd;">${project.name}</td>
-        <td style="padding: 6px; border: 1px solid #ddd;">${record.notes || ''}</td>
-      </tr>
-    `;
-  });
-  
-  content += `
-      </tbody>
-    </table>
-    
-    <div style="margin-top: 20px; text-align: right; font-weight: bold; font-size: 11px;">
-      TOTALT ARBETADE TIMMAR: ${totalHours.toFixed(2)}
-    </div>
-    
-    <div style="margin-top: 30px; text-align: center; font-size: 9px; color: #888; font-style: italic;">
-      Genererad automatiskt av TimeBook Pro
-    </div>
-  `;
-  
-  printContainer.innerHTML = content;
-  
-  // Add container to document body
-  document.body.appendChild(printContainer);
-  
-  // Open print dialog
-  window.print();
-  
-  // Remove container after printing
-  setTimeout(() => {
-    if (document.body.contains(printContainer)) {
-      document.body.removeChild(printContainer);
+        // ===== GUARDAR PDF =====
+        const timestamp = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+        const filename = `Arbetstrapport_${state.user.lastName}_${timestamp}.pdf`;
+        
+        pdf.save(filename);
+        showAlert(translations[state.currentLanguage]["export_success"], "success");
+        
+      } catch (error) {
+        console.error("Error generating PDF:", error);
+        showAlert("Error generating PDF: " + error.message, "error");
+      } finally {
+        showLoading(false);
+      }
     }
-  }, 100);
-}
-	
+
+    // Export to Word - Versión mejorada (con código + nombre)
+    function exportToWord(records, startDate, endDate) {
+      showLoading(true);
+      
+      try {
+        // Create professional HTML content for Word export
+        let content = `
+          <html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">
+          <head>
+            <meta charset="utf-8">
+            <title>Arbetstrapport</title>
+            <style>
+              body { 
+                font-family: Arial, sans-serif; 
+                margin: 0;
+                padding: 20px;
+                color: #333;
+              }
+              .header { 
+                margin-bottom: 20px;
+                padding-bottom: 15px;
+                border-bottom: 2px solid #1e4094;
+              }
+              .company-info {
+                margin-bottom: 10px;
+              }
+              .company-name {
+                font-size: 18px;
+                font-weight: bold;
+                color: #1e4094;
+                margin-bottom: 5px;
+              }
+              .company-details {
+                font-size: 11px;
+                color: #666;
+                line-height: 1.4;
+              }
+              .logo-container {
+                margin-bottom: 15px;
+              }
+              .logo {
+                max-width: 150px;
+                height: auto;
+              }
+              h1 { 
+                color: #1e4094; 
+                font-size: 24px;
+                text-align: center;
+                margin: 20px 0;
+              }
+              .report-info {
+                background-color: #f8f9fa;
+                padding: 15px;
+                margin: 20px 0;
+                border-radius: 5px;
+                font-size: 12px;
+              }
+              .report-info strong {
+                color: #1e4094;
+              }
+              table { 
+                border-collapse: collapse; 
+                width: 100%; 
+                font-size: 11px;
+                margin: 20px 0;
+              }
+              th { 
+                background-color: #1e4094; 
+                color: white;
+                padding: 10px 8px;
+                text-align: left;
+                font-weight: bold;
+                border: 1px solid #ddd;
+              }
+              td { 
+                border: 1px solid #ddd; 
+                padding: 8px;
+                text-align: left;
+                vertical-align: top;
+              }
+              tr:nth-child(even) {
+                background-color: #f8f9fa;
+              }
+              .total-section {
+                margin-top: 20px;
+                padding-top: 15px;
+                border-top: 2px solid #1e4094;
+                text-align: right;
+                font-weight: bold;
+                font-size: 12px;
+                color: #1e4094;
+              }
+              .footer {
+                margin-top: 30px;
+                text-align: center;
+                font-size: 10px;
+                color: #888;
+                font-style: italic;
+              }
+            </style>
+          </head>
+          <body>
+            <div class="header">
+              <div class="company-info">
+                <div class="company-name">${state.companySettings.name || 'Exempel AB'}</div>
+                <div class="company-details">
+                  ${state.companySettings.address || 'Köpmangatan 5, plan 10'}<br>
+                  ${state.companySettings.postal || '151 71 Södertälje'}<br>
+                  Tel: ${state.companySettings.phone || '079-079 00 45'}<br>
+                  Organisationsnummer: ${state.companySettings.orgnr || '559096-5983'}
+                </div>
+              </div>
+        `;
+
+        // Agregar logo si está disponible (opcional)
+        const logoUrl = state.companySettings.logoUrl || '';
+        if (logoUrl) {
+          content += `
+            <div class="logo-container">
+              <img src="${logoUrl}" alt="Company Logo" class="logo">
+            </div>
+          `;
+        }
+
+        content += `
+            </div>
+            
+            <h1>ARBETSRAPPORT</h1>
+            
+            <div class="report-info">
+              <strong>Mätningsingenjör:</strong> ${state.user.firstName} ${state.user.lastName}<br>
+              <strong>Period:</strong> ${formatDateShort(startDate)} - ${formatDateShort(endDate)}<br>
+              <strong>Genereringsdatum:</strong> ${new Date().toLocaleDateString('sv-SE')}
+            </div>
+            
+            <table>
+              <thead>
+                <tr>
+                  <th>Datum</th>
+                  <th>Dag</th>
+                  <th>Från</th>
+                  <th>Till</th>
+                  <th>Rast (h)</th>
+                  <th>Timmar</th>
+                  <th>Projekt</th>
+                  <th>Beskrivning</th>
+                </tr>
+              </thead>
+              <tbody>
+        `;
+        
+        let totalHours = 0;
+        
+        records.forEach(([id, record]) => {
+          const project = state.projects[record.projectId] || { name: 'Okänd', code: '?' };
+          const date = new Date(record.date);
+          const dateStr = formatDateShort(record.date);
+          const dayName = getSwedishDayName(date);
+          
+          // Calculate hours worked
+          const [startHours, startMinutes] = record.startTime.split(':').map(Number);
+          const [endHours, endMinutes] = record.endTime.split(':').map(Number);
+          const startTotalMinutes = startHours * 60 + startMinutes;
+          const endTotalMinutes = endHours * 60 + endMinutes;
+          const workedMinutes = endTotalMinutes - startTotalMinutes - record.breakTime;
+          const workedHours = workedMinutes / 60;
+          
+          totalHours += workedHours;
+          
+          content += `
+            <tr>
+              <td>${dateStr}</td>
+              <td>${dayName}</td>
+              <td>${record.startTime}</td>
+              <td>${record.endTime}</td>
+              <td>${(record.breakTime / 60).toFixed(2)}</td>
+              <td>${workedHours.toFixed(2)}</td>
+              <td>${project.code} - ${project.name}</td>
+              <td>${record.notes || ''}</td>
+            </tr>
+          `;
+        });
+        
+        content += `
+              </tbody>
+            </table>
+            
+            <div class="total-section">
+              TOTALT ARBETADE TIMMAR: ${totalHours.toFixed(2)}
+            </div>
+            
+            <div class="footer">
+              Genererad automatiskt av TimeBook Pro
+            </div>
+          </body>
+          </html>
+        `;
+        
+        // Create Blob and download
+        const blob = new Blob([content], { type: 'application/msword' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        
+        // Nombre de archivo profesional
+        const timestamp = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+        const filename = `Arbetstrapport_${state.user.lastName}_${timestamp}.doc`;
+        
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        
+        showAlert(translations[state.currentLanguage]['export_success'], 'success');
+      } catch (error) {
+        console.error('Error generating Word document:', error);
+        showAlert('Error generating Word document: ' + error.message, 'error');
+      } finally {
+        showLoading(false);
+      }
+    }
+
+    // ========== FUNCIONES DE IMPRESIÓN ==========
+
+    // Open print modal
+    function openPrintModal() {
+      // Populate year filter
+      const yearSelect = document.getElementById('print-year');
+      yearSelect.innerHTML = '';
+      
+      // Get unique years from records
+      const years = new Set();
+      Object.values(state.records).forEach(record => {
+        const year = new Date(record.date).getFullYear();
+        years.add(year);
+      });
+      
+      // If no records, add current year
+      if (years.size === 0) {
+        years.add(new Date().getFullYear());
+      }
+      
+      // Sort years in descending order
+      const sortedYears = Array.from(years).sort((a, b) => b - a);
+      
+      // Add years to filter
+      sortedYears.forEach(year => {
+        const option = document.createElement('option');
+        option.value = year;
+        option.textContent = year;
+        yearSelect.appendChild(option);
+      });
+      
+      // Set current year and month by default
+      const now = new Date();
+      yearSelect.value = now.getFullYear();
+      document.getElementById('print-month').value = now.getMonth() + 1;
+      
+      // Show modal
+      document.getElementById('print-modal').classList.remove('hidden');
+      document.getElementById('print-modal').classList.add('flex');
+    }
+
+    // Close print modal
+    function closePrintModal() {
+      document.getElementById('print-modal').classList.add('hidden');
+      document.getElementById('print-modal').classList.remove('flex');
+    }
+
+    // Toggle date filters based on current month checkbox
+    function togglePrintDateFilters() {
+      const currentMonthCheckbox = document.getElementById('print-current-month');
+      const dateFilters = document.getElementById('print-date-filters');
+      
+      if (currentMonthCheckbox.checked) {
+        dateFilters.classList.add('hidden');
+      } else {
+        dateFilters.classList.remove('hidden');
+      }
+    }
+
+    // Handle print
+    function handlePrint(e) {
+      e.preventDefault();
+      closePrintModal();
+      
+      const currentMonthCheckbox = document.getElementById('print-current-month');
+      let startDate, endDate;
+      
+      if (currentMonthCheckbox.checked) {
+        // Use current month
+        const now = new Date();
+        startDate = new Date(now.getFullYear(), now.getMonth(), 1);
+        endDate = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+      } else {
+        // Use selected year and month
+        const year = parseInt(document.getElementById('print-year').value);
+        const month = parseInt(document.getElementById('print-month').value);
+        startDate = new Date(year, month - 1, 1);
+        endDate = new Date(year, month, 0);
+      }
+      
+      // Format dates as YYYY-MM-DD
+      const formatDateForFilter = (date) => {
+        return date.toISOString().split('T')[0];
+      };
+      
+      const startDateStr = formatDateForFilter(startDate);
+      const endDateStr = formatDateForFilter(endDate);
+      
+      // Filter records by date range
+      let printRecords = Object.entries(state.records).filter(([id, record]) => {
+        const recordDate = new Date(record.date);
+        return recordDate >= new Date(startDateStr) && recordDate <= new Date(endDateStr);
+      });
+      
+      // Sort records by date (oldest first)
+      printRecords.sort((a, b) => new Date(a[1].date) - new Date(b[1].date));
+      
+      // Generate print content
+      generatePrintContent(printRecords, startDateStr, endDateStr);
+    }
+
+    // Generate print content and open print dialog (con código + nombre)
+    function generatePrintContent(records, startDate, endDate) {
+      // Create a temporary container for printing
+      const printContainer = document.createElement('div');
+      printContainer.id = 'print-container';
+      printContainer.style.padding = '20px';
+      printContainer.style.fontFamily = 'Arial, sans-serif';
+      printContainer.style.fontSize = '12px';
+      printContainer.style.backgroundColor = 'white';
+      
+      // Build content similar to PDF but simplified
+      let content = `
+        <div style="margin-bottom: 20px; border-bottom: 2px solid #1e4094; padding-bottom: 15px;">
+          <div style="font-size: 14px; font-weight: bold; color: #1e4094; margin-bottom: 5px;">
+            ${state.companySettings.name || 'Exempel AB'}
+          </div>
+          <div style="font-size: 10px; color: #666;">
+            ${state.companySettings.address || 'Köpmangatan 5, plan 10'}<br>
+            ${state.companySettings.postal || '151 71 Södertälje'} | Tel: ${state.companySettings.phone || '079-079 00 45'}<br>
+            Org.nr: ${state.companySettings.orgnr || '559096-5983'}
+          </div>
+        </div>
+        
+        <h1 style="color: #1e4094; text-align: center; font-size: 18px; margin: 15px 0;">
+          ARBETSRAPPORT
+        </h1>
+        
+        <div style="margin-bottom: 15px; font-size: 11px;">
+          <strong>Mätningsingenjör:</strong> ${state.user.firstName} ${state.user.lastName}<br>
+          <strong>Period:</strong> ${formatDateShort(startDate)} - ${formatDateShort(endDate)}<br>
+          <strong>Genereringsdatum:</strong> ${new Date().toLocaleDateString('sv-SE')}
+        </div>
+        
+        <table style="width: 100%; border-collapse: collapse; font-size: 10px;">
+          <thead>
+            <tr style="background-color: #1e4094; color: white;">
+              <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Datum</th>
+              <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Dag</th>
+              <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Från</th>
+              <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Till</th>
+              <th style="padding: 8px; border: 1px solid #ddd; text-align: right;">Rast (h)</th>
+              <th style="padding: 8px; border: 1px solid #ddd; text-align: right;">Timmar</th>
+              <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Projekt</th>
+              <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Beskrivning</th>
+            </tr>
+          </thead>
+          <tbody>
+      `;
+      
+      let totalHours = 0;
+      
+      records.forEach(([id, record]) => {
+        const project = state.projects[record.projectId] || { name: 'Okänd', code: '?' };
+        const date = new Date(record.date);
+        const dateStr = formatDateShort(record.date);
+        const dayName = getSwedishDayName(date);
+        
+        // Calculate hours worked
+        const [startHours, startMinutes] = record.startTime.split(':').map(Number);
+        const [endHours, endMinutes] = record.endTime.split(':').map(Number);
+        const startTotalMinutes = startHours * 60 + startMinutes;
+        const endTotalMinutes = endHours * 60 + endMinutes;
+        const workedMinutes = endTotalMinutes - startTotalMinutes - record.breakTime;
+        const workedHours = workedMinutes / 60;
+        
+        totalHours += workedHours;
+        
+        content += `
+          <tr>
+            <td style="padding: 6px; border: 1px solid #ddd;">${dateStr}</td>
+            <td style="padding: 6px; border: 1px solid #ddd;">${dayName}</td>
+            <td style="padding: 6px; border: 1px solid #ddd;">${record.startTime}</td>
+            <td style="padding: 6px; border: 1px solid #ddd;">${record.endTime}</td>
+            <td style="padding: 6px; border: 1px solid #ddd; text-align: right;">${(record.breakTime / 60).toFixed(2)}</td>
+            <td style="padding: 6px; border: 1px solid #ddd; text-align: right;">${workedHours.toFixed(2)}</td>
+            <td style="padding: 6px; border: 1px solid #ddd;">${project.code} - ${project.name}</td>
+            <td style="padding: 6px; border: 1px solid #ddd;">${record.notes || ''}</td>
+          </tr>
+        `;
+      });
+      
+      content += `
+          </tbody>
+        </table>
+        
+        <div style="margin-top: 20px; text-align: right; font-weight: bold; font-size: 11px;">
+          TOTALT ARBETADE TIMMAR: ${totalHours.toFixed(2)}
+        </div>
+        
+        <div style="margin-top: 30px; text-align: center; font-size: 9px; color: #888; font-style: italic;">
+          Genererad automatiskt av TimeBook Pro
+        </div>
+      `;
+      
+      printContainer.innerHTML = content;
+      
+      // Add container to document body
+      document.body.appendChild(printContainer);
+      
+      // Open print dialog
+      window.print();
+      
+      // Remove container after printing
+      setTimeout(() => {
+        if (document.body.contains(printContainer)) {
+          document.body.removeChild(printContainer);
+        }
+      }, 100);
+    }
+    
   </script>
-<footer class="w-full text-center py-4 mt-8 border-t text-gray-600 text-sm">
-  © <span id="current-year"></span> 
-  <span data-i18n="by_author">by Vinny</span>. 
-  <span data-i18n="all_rights_reserved">Todos los derechos reservados.</span><br>
-  <span data-i18n="subject_to_translation"></span>
-</footer>
+  <footer class="w-full text-center py-4 mt-8 border-t text-gray-600 text-sm">
+    © <span id="current-year"></span> 
+    <span data-i18n="by_author">by Vinny</span>. 
+    <span data-i18n="all_rights_reserved">Todos los derechos reservados.</span><br>
+    <span data-i18n="subject_to_translation"></span>
+  </footer>
 
-<script>
-  // Insertar año actual automáticamente
-  document.getElementById("current-year").textContent = new Date().getFullYear();
-</script>
+  <script>
+    // Insertar año actual automáticamente
+    document.getElementById("current-year").textContent = new Date().getFullYear();
+  </script>
 
-	<!-- 🔽 CÓDIGO MEJORADO 🔽 -->
-	<script>
-	/* ---------- CONFIG ---------- */
-	const SUGGESTION_PROVIDER = "languagetool";
-	const DEBOUNCE_MS = 350;
-	const MAX_SUGGESTIONS = 6;
+  <!-- 🔽 CÓDIGO MEJORADO (sugerencias de texto) 🔽 -->
+  <script>
+    /* ---------- CONFIG ---------- */
+    const SUGGESTION_PROVIDER = "languagetool";
+    const DEBOUNCE_MS = 350;
+    const MAX_SUGGESTIONS = 6;
 
-	function debounce(fn, wait) {
-	  let t; 
-	  return (...a) => { 
-		clearTimeout(t); 
-		t = setTimeout(() => fn.apply(this, a), wait); 
-	  };
-	}
+    function debounce(fn, wait) {
+      let t; 
+      return (...a) => { 
+        clearTimeout(t); 
+        t = setTimeout(() => fn.apply(this, a), wait); 
+      };
+    }
 
-	function getLastTokenAndRange(text, caretPos) {
-	  const left = text.slice(0, caretPos);
-	  const m = left.match(/(\S+)$/);
-	  const token = m ? m[1] : "";
-	  const start = m ? (caretPos - token.length) : caretPos;
-	  return { token, start, end: caretPos };
-	}
+    function getLastTokenAndRange(text, caretPos) {
+      const left = text.slice(0, caretPos);
+      const m = left.match(/(\S+)$/);
+      const token = m ? m[1] : "";
+      const start = m ? (caretPos - token.length) : caretPos;
+      return { token, start, end: caretPos };
+    }
 
-	function replaceRange(text, start, end, replacement) {
-	  return text.slice(0, start) + replacement + text.slice(end);
-	}
+    function replaceRange(text, start, end, replacement) {
+      return text.slice(0, start) + replacement + text.slice(end);
+    }
 
-	function makeSuggestionBox() {
-	  const box = document.createElement("div");
-	  box.className = "suggestion-box";
-	  box.style.position = "absolute";
-	  box.style.zIndex = "9999";
-	  box.style.background = "white";
-	  box.style.border = "1px solid #ddd";
-	  box.style.borderRadius = "6px";
-	  box.style.boxShadow = "0 6px 18px rgba(0,0,0,0.08)";
-	  box.style.maxWidth = "420px";
-	  box.style.fontSize = "14px";
-	  box.style.display = "none";
-	  box.style.maxHeight = "200px";
-	  box.style.overflowY = "auto";
-	  document.body.appendChild(box);
-	  return box;
-	}
+    function makeSuggestionBox() {
+      const box = document.createElement("div");
+      box.className = "suggestion-box";
+      box.style.position = "absolute";
+      box.style.zIndex = "9999";
+      box.style.background = "white";
+      box.style.border = "1px solid #ddd";
+      box.style.borderRadius = "6px";
+      box.style.boxShadow = "0 6px 18px rgba(0,0,0,0.08)";
+      box.style.maxWidth = "420px";
+      box.style.fontSize = "14px";
+      box.style.display = "none";
+      box.style.maxHeight = "200px";
+      box.style.overflowY = "auto";
+      document.body.appendChild(box);
+      return box;
+    }
 
-	function positionBoxForTextarea(box, textarea) {
-	  const r = textarea.getBoundingClientRect();
-	  box.style.left = `${r.left + window.scrollX + 6}px`;
-	  box.style.top = `${r.bottom + window.scrollY + 6}px`;
-	  box.style.width = Math.min(420, r.width - 12) + "px";
-	}
+    function positionBoxForTextarea(box, textarea) {
+      const r = textarea.getBoundingClientRect();
+      box.style.left = `${r.left + window.scrollX + 6}px`;
+      box.style.top = `${r.bottom + window.scrollY + 6}px`;
+      box.style.width = Math.min(420, r.width - 12) + "px";
+    }
 
-	async function fetchLanguageToolSuggestions(text, lang = "sv") {
-	  try {
-		const p = new URLSearchParams({ 
-		  text, 
-		  language: lang,
-		  enabledOnly: "false"
-		});
-		
-		const r = await fetch("https://api.languagetool.org/v2/check", {
-		  method: "POST",
-		  headers: { 
-			"Content-Type": "application/x-www-form-urlencoded",
-			"Accept": "application/json"
-		  },
-		  body: p.toString()
-		});
-		
-		if (!r.ok) throw new Error(`HTTP error! status: ${r.status}`);
-		
-		const d = await r.json();
-		return d.matches || [];
-	  } catch (error) {
-		console.error("❌ Error fetching suggestions:", error);
-		return [];
-	  }
-	}
+    async function fetchLanguageToolSuggestions(text, lang = "sv") {
+      try {
+        const p = new URLSearchParams({ 
+          text, 
+          language: lang,
+          enabledOnly: "false"
+        });
+        
+        const r = await fetch("https://api.languagetool.org/v2/check", {
+          method: "POST",
+          headers: { 
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Accept": "application/json"
+          },
+          body: p.toString()
+        });
+        
+        if (!r.ok) throw new Error(`HTTP error! status: ${r.status}`);
+        
+        const d = await r.json();
+        return d.matches || [];
+      } catch (error) {
+        console.error("❌ Error fetching suggestions:", error);
+        return [];
+      }
+    }
 
-	function mapLTMatchesToSuggestions(matches, start, end) {
-	  const out = [];
-	  // Solo sugerencias para errores en la posición actual
-	  matches.forEach(m => {
-		if (m.offset <= start && (m.offset + m.length) >= end) {
-		  (m.replacements || []).forEach(r => out.push(r.value));
-		}
-	  });
-	  return Array.from(new Set(out)).slice(0, MAX_SUGGESTIONS);
-	}
+    function mapLTMatchesToSuggestions(matches, start, end) {
+      const out = [];
+      // Solo sugerencias para errores en la posición actual
+      matches.forEach(m => {
+        if (m.offset <= start && (m.offset + m.length) >= end) {
+          (m.replacements || []).forEach(r => out.push(r.value));
+        }
+      });
+      return Array.from(new Set(out)).slice(0, MAX_SUGGESTIONS);
+    }
 
-	function enhanceTextarea(textarea, lang = "sv") {
-	  const box = makeSuggestionBox();
-	  
-	  const hide = () => {
-		box.style.display = "none";
-		box.innerHTML = "";
-	  };
-	  
-	  function applySuggestion(s) {
-		const { start, end } = getLastTokenAndRange(textarea.value, textarea.selectionStart);
-		textarea.value = replaceRange(textarea.value, start, end, s + " ");
-		textarea.focus();
-		const pos = start + s.length + 1;
-		textarea.setSelectionRange(pos, pos);
-		hide();
-		// Redisparar input para nuevas sugerencias
-		textarea.dispatchEvent(new Event('input', { bubbles: true }));
-	  }
-	  
-	  const show = list => {
-		if (!list.length) return hide();
-		
-		box.innerHTML = list.map(v => 
-		  `<div style="padding:8px 12px;cursor:pointer;border-bottom:1px solid #f0f0f0;transition:background 0.2s;">${v}</div>`
-		).join("");
-		
-		// Agregar evento a cada sugerencia
-		box.querySelectorAll('div').forEach(div => {
-		  div.addEventListener('click', () => applySuggestion(div.textContent));
-		  div.addEventListener('mouseenter', () => {
-			div.style.background = "#f3f4f6";
-		  });
-		  div.addEventListener('mouseleave', () => {
-			div.style.background = "";
-		  });
-		});
-		
-		positionBoxForTextarea(box, textarea);
-		box.style.display = "block";
-	  };
-	  
-	  const query = debounce(async () => {
-		const { token, start, end } = getLastTokenAndRange(textarea.value, textarea.selectionStart);
-		if (!token || token.length < 2) return hide(); // Solo si hay palabra de al menos 2 caracteres
-		
-		let suggestions = [];
-		
-		if (SUGGESTION_PROVIDER === "languagetool") {
-		  const matches = await fetchLanguageToolSuggestions(textarea.value, lang);
-		  suggestions = mapLTMatchesToSuggestions(matches, start, end);
-		}
-		
-		show(suggestions);
-	  }, DEBOUNCE_MS);
-	  
-	  // Event listeners
-	  textarea.addEventListener("input", query);
-	  textarea.addEventListener("click", query); // También al hacer clic
-	  textarea.addEventListener("blur", () => setTimeout(hide, 150));
-	  textarea.addEventListener("keydown", (e) => {
-		if (e.key === 'Escape') hide();
-	  });
-	  
-	  window.addEventListener("resize", () => {
-		if (box.style.display !== 'none') {
-		  positionBoxForTextarea(box, textarea);
-		}
-	  });
-	  
-	  // Cerrar al hacer clic fuera
-	  document.addEventListener("click", (e) => {
-		if (!box.contains(e.target) && e.target !== textarea) {
-		  hide();
-		}
-	  });
-	}
+    function enhanceTextarea(textarea, lang = "sv") {
+      const box = makeSuggestionBox();
+      
+      const hide = () => {
+        box.style.display = "none";
+        box.innerHTML = "";
+      };
+      
+      function applySuggestion(s) {
+        const { start, end } = getLastTokenAndRange(textarea.value, textarea.selectionStart);
+        textarea.value = replaceRange(textarea.value, start, end, s + " ");
+        textarea.focus();
+        const pos = start + s.length + 1;
+        textarea.setSelectionRange(pos, pos);
+        hide();
+        // Redisparar input para nuevas sugerencias
+        textarea.dispatchEvent(new Event('input', { bubbles: true }));
+      }
+      
+      const show = list => {
+        if (!list.length) return hide();
+        
+        box.innerHTML = list.map(v => 
+          `<div style="padding:8px 12px;cursor:pointer;border-bottom:1px solid #f0f0f0;transition:background 0.2s;">${v}</div>`
+        ).join("");
+        
+        // Agregar evento a cada sugerencia
+        box.querySelectorAll('div').forEach(div => {
+          div.addEventListener('click', () => applySuggestion(div.textContent));
+          div.addEventListener('mouseenter', () => {
+            div.style.background = "#f3f4f6";
+          });
+          div.addEventListener('mouseleave', () => {
+            div.style.background = "";
+          });
+        });
+        
+        positionBoxForTextarea(box, textarea);
+        box.style.display = "block";
+      };
+      
+      const query = debounce(async () => {
+        const { token, start, end } = getLastTokenAndRange(textarea.value, textarea.selectionStart);
+        if (!token || token.length < 2) return hide(); // Solo si hay palabra de al menos 2 caracteres
+        
+        let suggestions = [];
+        
+        if (SUGGESTION_PROVIDER === "languagetool") {
+          const matches = await fetchLanguageToolSuggestions(textarea.value, lang);
+          suggestions = mapLTMatchesToSuggestions(matches, start, end);
+        }
+        
+        show(suggestions);
+      }, DEBOUNCE_MS);
+      
+      // Event listeners
+      textarea.addEventListener("input", query);
+      textarea.addEventListener("click", query); // También al hacer clic
+      textarea.addEventListener("blur", () => setTimeout(hide, 150));
+      textarea.addEventListener("keydown", (e) => {
+        if (e.key === 'Escape') hide();
+      });
+      
+      window.addEventListener("resize", () => {
+        if (box.style.display !== 'none') {
+          positionBoxForTextarea(box, textarea);
+        }
+      });
+      
+      // Cerrar al hacer clic fuera
+      document.addEventListener("click", (e) => {
+        if (!box.contains(e.target) && e.target !== textarea) {
+          hide();
+        }
+      });
+    }
 
-	// Inicializar cuando el DOM esté listo
-	document.addEventListener("DOMContentLoaded", () => {
-	  // Esperar un poco para asegurar que todo esté cargado
-	  setTimeout(() => {
-		const textareas = [
-		  document.getElementById("notes"),
-		  document.getElementById("edit-notes")
-		].filter(Boolean);
-		
-		textareas.forEach(textarea => {
-		  enhanceTextarea(textarea, document.documentElement.lang || "sv");
-		});
-	  }, 100);
-	});
-	</script>
+    // Inicializar cuando el DOM esté listo
+    document.addEventListener("DOMContentLoaded", () => {
+      // Esperar un poco para asegurar que todo esté cargado
+      setTimeout(() => {
+        const textareas = [
+          document.getElementById("notes"),
+          document.getElementById("edit-notes")
+        ].filter(Boolean);
+        
+        textareas.forEach(textarea => {
+          enhanceTextarea(textarea, document.documentElement.lang || "sv");
+        });
+      }, 100);
+    });
+  </script>
 
-	<style>
-	.suggestion-box {
-	  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-	}
+  <style>
+    .suggestion-box {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
 
-	.suggestion-box div:hover { 
-	  background: #eef !important; 
-	}
+    .suggestion-box div:hover { 
+      background: #eef !important; 
+    }
 
-	.suggestion-box div:last-child {
-	  border-bottom: none !important;
-	}
-	</style>
+    .suggestion-box div:last-child {
+      border-bottom: none !important;
+    }
+  </style>
 
-	<!-- 🔼 FIN DEL CÓDIGO MEJORADO 🔼 -->
+  <!-- 🔼 FIN DEL CÓDIGO MEJORADO 🔼 -->
 </body>
 </html>
-
-
-

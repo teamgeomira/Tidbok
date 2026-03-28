@@ -580,51 +580,56 @@
           <i class="fas fa-clock mr-2 text-blue-500"></i> TimeBook Team Geomira A.B.
         </h1>
         
-        <div class="flex items-center space-x-4">
-          <div class="language-selector">
-            <div class="language-btn">
+        <div class="flex items-center justify-between gap-4">
+          <div class="language-selector relative">
+            <div class="language-btn cursor-pointer flex items-center bg-gray-100 px-3 py-1.5 rounded-lg">
               <span class="language-flag flag-sv" id="current-flag"></span>
-              <span id="current-language">SV</span>
+              <span id="current-language" class="mx-1">SV</span>
               <i class="fas fa-chevron-down ml-1 text-xs"></i>
             </div>
-            <div class="language-dropdown">
-              <a href="#" data-lang="sv">
+            <div class="language-dropdown absolute hidden bg-white border rounded-lg shadow-lg mt-1 z-10">
+              <a href="#" data-lang="sv" class="block px-4 py-2 hover:bg-gray-100">
                 <span class="language-flag flag-sv"></span>
-                <span data-i18n="language_swedish">Svenska</span>
+                <span data-i18n="language_swedish" class="ml-2">Svenska</span>
               </a>
-              <a href="#" data-lang="es">
+              <a href="#" data-lang="es" class="block px-4 py-2 hover:bg-gray-100">
                 <span class="language-flag flag-es"></span>
-                <span data-i18n="language_spanish">Español</span>
+                <span data-i18n="language_spanish" class="ml-2">Español</span>
               </a>
-              <a href="#" data-lang="en">
+              <a href="#" data-lang="en" class="block px-4 py-2 hover:bg-gray-100">
                 <span class="language-flag flag-en"></span>
-                <span data-i18n="language_english">English</span>
+                <span data-i18n="language_english" class="ml-2">English</span>
               </a>
-              <a href="#" data-lang="ru">
+              <a href="#" data-lang="ru" class="block px-4 py-2 hover:bg-gray-100">
                 <span class="language-flag flag-ru"></span>
-                <span data-i18n="language_russian">Русский</span>
+                <span data-i18n="language_russian" class="ml-2">Русский</span>
               </a>
-              <a href="#" data-lang="pl">
+              <a href="#" data-lang="pl" class="block px-4 py-2 hover:bg-gray-100">
                 <span class="language-flag flag-pl"></span>
-                <span data-i18n="language_polish">Polski</span>
+                <span data-i18n="language_polish" class="ml-2">Polski</span>
               </a>
-              <a href="#" data-lang="th">
+              <a href="#" data-lang="th" class="block px-4 py-2 hover:bg-gray-100">
                 <span class="language-flag flag-th"></span>
-                <span data-i18n="language_thai">ไทย</span>
+                <span data-i18n="language_thai" class="ml-2">ไทย</span>
               </a>
-        <div class="flex flex-row items-center gap-2">
-          <a href="https://teamgeomira.github.io/Instrumenthanteringuser/" target="_blank" class="flex items-center btn-outline text-sm px-3 py-1.5 rounded-lg bg-gray-100 hover:bg-gray-200 transition">
-            <span class="mr-1">🔧📏</span>
-            <span>Totalstation Support</span>
-          </a>
-          <a href="https://teamgeomira.github.io/Franvarorapport/" target="_blank" class="flex items-center btn-outline text-sm px-3 py-1.5 rounded-lg bg-gray-100 hover:bg-gray-200 transition">
-            <span class="mr-1">🏫</span>
-            <span>SkolaRaport</span>
-          </a>
-          <a href="https://teamgeomira.github.io/Korjournal/" target="_blank" class="flex items-center btn-outline text-sm px-3 py-1.5 rounded-lg bg-gray-100 hover:bg-gray-200 transition">
-            <span class="mr-1">📝🚗</span>
-            <span>Korjournal</span>
-          </a>
+            </div>
+          </div>
+          
+          <!-- Botones al lado derecho -->
+          <div class="flex flex-row items-center gap-2">
+            <a href="https://teamgeomira.github.io/Tidbok/" target="_blank" class="flex items-center btn-outline text-sm px-3 py-1.5 rounded-lg bg-gray-100 hover:bg-gray-200 transition">
+              <span class="mr-1">🔧📏</span>
+              <span>Totalstation Support</span>
+            </a>
+            <a href="https://teamgeomira.github.io/Franvarorapport/" target="_blank" class="flex items-center btn-outline text-sm px-3 py-1.5 rounded-lg bg-gray-100 hover:bg-gray-200 transition">
+              <span class="mr-1">🏫</span>
+              <span>SkolaRaport</span>
+            </a>
+            <a href="https://teamgeomira.github.io/Korjournal/" target="_blank" class="flex items-center btn-outline text-sm px-3 py-1.5 rounded-lg bg-gray-100 hover:bg-gray-200 transition">
+              <span class="mr-1">📝🚗</span>
+              <span>Korjournal</span>
+            </a>
+          </div>
         </div>
         
         <div class="text-right hidden md:block">

@@ -18,6 +18,31 @@ const instrumentFirebaseConfig = {
 let accessToken = null;
 let tokenExpiry = 0;
 
+const translations = {
+  sv: {
+    title: "⚠️ Kalibreringspåminnelse",
+    missing: "Kalibrering saknas för",
+    instruments: "instrument",
+    after: "efter den 2:a",
+    check: "Kontrollera",
+    calibrate: "Kalibrera nu",
+    dismiss: "Stäng",
+    switchToEs: "Español"
+  },
+  es: {
+    title: "⚠️ Recordatorio de Calibración",
+    missing: "Falta calibración para",
+    instruments: "instrumentos",
+    after: "después del día 2",
+    check: "Verificar",
+    calibrate: "Calibrar ahora",
+    dismiss: "Cerrar",
+    switchToSv: "Svenska"
+  }
+};
+
+let currentLang = 'sv';
+
 async function getAccessToken() {
   if (accessToken && Date.now() < tokenExpiry) {
     return accessToken;
@@ -87,6 +112,203 @@ async function fetchFromDatabase(path) {
   return response.json();
 }
 
+function createModal(instrumentList) {
+  const existingModal = document.getElementById('calibration-reminder-modal');
+  if (existingModal) existingModal.remove();
+  
+  const t = translations[currentLang];
+  const instrumentCount = instrumentList.length;
+  const instrumentText = instrumentList.join(', ');
+  
+  const overlay = document.createElement('div');
+  overlay.id = 'calibration-reminder-modal';
+  overlay.style.cssText = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    animation: fadeIn 0.3s ease;
+  `;
+  
+  const modal = document.createElement('div');
+  modal.style.cssText = `
+    background: white;
+    border-radius: 16px;
+    padding: 32px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    animation: slideUp 0.3s ease;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  `;
+  
+  const icon = document.createElement('div');
+  icon.style.cssText = `
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 20px;
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  `;
+  icon.innerHTML = '<i class="fas fa-exclamation-triangle" style="color: white; font-size: 32px;"></i>';
+  
+  const title = document.createElement('h2');
+  title.style.cssText = `
+    font-size: 24px;
+    font-weight: 700;
+    color: #1f2937;
+    text-align: center;
+    margin-bottom: 16px;
+  `;
+  title.textContent = t.title;
+  
+  const message = document.createElement('p');
+  message.style.cssText = `
+    color: #4b5563;
+    text-align: center;
+    margin-bottom: 16px;
+    line-height: 1.5;
+  `;
+  message.textContent = `${t.missing} ${instrumentCount} ${instrumentCount === 1 ? 'instrument' : t.instruments} (${t.after}).`;
+  
+  const instrumentBox = document.createElement('div');
+  instrumentBox.style.cssText = `
+    background: #fef3c7;
+    border: 1px solid #fde68a;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 20px;
+    max-height: 120px;
+    overflow-y: auto;
+  `;
+  
+  const instrumentLabel = document.createElement('div');
+  instrumentLabel.style.cssText = `
+    font-size: 12px;
+    font-weight: 600;
+    color: #92400e;
+    margin-bottom: 6px;
+  `;
+  instrumentLabel.textContent = `${t.check}:`;
+  
+  const instrumentNames = document.createElement('div');
+  instrumentNames.style.cssText = `
+    font-size: 14px;
+    color: #78350f;
+    word-break: break-word;
+  `;
+  instrumentNames.textContent = instrumentText;
+  
+  instrumentBox.appendChild(instrumentLabel);
+  instrumentBox.appendChild(instrumentNames);
+  
+  const buttonContainer = document.createElement('div');
+  buttonContainer.style.cssText = `
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 24px;
+  `;
+  
+  const langButton = document.createElement('button');
+  langButton.style.cssText = `
+    background: transparent;
+    border: 1px solid #d1d5db;
+    color: #4b5563;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  `;
+  langButton.textContent = currentLang === 'sv' ? t.switchToEs : translations.es.switchToSv;
+  langButton.onmouseover = () => { langButton.style.background = '#f3f4f6'; };
+  langButton.onmouseout = () => { langButton.style.background = 'transparent'; };
+  langButton.onclick = () => {
+    currentLang = currentLang === 'sv' ? 'es' : 'sv';
+    createModal(instrumentList);
+  };
+  
+  const primaryButton = document.createElement('button');
+  primaryButton.style.cssText = `
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    border: none;
+    color: white;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.2);
+  `;
+  primaryButton.textContent = t.calibrate;
+  primaryButton.onmouseover = () => { primaryButton.style.transform = 'translateY(-1px)'; primaryButton.style.boxShadow = '0 8px 12px -2px rgba(59, 130, 246, 0.3)'; };
+  primaryButton.onmouseout = () => { primaryButton.style.transform = 'translateY(0)'; primaryButton.style.boxShadow = '0 4px 6px -1px rgba(59, 130, 246, 0.2)'; };
+  primaryButton.onclick = () => {
+    window.open('https://teamgeomira.github.io/Instrumenthanteringuser/', '_blank');
+    overlay.remove();
+  };
+  
+  const dismissButton = document.createElement('button');
+  dismissButton.style.cssText = `
+    background: transparent;
+    border: 1px solid #d1d5db;
+    color: #6b7280;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  `;
+  dismissButton.textContent = t.dismiss;
+  dismissButton.onmouseover = () => { dismissButton.style.background = '#f3f4f6'; };
+  dismissButton.onmouseout = () => { dismissButton.style.background = 'transparent'; };
+  dismissButton.onclick = () => overlay.remove();
+  
+  buttonContainer.appendChild(langButton);
+  buttonContainer.appendChild(primaryButton);
+  buttonContainer.appendChild(dismissButton);
+  
+  modal.appendChild(icon);
+  modal.appendChild(title);
+  modal.appendChild(message);
+  modal.appendChild(instrumentBox);
+  modal.appendChild(buttonContainer);
+  overlay.appendChild(modal);
+  
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  `;
+  overlay.appendChild(style);
+  
+  document.body.appendChild(overlay);
+  
+  overlay.onclick = (e) => {
+    if (e.target === overlay) overlay.remove();
+  };
+}
+
 async function checkCalibrationReminders() {
   console.log('🔍 FUNCIÓN checkCalibrationReminders EJECUTADA');
   
@@ -136,10 +358,10 @@ async function checkCalibrationReminders() {
     const currentDay = today.getDate();
     
     console.log(`📆 FECHA ACTUAL: ${currentYear}-${currentMonth}-${currentDay}`);
-    console.log(`📆 Día actual: ${currentDay} - ${currentDay <= 2 ? 'NO se muestra alarma (día <= 22)' : 'SÍ se muestra alarma (día > 22)'}`);
+    console.log(`📆 Día actual: ${currentDay} - ${currentDay <= 2 ? 'NO se muestra alarma (día <= 2)' : 'SÍ se muestra alarma (día > 2)'}`);
     
     if (currentDay <= 2) {
-      console.log('⏸️ Saliendo porque es día 22 o menor');
+      console.log('⏸️ Saliendo porque es día 2 o menor');
       return;
     }
     
@@ -193,24 +415,7 @@ async function checkCalibrationReminders() {
     console.log('⚠️ Instrumentos sin calibrar:', missingCalibrationInstruments);
     
     if (missingCalibrationInstruments.length > 0) {
-      const instrumentList = missingCalibrationInstruments.join(', ');
-      const message = `⚠️ Påminnelse: Kalibrering saknas för ${missingCalibrationInstruments.length} instrument (efter den 22:a). Kontrollera: ${instrumentList}`;
-      
-      const alertContainer = document.getElementById('alert-container');
-      if (alertContainer) {
-        const alertDiv = document.createElement('div');
-        alertDiv.className = 'alert alert-warning fade-in';
-        alertDiv.style.backgroundColor = '#fef3c7';
-        alertDiv.style.color = '#92400e';
-        alertDiv.style.border = '1px solid #fde68a';
-        alertDiv.innerHTML = `
-          <div class="flex items-center justify-between">
-            <span><i class="fas fa-exclamation-triangle mr-2"></i>${message}</span>
-            <button class="text-gray-600 hover:text-gray-800" onclick="this.parentElement.parentElement.remove()">&times;</button>
-          </div>
-        `;
-        alertContainer.appendChild(alertDiv);
-      }
+      createModal(missingCalibrationInstruments);
     } else {
       console.log('✅ Todos los instrumentos tienen calibración aprobada este mes');
     }

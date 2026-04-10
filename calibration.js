@@ -18,23 +18,21 @@ const instrumentFirebaseConfig = {
 let accessToken = null;
 let tokenExpiry = 0;
 
-const translations = {
+const calibrationMessages = {
   sv: {
-    title: "⚠️ Kalibreringspåminnelse",
-    missing: "Kalibrering saknas för",
-    instruments: "instrument",
-    after: "efter den 2:a",
-    check: "Kontrollera",
+    title: "Kalibreringspåminnelse",
+    missingSingle: (name) => `Det har konstaterats att instrumentet ${name} saknar registrerad kalibrering för innevarande månad (efter den 2:a).`,
+    missingMultiple: (count, names) => `Det har konstaterats att följande instrument saknar registrerad kalibrering för innevarande månad (efter den 2:a): ${names}.`,
+    action: "Vänligen kontrollera dess status och utför nödvändig kalibrering eller registrera saknad information.",
     calibrate: "Kalibrera nu",
     dismiss: "Stäng",
     switchToEs: "Español"
   },
   es: {
-    title: "⚠️ Recordatorio de Calibración",
-    missing: "Falta calibración para",
-    instruments: "instrumentos",
-    after: "después del día 2",
-    check: "Verificar",
+    title: "Recordatorio de Calibración",
+    missingSingle: (name) => `Se ha detectado que el instrumento ${name} no cuenta con registro de calibración vigente para el presente mes (posterior al día 2).`,
+    missingMultiple: (count, names) => `Se ha detectado que los siguientes instrumentos no cuentan con registro de calibración vigente para el presente mes (posterior al día 2): ${names}.`,
+    action: "Se solicita, por favor, verificar su estado y realizar la calibración correspondiente o registrar la información faltante.",
     calibrate: "Calibrar ahora",
     dismiss: "Cerrar",
     switchToSv: "Svenska"
@@ -44,16 +42,8 @@ const translations = {
 let currentLang = 'sv';
 
 async function getAccessToken() {
-  if (accessToken && Date.now() < tokenExpiry) {
-    return accessToken;
-  }
-  
-  const header = {
-    alg: "RS256",
-    typ: "JWT",
-    kid: instrumentFirebaseConfig.serviceAccount.private_key_id
-  };
-  
+  if (accessToken && Date.now() < tokenExpiry) return accessToken;
+  const header = { alg: "RS256", typ: "JWT", kid: instrumentFirebaseConfig.serviceAccount.private_key_id };
   const now = Math.floor(Date.now() / 1000);
   const claim = {
     iss: instrumentFirebaseConfig.serviceAccount.client_email,
@@ -62,43 +52,23 @@ async function getAccessToken() {
     exp: now + 3600,
     iat: now
   };
-  
   const privateKey = instrumentFirebaseConfig.serviceAccount.private_key;
   const pem = privateKey.replace(/\\n/g, "\n");
-  
   const encoder = new TextEncoder();
   const headerB64 = btoa(JSON.stringify(header)).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
   const claimB64 = btoa(JSON.stringify(claim)).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
   const signatureInput = `${headerB64}.${claimB64}`;
-  
   const keyData = pem.replace(/-----BEGIN PRIVATE KEY-----|-----END PRIVATE KEY-----|\n/g, "");
   const binaryKey = Uint8Array.from(atob(keyData), c => c.charCodeAt(0));
-  
-  const cryptoKey = await crypto.subtle.importKey(
-    "pkcs8",
-    binaryKey,
-    { name: "RSASSA-PKCS1-v1_5", hash: "SHA-256" },
-    false,
-    ["sign"]
-  );
-  
-  const signature = await crypto.subtle.sign(
-    "RSASSA-PKCS1-v1_5",
-    cryptoKey,
-    encoder.encode(signatureInput)
-  );
-  
-  const signatureB64 = btoa(String.fromCharCode(...new Uint8Array(signature)))
-    .replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
-  
+  const cryptoKey = await crypto.subtle.importKey("pkcs8", binaryKey, { name: "RSASSA-PKCS1-v1_5", hash: "SHA-256" }, false, ["sign"]);
+  const signature = await crypto.subtle.sign("RSASSA-PKCS1-v1_5", cryptoKey, encoder.encode(signatureInput));
+  const signatureB64 = btoa(String.fromCharCode(...new Uint8Array(signature))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
   const jwt = `${signatureInput}.${signatureB64}`;
-  
   const response = await fetch("https://oauth2.googleapis.com/token", {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: `grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer&assertion=${jwt}`
   });
-  
   const data = await response.json();
   accessToken = data.access_token;
   tokenExpiry = Date.now() + (data.expires_in * 1000) - 60000;
@@ -115,142 +85,91 @@ async function fetchFromDatabase(path) {
 function createModal(instrumentList) {
   const existingModal = document.getElementById('calibration-reminder-modal');
   if (existingModal) existingModal.remove();
-  
-  const t = translations[currentLang];
+
+  const t = calibrationMessages[currentLang];
   const instrumentCount = instrumentList.length;
   const instrumentText = instrumentList.join(', ');
-  
+  const missingMessage = instrumentCount === 1 ? t.missingSingle(instrumentText) : t.missingMultiple(instrumentCount, instrumentText);
+
   const overlay = document.createElement('div');
   overlay.id = 'calibration-reminder-modal';
   overlay.style.cssText = `
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(5px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10000;
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(5px);
+    display: flex; align-items: center; justify-content: center; z-index: 10000;
     animation: fadeIn 0.3s ease;
   `;
-  
+
   const modal = document.createElement('div');
   modal.style.cssText = `
-    background: white;
-    border-radius: 16px;
-    padding: 32px;
-    max-width: 500px;
-    width: 90%;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-    animation: slideUp 0.3s ease;
+    background: white; border-radius: 20px; padding: 32px; max-width: 550px; width: 90%;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); animation: slideUp 0.3s ease;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   `;
-  
+
   const icon = document.createElement('div');
   icon.style.cssText = `
-    width: 64px;
-    height: 64px;
-    margin: 0 auto 20px;
+    width: 64px; height: 64px; margin: 0 auto 24px;
     background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
   `;
   icon.innerHTML = '<i class="fas fa-exclamation-triangle" style="color: white; font-size: 32px;"></i>';
-  
+
   const title = document.createElement('h2');
-  title.style.cssText = `
-    font-size: 24px;
-    font-weight: 700;
-    color: #1f2937;
-    text-align: center;
-    margin-bottom: 16px;
-  `;
+  title.style.cssText = `font-size: 22px; font-weight: 700; color: #1f2937; text-align: center; margin-bottom: 20px;`;
   title.textContent = t.title;
-  
-  const message = document.createElement('p');
-  message.style.cssText = `
-    color: #4b5563;
-    text-align: center;
-    margin-bottom: 16px;
-    line-height: 1.5;
-  `;
-  message.textContent = `${t.missing} ${instrumentCount} ${instrumentCount === 1 ? 'instrument' : t.instruments} (${t.after}).`;
-  
+
+  const messageContainer = document.createElement('div');
+  messageContainer.style.cssText = `margin-bottom: 20px;`;
+
+  const missingPara = document.createElement('p');
+  missingPara.style.cssText = `color: #374151; font-size: 15px; line-height: 1.5; margin-bottom: 12px;`;
+  missingPara.textContent = missingMessage;
+
+  const actionPara = document.createElement('p');
+  actionPara.style.cssText = `color: #4b5563; font-size: 14px; line-height: 1.5; margin-bottom: 16px;`;
+  actionPara.textContent = t.action;
+
   const instrumentBox = document.createElement('div');
   instrumentBox.style.cssText = `
-    background: #fef3c7;
-    border: 1px solid #fde68a;
-    border-radius: 8px;
-    padding: 12px;
-    margin-bottom: 20px;
-    max-height: 120px;
-    overflow-y: auto;
+    background: #fef3c7; border: 1px solid #fde68a; border-radius: 10px;
+    padding: 14px; margin-top: 8px; max-height: 130px; overflow-y: auto;
   `;
-  
   const instrumentLabel = document.createElement('div');
-  instrumentLabel.style.cssText = `
-    font-size: 12px;
-    font-weight: 600;
-    color: #92400e;
-    margin-bottom: 6px;
-  `;
-  instrumentLabel.textContent = `${t.check}:`;
-  
-  const instrumentNames = document.createElement('div');
-  instrumentNames.style.cssText = `
-    font-size: 14px;
-    color: #78350f;
-    word-break: break-word;
-  `;
-  instrumentNames.textContent = instrumentText;
-  
+  instrumentLabel.style.cssText = `font-size: 12px; font-weight: 600; color: #92400e; margin-bottom: 6px;`;
+  instrumentLabel.textContent = currentLang === 'sv' ? 'Berörda instrument:' : 'Instrumentos afectados:';
+  const instrumentNamesDiv = document.createElement('div');
+  instrumentNamesDiv.style.cssText = `font-size: 14px; color: #78350f; word-break: break-word;`;
+  instrumentNamesDiv.textContent = instrumentText;
   instrumentBox.appendChild(instrumentLabel);
-  instrumentBox.appendChild(instrumentNames);
-  
+  instrumentBox.appendChild(instrumentNamesDiv);
+
+  messageContainer.appendChild(missingPara);
+  messageContainer.appendChild(actionPara);
+  messageContainer.appendChild(instrumentBox);
+
   const buttonContainer = document.createElement('div');
-  buttonContainer.style.cssText = `
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-    margin-top: 24px;
-  `;
-  
+  buttonContainer.style.cssText = `display: flex; gap: 12px; justify-content: flex-end; margin-top: 28px;`;
+
   const langButton = document.createElement('button');
   langButton.style.cssText = `
-    background: transparent;
-    border: 1px solid #d1d5db;
-    color: #4b5563;
-    padding: 10px 16px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s;
+    background: transparent; border: 1px solid #d1d5db; color: #4b5563;
+    padding: 10px 18px; border-radius: 8px; font-size: 14px; font-weight: 500;
+    cursor: pointer; transition: all 0.2s; margin-right: auto;
   `;
-  langButton.textContent = currentLang === 'sv' ? t.switchToEs : translations.es.switchToSv;
-  langButton.onmouseover = () => { langButton.style.background = '#f3f4f6'; };
-  langButton.onmouseout = () => { langButton.style.background = 'transparent'; };
+  langButton.textContent = currentLang === 'sv' ? t.switchToEs : calibrationMessages.es.switchToSv;
+  langButton.onmouseover = () => langButton.style.background = '#f3f4f6';
+  langButton.onmouseout = () => langButton.style.background = 'transparent';
   langButton.onclick = () => {
     currentLang = currentLang === 'sv' ? 'es' : 'sv';
     createModal(instrumentList);
   };
-  
+
   const primaryButton = document.createElement('button');
   primaryButton.style.cssText = `
     background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-    border: none;
-    color: white;
-    padding: 10px 24px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
+    border: none; color: white; padding: 10px 24px; border-radius: 8px;
+    font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s;
     box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.2);
   `;
   primaryButton.textContent = t.calibrate;
@@ -260,117 +179,61 @@ function createModal(instrumentList) {
     window.open('https://teamgeomira.github.io/Instrumenthanteringuser/', '_blank');
     overlay.remove();
   };
-  
+
   const dismissButton = document.createElement('button');
   dismissButton.style.cssText = `
-    background: transparent;
-    border: 1px solid #d1d5db;
-    color: #6b7280;
-    padding: 10px 16px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s;
+    background: transparent; border: 1px solid #d1d5db; color: #6b7280;
+    padding: 10px 18px; border-radius: 8px; font-size: 14px; font-weight: 500;
+    cursor: pointer; transition: all 0.2s;
   `;
   dismissButton.textContent = t.dismiss;
-  dismissButton.onmouseover = () => { dismissButton.style.background = '#f3f4f6'; };
-  dismissButton.onmouseout = () => { dismissButton.style.background = 'transparent'; };
+  dismissButton.onmouseover = () => dismissButton.style.background = '#f3f4f6';
+  dismissButton.onmouseout = () => dismissButton.style.background = 'transparent';
   dismissButton.onclick = () => overlay.remove();
-  
+
   buttonContainer.appendChild(langButton);
   buttonContainer.appendChild(primaryButton);
   buttonContainer.appendChild(dismissButton);
-  
+
   modal.appendChild(icon);
   modal.appendChild(title);
-  modal.appendChild(message);
-  modal.appendChild(instrumentBox);
+  modal.appendChild(messageContainer);
   modal.appendChild(buttonContainer);
   overlay.appendChild(modal);
-  
+
   const style = document.createElement('style');
   style.textContent = `
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    @keyframes slideUp {
-      from { transform: translateY(20px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
   `;
   overlay.appendChild(style);
-  
   document.body.appendChild(overlay);
-  
-  overlay.onclick = (e) => {
-    if (e.target === overlay) overlay.remove();
-  };
+  overlay.onclick = (e) => { if (e.target === overlay) overlay.remove(); };
 }
 
 async function checkCalibrationReminders() {
-  console.log('🔍 FUNCIÓN checkCalibrationReminders EJECUTADA');
-  
   const user = firebase.auth().currentUser;
-  if (!user) {
-    console.log('❌ No hay usuario logueado en la app principal');
-    return;
-  }
-  
-  const userEmail = user.email;
-  if (!userEmail) {
-    console.log('❌ Usuario sin email');
-    return;
-  }
-  
-  console.log('📧 Email del usuario:', userEmail);
-  
+  if (!user?.email) return;
+
   try {
-    console.log('📡 Conectando a Firebase instrumentos (via REST API)...');
     const allInstruments = await fetchFromDatabase('/instruments') || {};
-    console.log('📦 Cantidad de instrumentos:', Object.keys(allInstruments).length);
-    
     const userInstruments = Object.entries(allInstruments)
-      .filter(([id, inst]) => {
-        const ref = (inst.reference || '').toUpperCase();
-        const emailUpper = userEmail.toUpperCase();
-        const match = ref === emailUpper;
-        console.log(`  Comparando: ref="${ref}" con email="${emailUpper}" -> ${match ? '✅ COINCIDE' : '❌ NO COINCIDE'}`);
-        return match;
-      })
+      .filter(([id, inst]) => (inst.reference || '').toUpperCase() === user.email.toUpperCase())
       .map(([id, inst]) => ({ id, ...inst }));
-    
-    console.log('🔧 Instrumentos asignados al usuario:', userInstruments.length);
-    
-    if (userInstruments.length === 0) {
-      console.log('⚠️ NO HAY INSTRUMENTOS ASIGNADOS - Saliendo');
-      return;
-    }
-    
-    console.log('📅 Obteniendo calibraciones...');
+
+    if (!userInstruments.length) return;
+
     const calibrations = await fetchFromDatabase('/calibrations') || {};
-    console.log('📋 Cantidad de calibraciones:', Object.keys(calibrations).length);
-    
     const today = new Date();
     const currentYear = today.getFullYear();
     const currentMonth = today.getMonth() + 1;
     const currentDay = today.getDate();
-    
-    console.log(`📆 FECHA ACTUAL: ${currentYear}-${currentMonth}-${currentDay}`);
-    console.log(`📆 Día actual: ${currentDay} - ${currentDay <= 2 ? 'NO se muestra alarma (día <= 2)' : 'SÍ se muestra alarma (día > 2)'}`);
-    
-    if (currentDay <= 2) {
-      console.log('⏸️ Saliendo porque es día 2 o menor');
-      return;
-    }
-    
-    const missingCalibrationInstruments = [];
-    
+
+    if (currentDay <= 2) return;
+
+    const missing = [];
     for (const inst of userInstruments) {
       const instName = inst.product || inst.name || 'Okänt instrument';
-      console.log(`\n🔍 REVISANDO INSTRUMENTO: ${instName} (ID: ${inst.id})`);
-      
       const isTotalStation = instName.toUpperCase().includes('TS') || 
                              instName.toUpperCase().includes('TOTALSTATION') ||
                              instName.toUpperCase().includes('TOTAL STATION') ||
@@ -379,55 +242,20 @@ async function checkCalibrationReminders() {
                               !instName.toUpperCase().includes('CONTROLLER') &&
                               !instName.toUpperCase().includes('CLOUDWORX') &&
                               !instName.toUpperCase().includes('RADIOHANDLE'));
-      
-      console.log(`  ¿Es Total Station?: ${isTotalStation}`);
-      
-      if (!isTotalStation) {
-        console.log(`  ⏭️ NO es totalstation, ignorando`);
-        continue;
-      }
-      
-      console.log(`  Buscando calibraciones para año=${currentYear}, mes=${currentMonth}, instrumentId=${inst.id}`);
-      
-      let foundCalibration = null;
-      for (const calId in calibrations) {
-        const cal = calibrations[calId];
-        if (String(cal.instrumentId) === String(inst.id) && 
-            cal.year === currentYear && 
-            cal.month === currentMonth) {
-          foundCalibration = cal;
-          console.log(`    ✅ ENCONTRADA calibración para este mes: passed=${cal.passed}`);
-          break;
-        }
-      }
-      
-      if (!foundCalibration) {
-        console.log(`  ❌ NO HAY calibración para este mes`);
-        missingCalibrationInstruments.push(instName);
-      } else if (!foundCalibration.passed) {
-        console.log(`  ❌ Calibración NO APROBADA`);
-        missingCalibrationInstruments.push(instName);
-      } else {
-        console.log(`  ✅ Calibración APROBADA - OK`);
-      }
+      if (!isTotalStation) continue;
+
+      const hasCalibration = Object.values(calibrations).some(cal => 
+        String(cal.instrumentId) === String(inst.id) && cal.year === currentYear && cal.month === currentMonth && cal.passed === true
+      );
+      if (!hasCalibration) missing.push(instName);
     }
-    
-    console.log('⚠️ Instrumentos sin calibrar:', missingCalibrationInstruments);
-    
-    if (missingCalibrationInstruments.length > 0) {
-      createModal(missingCalibrationInstruments);
-    } else {
-      console.log('✅ Todos los instrumentos tienen calibración aprobada este mes');
-    }
+
+    if (missing.length) createModal(missing);
   } catch (error) {
     console.error('❌ Error al verificar calibraciones:', error);
   }
 }
 
 firebase.auth().onAuthStateChanged((user) => {
-  if (user) {
-    setTimeout(() => checkCalibrationReminders(), 2000);
-  }
+  if (user) setTimeout(checkCalibrationReminders, 2000);
 });
-
-console.log('✅ calibration.js laddat - övervakar kalibreringspåminnelser (via REST API)');

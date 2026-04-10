@@ -136,9 +136,9 @@ async function checkCalibrationReminders() {
     const currentDay = today.getDate();
     
     console.log(`📆 FECHA ACTUAL: ${currentYear}-${currentMonth}-${currentDay}`);
-    console.log(`📆 Día actual: ${currentDay} - ${currentDay <= 22 ? 'NO se muestra alarma (día <= 22)' : 'SÍ se muestra alarma (día > 22)'}`);
+    console.log(`📆 Día actual: ${currentDay} - ${currentDay <= 2 ? 'NO se muestra alarma (día <= 22)' : 'SÍ se muestra alarma (día > 22)'}`);
     
-    if (currentDay <= 22) {
+    if (currentDay <= 2) {
       console.log('⏸️ Saliendo porque es día 22 o menor');
       return;
     }

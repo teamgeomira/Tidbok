@@ -18,74 +18,61 @@ try {
 }
 instrumentDatabase = instrumentApp.database();
 
-async function ensureInstrumentAuth() {
-  const auth = instrumentApp.auth();
-  if (auth.currentUser) return;
-  try {
-    await auth.signInAnonymously();
-    console.log('✅ Anonym inloggning i instrumentApp lyckades');
-  } catch (e) {
-    console.warn('⚠️ Kunde inte logga in anonymt:', e);
-  }
-}
-
 async function checkCalibrationReminders() {
-  console.log('🔍 FUNKTION checkCalibrationReminders KÖRS');
+  console.log('🔍 FUNCIÓN checkCalibrationReminders EJECUTADA');
   
   const user = firebase.auth().currentUser;
   if (!user) {
-    console.log('❌ Ingen användare inloggad i huvudappen');
+    console.log('❌ No hay usuario logueado en la app principal');
     return;
   }
   
   const userEmail = user.email;
   if (!userEmail) {
-    console.log('❌ Användaren saknar e-post');
+    console.log('❌ Usuario sin email');
     return;
   }
   
-  console.log('📧 Användarens e-post:', userEmail);
+  console.log('📧 Email del usuario:', userEmail);
   
   try {
-    await ensureInstrumentAuth();
-    
-    console.log('📡 Hämtar instrument från skolaraport...');
+    console.log('📡 Conectando a Firebase instrumentos...');
     const instrumentsSnap = await instrumentDatabase.ref('instruments').once('value');
     const allInstruments = instrumentsSnap.val() || {};
-    console.log('📦 Antal instrument totalt:', Object.keys(allInstruments).length);
+    console.log('📦 Cantidad de instrumentos:', Object.keys(allInstruments).length);
     
     const userInstruments = Object.entries(allInstruments)
       .filter(([id, inst]) => {
         const ref = (inst.reference || '').toUpperCase();
         const emailUpper = userEmail.toUpperCase();
         const match = ref === emailUpper;
-        console.log(`  Jämför: ref="${ref}" med e-post="${emailUpper}" -> ${match ? '✅ TRÄFF' : '❌ INGEN TRÄFF'}`);
+        console.log(`  Comparando: ref="${ref}" con email="${emailUpper}" -> ${match ? '✅ COINCIDE' : '❌ NO COINCIDE'}`);
         return match;
       })
       .map(([id, inst]) => ({ id, ...inst }));
     
-    console.log('🔧 Användarens instrument:', userInstruments.length);
+    console.log('🔧 Instrumentos asignados al usuario:', userInstruments.length);
     
     if (userInstruments.length === 0) {
-      console.log('⚠️ INGA INSTRUMENT TILLDELADE - Avslutar');
+      console.log('⚠️ NO HAY INSTRUMENTOS ASIGNADOS - Saliendo');
       return;
     }
     
-    console.log('📅 Hämtar kalibreringar...');
+    console.log('📅 Obteniendo calibraciones...');
     const calibrationsSnap = await instrumentDatabase.ref('calibrations').once('value');
     const calibrations = calibrationsSnap.val() || {};
-    console.log('📋 Antal kalibreringar totalt:', Object.keys(calibrations).length);
+    console.log('📋 Cantidad de calibraciones:', Object.keys(calibrations).length);
     
     const today = new Date();
     const currentYear = today.getFullYear();
     const currentMonth = today.getMonth() + 1;
     const currentDay = today.getDate();
     
-    console.log(`📆 DAGENS DATUM: ${currentYear}-${currentMonth}-${currentDay}`);
-    console.log(`📆 Dag: ${currentDay} - ${currentDay <= 22 ? 'Ingen påminnelse (dag <= 22)' : 'Påminnelse visas (dag > 22)'}`);
+    console.log(`📆 FECHA ACTUAL: ${currentYear}-${currentMonth}-${currentDay}`);
+    console.log(`📆 Día actual: ${currentDay} - ${currentDay <= 22 ? 'NO se muestra alarma (día <= 22)' : 'SÍ se muestra alarma (día > 22)'}`);
     
     if (currentDay <= 22) {
-      console.log('⏸️ Avslutar eftersom dagen är 22 eller mindre');
+      console.log('⏸️ Saliendo porque es día 22 o menor');
       return;
     }
     
@@ -93,7 +80,7 @@ async function checkCalibrationReminders() {
     
     for (const inst of userInstruments) {
       const instName = inst.product || inst.name || 'Okänt instrument';
-      console.log(`\n🔍 KONTROLLERAR INSTRUMENT: ${instName} (ID: ${inst.id})`);
+      console.log(`\n🔍 REVISANDO INSTRUMENTO: ${instName} (ID: ${inst.id})`);
       
       const isTotalStation = instName.toUpperCase().includes('TS') || 
                              instName.toUpperCase().includes('TOTALSTATION') ||
@@ -104,14 +91,14 @@ async function checkCalibrationReminders() {
                               !instName.toUpperCase().includes('CLOUDWORX') &&
                               !instName.toUpperCase().includes('RADIOHANDLE'));
       
-      console.log(`  Är det en totalstation?: ${isTotalStation}`);
+      console.log(`  ¿Es Total Station?: ${isTotalStation}`);
       
       if (!isTotalStation) {
-        console.log(`  ⏭️ Hoppar över (ej totalstation)`);
+        console.log(`  ⏭️ NO es totalstation, ignorando`);
         continue;
       }
       
-      console.log(`  Letar efter kalibrering för år=${currentYear}, månad=${currentMonth}, instrumentId=${inst.id}`);
+      console.log(`  Buscando calibraciones para año=${currentYear}, mes=${currentMonth}, instrumentId=${inst.id}`);
       
       let foundCalibration = null;
       for (const calId in calibrations) {
@@ -120,23 +107,23 @@ async function checkCalibrationReminders() {
             cal.year === currentYear && 
             cal.month === currentMonth) {
           foundCalibration = cal;
-          console.log(`    ✅ KALIBRERING HITTAD: passed=${cal.passed}`);
+          console.log(`    ✅ ENCONTRADA calibración para este mes: passed=${cal.passed}`);
           break;
         }
       }
       
       if (!foundCalibration) {
-        console.log(`  ❌ SAKNAR kalibrering denna månad`);
+        console.log(`  ❌ NO HAY calibración para este mes`);
         missingCalibrationInstruments.push(instName);
       } else if (!foundCalibration.passed) {
-        console.log(`  ❌ Kalibrering EJ GODKÄND`);
+        console.log(`  ❌ Calibración NO APROBADA`);
         missingCalibrationInstruments.push(instName);
       } else {
-        console.log(`  ✅ Kalibrering GODKÄND - OK`);
+        console.log(`  ✅ Calibración APROBADA - OK`);
       }
     }
     
-    console.log('⚠️ Instrument utan godkänd kalibrering:', missingCalibrationInstruments);
+    console.log('⚠️ Instrumentos sin calibrar:', missingCalibrationInstruments);
     
     if (missingCalibrationInstruments.length > 0) {
       const instrumentList = missingCalibrationInstruments.join(', ');
@@ -158,10 +145,10 @@ async function checkCalibrationReminders() {
         alertContainer.appendChild(alertDiv);
       }
     } else {
-      console.log('✅ Alla totalstationer har godkänd kalibrering denna månad');
+      console.log('✅ Todos los instrumentos tienen calibración aprobada este mes');
     }
   } catch (error) {
-    console.error('❌ Fel vid kontroll av kalibreringar:', error);
+    console.error('❌ Error al verificar calibraciones:', error);
   }
 }
 

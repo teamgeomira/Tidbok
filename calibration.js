@@ -22,7 +22,7 @@ const calibrationMessages = {
   sv: {
     title: "Kalibreringspåminnelse",
     missingSingle: (name) => `Det har konstaterats att instrumentet ${name} saknar registrerad kalibrering för innevarande månad.`,
-    missingMultiple: (count, names) => `Det har konstaterats att följande instrument saknar registrerad kalibrering för innevarande månad (efter den 2:a): ${names}.`,
+    missingMultiple: (count, names) => `Det har konstaterats att följande instrument saknar registrerad kalibrering för innevarande månad: ${names}.`,
     action: "Vänligen kontrollera dess status och utför nödvändig kalibrering eller registrera saknad information.",
     calibrate: "Kalibrera nu",
     dismiss: "Stäng",
@@ -31,7 +31,7 @@ const calibrationMessages = {
   es: {
     title: "Recordatorio de Calibración",
     missingSingle: (name) => `Se ha detectado que el instrumento ${name} no cuenta con registro de calibración vigente para el presente mes.`,
-    missingMultiple: (count, names) => `Se ha detectado que los siguientes instrumentos no cuentan con registro de calibración vigente para el presente mes (posterior al día 2): ${names}.`,
+    missingMultiple: (count, names) => `Se ha detectado que los siguientes instrumentos no cuentan con registro de calibración vigente para el presente mes: ${names}.`,
     action: "Se solicita, por favor, verificar su estado y realizar la calibración correspondiente o registrar la información faltante.",
     calibrate: "Calibrar ahora",
     dismiss: "Cerrar",

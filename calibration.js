@@ -21,8 +21,8 @@ let tokenExpiry = 0;
 const calibrationMessages = {
   sv: {
     title: "Kalibreringspåminnelse",
-    missingSingle: (name) => `Det har konstaterats att instrumentet ${name} saknar registrerad kalibrering för innevarande månad.`,
-    missingMultiple: (count, names) => `Det har konstaterats att följande instrument saknar registrerad kalibrering för innevarande månad: ${names}.`,
+    missingSingle: (name) => `Det har konstaterats att instrumentet ${name} saknar registrerad kalibrering för innevarande månad (efter den 2:a).`,
+    missingMultiple: (count, names) => `Det har konstaterats att följande instrument saknar registrerad kalibrering för innevarande månad (efter den 2:a): ${names}.`,
     action: "Vänligen kontrollera dess status och utför nödvändig kalibrering eller registrera saknad information.",
     calibrate: "Kalibrera nu",
     dismiss: "Stäng",
@@ -30,8 +30,8 @@ const calibrationMessages = {
   },
   es: {
     title: "Recordatorio de Calibración",
-    missingSingle: (name) => `Se ha detectado que el instrumento ${name} no cuenta con registro de calibración vigente para el presente mes.`,
-    missingMultiple: (count, names) => `Se ha detectado que los siguientes instrumentos no cuentan con registro de calibración vigente para el presente mes: ${names}.`,
+    missingSingle: (name) => `Se ha detectado que el instrumento ${name} no cuenta con registro de calibración vigente para el presente mes (posterior al día 2).`,
+    missingMultiple: (count, names) => `Se ha detectado que los siguientes instrumentos no cuentan con registro de calibración vigente para el presente mes (posterior al día 2): ${names}.`,
     action: "Se solicita, por favor, verificar su estado y realizar la calibración correspondiente o registrar la información faltante.",
     calibrate: "Calibrar ahora",
     dismiss: "Cerrar",
@@ -102,44 +102,62 @@ function createModal(instrumentList) {
 
   const modal = document.createElement('div');
   modal.style.cssText = `
-    background: white; border-radius: 20px; padding: 32px; max-width: 550px; width: 90%;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); animation: slideUp 0.3s ease;
+    background: white; border-radius: 20px; padding: clamp(20px, 5vw, 32px);
+    max-width: 500px; width: 90%; margin: 16px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    animation: slideUp 0.3s ease;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    max-height: 85vh; overflow-y: auto;
   `;
 
   const icon = document.createElement('div');
   icon.style.cssText = `
-    width: 64px; height: 64px; margin: 0 auto 24px;
+    width: clamp(50px, 15vw, 64px); height: clamp(50px, 15vw, 64px);
+    margin: 0 auto 20px;
     background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
     border-radius: 50%; display: flex; align-items: center; justify-content: center;
   `;
-  icon.innerHTML = '<i class="fas fa-exclamation-triangle" style="color: white; font-size: 32px;"></i>';
+  icon.innerHTML = '<i class="fas fa-exclamation-triangle" style="color: white; font-size: clamp(24px, 8vw, 32px);"></i>';
 
   const title = document.createElement('h2');
-  title.style.cssText = `font-size: 22px; font-weight: 700; color: #1f2937; text-align: center; margin-bottom: 20px;`;
+  title.style.cssText = `
+    font-size: clamp(18px, 6vw, 22px); font-weight: 700; color: #1f2937;
+    text-align: center; margin-bottom: 16px;
+  `;
   title.textContent = t.title;
 
   const messageContainer = document.createElement('div');
   messageContainer.style.cssText = `margin-bottom: 20px;`;
 
   const missingPara = document.createElement('p');
-  missingPara.style.cssText = `color: #374151; font-size: 15px; line-height: 1.5; margin-bottom: 12px;`;
+  missingPara.style.cssText = `
+    color: #374151; font-size: clamp(13px, 4vw, 15px); line-height: 1.5;
+    margin-bottom: 12px;
+  `;
   missingPara.textContent = missingMessage;
 
   const actionPara = document.createElement('p');
-  actionPara.style.cssText = `color: #4b5563; font-size: 14px; line-height: 1.5; margin-bottom: 16px;`;
+  actionPara.style.cssText = `
+    color: #4b5563; font-size: clamp(12px, 3.5vw, 14px); line-height: 1.5;
+    margin-bottom: 12px;
+  `;
   actionPara.textContent = t.action;
 
   const instrumentBox = document.createElement('div');
   instrumentBox.style.cssText = `
     background: #fef3c7; border: 1px solid #fde68a; border-radius: 10px;
-    padding: 14px; margin-top: 8px; max-height: 130px; overflow-y: auto;
+    padding: 12px; margin-top: 8px; max-height: 130px; overflow-y: auto;
   `;
   const instrumentLabel = document.createElement('div');
-  instrumentLabel.style.cssText = `font-size: 12px; font-weight: 600; color: #92400e; margin-bottom: 6px;`;
+  instrumentLabel.style.cssText = `
+    font-size: 11px; font-weight: 600; color: #92400e; margin-bottom: 4px;
+    text-transform: uppercase; letter-spacing: 0.5px;
+  `;
   instrumentLabel.textContent = currentLang === 'sv' ? 'Berörda instrument:' : 'Instrumentos afectados:';
   const instrumentNamesDiv = document.createElement('div');
-  instrumentNamesDiv.style.cssText = `font-size: 14px; color: #78350f; word-break: break-word;`;
+  instrumentNamesDiv.style.cssText = `
+    font-size: clamp(12px, 4vw, 14px); color: #78350f; word-break: break-word;
+  `;
   instrumentNamesDiv.textContent = instrumentText;
   instrumentBox.appendChild(instrumentLabel);
   instrumentBox.appendChild(instrumentNamesDiv);
@@ -149,13 +167,14 @@ function createModal(instrumentList) {
   messageContainer.appendChild(instrumentBox);
 
   const buttonContainer = document.createElement('div');
-  buttonContainer.style.cssText = `display: flex; gap: 12px; justify-content: flex-end; margin-top: 28px;`;
+  buttonContainer.style.cssText = `
+    display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 24px;
+  `;
 
   const langButton = document.createElement('button');
   langButton.style.cssText = `
     background: transparent; border: 1px solid #d1d5db; color: #4b5563;
-    padding: 10px 18px; border-radius: 8px; font-size: 14px; font-weight: 500;
-    cursor: pointer; transition: all 0.2s; margin-right: auto;
+    border-radius: 8px; font-weight: 500; cursor: pointer; transition: all 0.2s;
   `;
   langButton.textContent = currentLang === 'sv' ? t.switchToEs : calibrationMessages.es.switchToSv;
   langButton.onmouseover = () => langButton.style.background = '#f3f4f6';
@@ -168,8 +187,8 @@ function createModal(instrumentList) {
   const primaryButton = document.createElement('button');
   primaryButton.style.cssText = `
     background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-    border: none; color: white; padding: 10px 24px; border-radius: 8px;
-    font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s;
+    border: none; color: white; border-radius: 8px; font-weight: 600;
+    cursor: pointer; transition: all 0.2s;
     box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.2);
   `;
   primaryButton.textContent = t.calibrate;
@@ -183,13 +202,22 @@ function createModal(instrumentList) {
   const dismissButton = document.createElement('button');
   dismissButton.style.cssText = `
     background: transparent; border: 1px solid #d1d5db; color: #6b7280;
-    padding: 10px 18px; border-radius: 8px; font-size: 14px; font-weight: 500;
-    cursor: pointer; transition: all 0.2s;
+    border-radius: 8px; font-weight: 500; cursor: pointer; transition: all 0.2s;
   `;
   dismissButton.textContent = t.dismiss;
   dismissButton.onmouseover = () => dismissButton.style.background = '#f3f4f6';
   dismissButton.onmouseout = () => dismissButton.style.background = 'transparent';
   dismissButton.onclick = () => overlay.remove();
+
+  [langButton, primaryButton, dismissButton].forEach(btn => {
+    btn.style.flex = "1 1 120px";
+    btn.style.padding = "10px 16px";
+    btn.style.fontSize = "clamp(13px, 4vw, 14px)";
+  });
+
+  if (window.innerWidth > 640) {
+    langButton.style.marginRight = "auto";
+  }
 
   buttonContainer.appendChild(langButton);
   buttonContainer.appendChild(primaryButton);
@@ -252,7 +280,7 @@ async function checkCalibrationReminders() {
 
     if (missing.length) createModal(missing);
   } catch (error) {
-    console.error('❌ Error al verificar calibraciones:', error);
+    console.error('Error al verificar calibraciones:', error);
   }
 }
 

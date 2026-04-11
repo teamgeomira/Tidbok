@@ -229,7 +229,6 @@ async function checkCalibrationReminders() {
     const currentMonth = today.getMonth() + 1;
     const currentDay = today.getDate();
 
-    // Cambiado a 25
     if (currentDay <= 25) return;
 
     const missing = [];

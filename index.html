@@ -15,7 +15,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/typo-js@1.2.1/typo.min.js"></script>
   <style>
     :root {
       --primary: #3b82f6;
@@ -587,7 +586,7 @@
               <span id="current-language" class="mx-1">SV</span>
               <i class="fas fa-chevron-down ml-1 text-xs"></i>
             </div>
-            <div class="language-dropdown absolute hidden bg-white border rounded-lg shadow-lg mt-1 z-10">
+            <div class="language-dropdown absolute bg-white border rounded-lg shadow-lg mt-1 z-10">
               <a href="#" data-lang="sv" class="block px-4 py-2 hover:bg-gray-100">
                 <span class="language-flag flag-sv"></span>
                 <span data-i18n="language_swedish" class="ml-2">Svenska</span>
@@ -771,27 +770,7 @@
                   <div id="suggestions" style="margin-top: 5px; color: blue;"></div>
                 </div>
               </div>
-              
-              <script>
-                var dictionary = new Typo("sv_SE", null, null, { dictionaryPath: "https://cdn.jsdelivr.net/npm/typo-js@1.2.1/dictionaries" });
-                const textarea = document.getElementById("notes");
-                const suggestionsDiv = document.getElementById("suggestions");
-                textarea.addEventListener("input", function() {
-                  const words = textarea.value.split(/\s+/);
-                  const lastWord = words[words.length - 1];
-                  if (lastWord && !dictionary.check(lastWord)) {
-                    const suggestions = dictionary.suggest(lastWord, 5);
-                    if (suggestions.length > 0) {
-                      suggestionsDiv.innerHTML = "Sugerencias: " + suggestions.join(", ");
-                    } else {
-                      suggestionsDiv.innerHTML = "Inga förslag hittades";
-                    }
-                  } else {
-                    suggestionsDiv.innerHTML = "";
-                  }
-                });
-              </script>
-              
+                           
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                 <div class="form-group">
                   <label for="coworkers" class="form-label" data-i18n="coworkers">Kollegor</label>
@@ -2564,12 +2543,6 @@
         btn.addEventListener('click', toggleChartView);
       });
       
-      document.getElementById('toggle-visual').addEventListener('click', () => {
-        const content = document.getElementById('visual-content');
-        const icon = document.getElementById('visual-icon');
-        content.classList.toggle('hidden');
-        icon.classList.toggle('rotate-180');
-      });
       
       window.addEventListener('click', (e) => {
         const modal = document.getElementById('project-modal');
@@ -4609,8 +4582,7 @@
   <script src="calibration.js"></script>	
   <script src="back.js"></script>
   <script src="keyboard-shortcuts.js"></script>
-  <script src="cache.js"></script>
-
+  <script src="standar.js"></script>
 	
   
 </body>
